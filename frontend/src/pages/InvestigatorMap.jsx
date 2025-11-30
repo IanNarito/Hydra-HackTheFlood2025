@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import 'leaflet/dist/leaflet.css';
 
 const InvestigatorMap = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeRegion, setActiveRegion] = useState("All regions");
 
   // Mock Data for the Map

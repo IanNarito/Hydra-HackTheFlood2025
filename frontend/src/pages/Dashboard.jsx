@@ -2,6 +2,16 @@ import React, { useState } from 'react';
 import { LayoutDashboard, Map, FolderOpen, AlertCircle, ShieldAlert, Activity, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Generate chart data outside component to avoid impure function calls during render
+const generateChartData = () => 
+  [...Array(12)].map(() => ({
+    bar1: Math.random() * 60 + 20,
+    bar2: Math.random() * 60 + 20,
+    bar3: Math.random() * 60 + 20,
+  }));
+
+const chartData = generateChartData();
+
 const Dashboard = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -106,11 +116,11 @@ const Dashboard = () => {
           </div>
           {/* Mock Chart Component */}
           <div className="h-64 w-full flex items-end justify-between gap-2 px-2">
-            {[...Array(12)].map((_, i) => (
+            {chartData.map((data, i) => (
               <div key={i} className="h-full flex gap-1 items-end flex-1 justify-center group">
-                <div className="w-2 md:w-4 bg-indigo-500/80 rounded-t-sm hover:bg-indigo-400 transition-all" style={{ height: `${Math.random() * 60 + 20}%` }}></div>
-                <div className="w-2 md:w-4 bg-rose-500/80 rounded-t-sm hover:bg-rose-400 transition-all" style={{ height: `${Math.random() * 60 + 20}%` }}></div>
-                <div className="w-2 md:w-4 bg-teal-500/80 rounded-t-sm hover:bg-teal-400 transition-all" style={{ height: `${Math.random() * 60 + 20}%` }}></div>
+                <div className="w-2 md:w-4 bg-indigo-500/80 rounded-t-sm hover:bg-indigo-400 transition-all" style={{ height: `${data.bar1}%` }}></div>
+                <div className="w-2 md:w-4 bg-rose-500/80 rounded-t-sm hover:bg-rose-400 transition-all" style={{ height: `${data.bar2}%` }}></div>
+                <div className="w-2 md:w-4 bg-teal-500/80 rounded-t-sm hover:bg-teal-400 transition-all" style={{ height: `${data.bar3}%` }}></div>
               </div>
             ))}
           </div>
