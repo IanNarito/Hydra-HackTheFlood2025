@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        inter: "var(--inter-font-family)",
+        inter: ['Inter', 'Helvetica', 'sans-serif'],
         play: ['Play', 'Helvetica', 'sans-serif'],
       },
     },

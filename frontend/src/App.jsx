@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { LandingPage } from './pages/LandingPage.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import InvestigatorMap from './pages/InvestigatorMap.jsx'; 
 import Dropbox from './pages/Dropbox.jsx';
@@ -34,10 +35,13 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Default route is the Dashboard */}
-        <Route path="/" element={<Dashboard />} />
+        {/* Default route is the Landing Page after splash screen */}
+        <Route path="/" element={<LandingPage />} />
         
-        {/* The new Map route */}
+        {/* Dashboard route */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        
+        {/* The Map route */}
         <Route path="/map" element={<InvestigatorMap />} />
 
         {/* Dropbox route */}
