@@ -1,6 +1,6 @@
 {
   "total_projects": 9855,
-  "total_contract_value": 547603497105.14,
+  "total_contract_value": 547603497105.1407,
   "flagged_projects": 1006,
   "triage_breakdown": {
     "GREEN": 764,
@@ -15,7 +15,7 @@
   },
   "coa_contractor_matches": {
     "total_projects": 159,
-    "total_value": 11613299605.78,
+    "total_value": 11613299605.780003,
     "unique_contractors": 5,
     "contractors": [
       {
@@ -448,7 +448,7 @@
         "coa_reason": "Flagged in COA Bulacan fraud findings for flood-mitigation projects",
         "coa_source": "COA Bulacan fraud reports",
         "project_count": 53,
-        "total_value": 3829053304.77,
+        "total_value": 3829053304.7700014,
         "projects": [
           {
             "project_id": "f56936ce-8ccf-428a-824e-2a25b26cb870",
@@ -881,7 +881,7 @@
         "coa_reason": "Implicated in flagged Bulacan flood-control projects",
         "coa_source": "COA reports",
         "project_count": 24,
-        "total_value": 1478945225.8799999,
+        "total_value": 1478945225.88,
         "projects": [
           {
             "project_id": "95efaf82-3c28-4982-aaba-2fa01ee52e1c",
@@ -1082,7 +1082,7 @@
         "coa_reason": "JV partner in flagged contract with conflict-of-interest concerns",
         "coa_source": "COA building contract audit",
         "project_count": 16,
-        "total_value": 960880229.6,
+        "total_value": 960880229.6000001,
         "projects": [
           {
             "project_id": "d9bb3220-3b54-4832-9b25-275b5e2bc648",
@@ -1219,7 +1219,7 @@
         "coa_reason": "Fully-paid but non-existent or substandard flood-control works in Bulacan",
         "coa_source": "COA Bulacan fraud reports",
         "project_count": 14,
-        "total_value": 787208838.61,
+        "total_value": 787208838.6099999,
         "projects": [
           {
             "project_id": "077b91aa-3ea4-459a-aace-738d538a6f8c",
