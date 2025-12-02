@@ -1,0 +1,4502 @@
+[
+  {
+    "project_id": "fd1651f5-a6a4-4f12-a0f4-98ece9541d27",
+    "project_description": "Construction of Flood Control Structure, Barangay San Juan, Wawa, and Panginay, Balagtas, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "BALAGTAS (BIGAA) (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 151504905.3,
+    "contract_id": "24CC0399",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "04/23/2024",
+    "completion_date": "2024-09-30",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "da511d32-b104-4a88-8258-34b676bc72e4",
+    "project_description": "Construction of Flood Control Structure Along Ciudad De Victoria Tributaries leading to Bocaue River (Igulot Section) Bocaue, Bulacan",
+    "year": 2022,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "BOCAUE (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 148498575.1,
+    "contract_id": "22C00075",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "07/11/2022",
+    "completion_date": "2023-05-06",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "82a40a9d-53e7-46ea-bbcb-a02cd72d2f4f",
+    "project_description": "Rehabilitation of Riverwall along Tullahan River at Brgy. San Agustin to Brgy. Concepcion, Malabon City",
+    "year": 2023,
+    "region": "National Capital Region",
+    "province": "MALABON CITY",
+    "municipality": "CITY OF MALABON (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 144750000.0,
+    "contract_id": "23OA0084",
+    "legislative_district": "MALABON CITY (LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Malabon-Navotas District Engineering Office",
+    "start_date": "04/19/2023",
+    "completion_date": "2024-04-05",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "cec8994a-92c1-4fef-9fab-342e4f6a8bc6",
+    "project_description": "Construction of Revetment along Canas River, Barangay Buenavista, General Trias, Cavite",
+    "year": 2022,
+    "region": "Region IV-A",
+    "province": "CAVITE",
+    "municipality": "CITY OF GENERAL TRIAS (CAVITE)",
+    "barangay": "",
+    "type_of_work": "Construction of Revetment",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 144733536.2,
+    "contract_id": "22D00087",
+    "legislative_district": "CAVITE (SIXTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Cavite 1st District Engineering Office",
+    "start_date": "01/10/2023",
+    "completion_date": "2023-12-28",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "f5a42fa0-728c-484e-ab43-e28d09b8eae4",
+    "project_description": "Construction of Flood Control Structure along Tullahan River and Tributaries, Barangay Gulod, Quezon City",
+    "year": 2024,
+    "region": "National Capital Region",
+    "province": "QUEZON CITY",
+    "municipality": "QUEZON CITY (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "LE BRON CONSTRUCTION",
+    "contract_cost": 143273224.8,
+    "contract_id": "24OF0132",
+    "legislative_district": "QUEZON CITY (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Quezon City 1st District Engineering Office",
+    "start_date": "03/18/2024",
+    "completion_date": "2024-11-18",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: JV partner in flagged contract with conflict-of-interest concerns",
+        "source": "COA building contract audit",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "80010302-23a9-4b2e-91ad-1a1d188bd889",
+    "project_description": "Construction of Flood Control along Tarlac River Control Right Dike, Salapungan - Sta. Cruz Section (Segment B), Tarlac City, Tarlac",
+    "year": 2024,
+    "region": "Region III",
+    "province": "TARLAC",
+    "municipality": "CITY OF TARLAC (CAPITAL) (TARLAC)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 99000000.0,
+    "contract_id": "24CJ0278",
+    "legislative_district": "TARLAC (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Tarlac District Engineering Office",
+    "start_date": "02/27/2024",
+    "completion_date": "2024-09-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "2c2eb7b7-077d-4f6b-a8e7-03a3825601e2",
+    "project_description": "Construction of Flood Control along Tarlac River Control Right Dike, Salapungan - Sta. Cruz Section (Segment A), Tarlac City, Tarlac",
+    "year": 2024,
+    "region": "Region III",
+    "province": "TARLAC",
+    "municipality": "CITY OF TARLAC (CAPITAL) (TARLAC)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 99000000.0,
+    "contract_id": "24CJ0276",
+    "legislative_district": "TARLAC (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Tarlac District Engineering Office",
+    "start_date": "02/27/2024",
+    "completion_date": "2024-09-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "0038f70b-af3d-4cd9-a768-d5cb17c14c39",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Malis (Phase III), Guiguinto, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "GUIGUINTO (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 98999939.04,
+    "contract_id": "24CC0055",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-09-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "f0a7834c-13ed-4671-abb9-5c7362fb05fb",
+    "project_description": "Construction of Flood Control Structure along Angat River, Sipat Section, Plaridel, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "PLARIDEL (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 96499992.1,
+    "contract_id": "24CC0144",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/20/2024",
+    "completion_date": "2024-06-11",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "9b665e9a-da93-4333-8f62-9aa960131179",
+    "project_description": "Construction of Flood Control Structure along Santa Maria River and Its Tributaries, Sta. 16+252-Sta. 16+552 (San Jose Patag - Pulong Buhangin Section), Santa Maria, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "SANTA MARIA (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96499990.88,
+    "contract_id": "24CD0034",
+    "legislative_district": "BULACAN (SIXTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "02/22/2024",
+    "completion_date": "2024-12-12",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "20e7a25a-9e65-4ff1-b6ea-a494da889a3e",
+    "project_description": "Construction of Flood Control Structure along Bocaue - Santa Maria River, Sta. 02+050 - Sta. 02+200, Brgy. Ubihan, Meycauayan City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MEYCAUAYAN (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96499973.82,
+    "contract_id": "24CD0033",
+    "legislative_district": "BULACAN (FOURTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "02/22/2024",
+    "completion_date": "2024-12-28",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "731a1c81-1015-4abd-9f9a-e3b1e2db65fc",
+    "project_description": "Construction of River Control Project along Bocaue River, Bambang Section, Sta. 08+790 to Sta. 08+995, Bocaue, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "BOCAUE (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 96499970.89,
+    "contract_id": "23CC0084",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-06-07",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "34eebdaa-e585-4331-b958-fcc2d55fcc13",
+    "project_description": "Construction of Flood Control Structure along Guiguinto River, Malis Section, Guiguinto, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "GUIGUINTO (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 96499968.29,
+    "contract_id": "24CC0142",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/20/2024",
+    "completion_date": "2024-06-11",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "132a0af2-1756-43c0-bfa1-a5dce5a4f3aa",
+    "project_description": "Construction of Flood Control Structure along Angat River, Lumbang Bayan Section, Plaridel, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "PLARIDEL (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 96499893.19,
+    "contract_id": "24CC0468",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "05/28/2024",
+    "completion_date": "2024-07-31",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "a1a6cbc5-0eea-466a-a559-7e3ad552fd3d",
+    "project_description": "Construction of Flood Control Structure along Bocaue - Santa Maria River, Sta. 01+900 - Sta. 02+050, Brgy. Ubihan, Meycauayan City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MEYCAUAYAN (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96499880.38,
+    "contract_id": "24CD0032",
+    "legislative_district": "BULACAN (FOURTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "02/14/2024",
+    "completion_date": "2024-12-20",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "ef5eefc8-ed99-445d-8040-c03c5d1d9f11",
+    "project_description": "Construction of Riverwall along Guiguinto River, Daungan Section, Sta. 03+060 to Sta. 03+420, Guiguinto, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "GUIGUINTO (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 96499860.92,
+    "contract_id": "23CC0085",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-08-25",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "136a3cf5-a4c4-4edb-b69a-9a9a0117baae",
+    "project_description": "Construction of River Control Project at Barangay Pagala, Sta. 00+500 to Sta. 00+900, Baliuag, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96499709.18,
+    "contract_id": "23CC0146",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-12-06",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "0dac3491-0399-4017-a5ad-0800175b0578",
+    "project_description": "Construction of Flood control Structure along Bocaue - Santa Maria River, Ubihan Section, Meycauayan Side, Meycauayan, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MEYCAUAYAN (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96499601.54,
+    "contract_id": "23CD0070",
+    "legislative_district": "BULACAN (FOURTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "02/27/2023",
+    "completion_date": "2024-01-22",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "4f0ce712-250a-43e6-b2dc-79b94e00d065",
+    "project_description": "Construction of River Control Project at Barangay Piel, Sta. 01+000 to Sta. 01+400, Baliuag, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96499420.64,
+    "contract_id": "23CC0129",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-11-10",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "e4fd8e95-8f3d-4313-8e5b-adcfe66648a1",
+    "project_description": "Construction of Flood Control Structure along Santa Maria River and Its Tributaries, Sta. 16+552-Sta. 16+852 (San Jose Patag - Pulong Buhangin Section), Santa Maria, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "SANTA MARIA (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96499408.89,
+    "contract_id": "24CD0035",
+    "legislative_district": "BULACAN (SIXTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "02/14/2024",
+    "completion_date": "2024-12-04",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "36bc5a7e-08b0-42ed-bbc6-92eae4a69775",
+    "project_description": "Construction of River Control Project at Barangay Tangos, Sta. 00+300 to Sta. 00+700, Baliuag, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96499304.28,
+    "contract_id": "23CC0161",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-11-30",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "265b912a-97e3-4c46-af5c-714b43237f5b",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Santa Cruz, Guiguinto, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "GUIGUINTO (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 96499302.69,
+    "contract_id": "24CC0052",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-06-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "ca35b94c-cf58-43ba-bd29-1e4d21eaed71",
+    "project_description": "Construction of Riverwall at Barangay Piel, Sta. 01+410 to Sta. 01+810, Baliuag, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96498956.85,
+    "contract_id": "23CC0130",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-11-10",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "a7760c93-10dd-49a1-a7d4-b3ed301fc0b5",
+    "project_description": "Construction of Flood Control Structure along Bulo River, Sta. 13+000 - Sta. 13+ 600, Sta. Lucia, San Miguel, Bulacan",
+    "year": 2022,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "SAN MIGUEL (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96498941.25,
+    "contract_id": "22CD0158",
+    "legislative_district": "BULACAN (THIRD LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "03/30/2022",
+    "completion_date": "2023-05-26",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "7777afd4-e5a6-4e48-9664-2e62428fd91e",
+    "project_description": "Construction of Riverwall at Barangay Sulivan, Sta. 02+310 to Sta. 02+710, Baliuag, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96498859.48,
+    "contract_id": "23CC0144",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-12-05",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "66ef0837-5081-47fc-bf9a-2873e922d19e",
+    "project_description": "Construction of River Control Project at Barangay Sulivan, Sta. 01+900 to Sta. 02+300, Baliuag, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96498762.72,
+    "contract_id": "23CC0155",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2024-02-01",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "48f4af36-6136-4d22-bc34-32b4d6b5786b",
+    "project_description": "Construction of Flood Mitigation Structure along Meycauayan River (Liputan - Nagbalon), Sta. 04+000 - Sta. 04+400, Meycauayan, Bulacan",
+    "year": 2022,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MEYCAUAYAN (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96498187.66,
+    "contract_id": "22CD0086",
+    "legislative_district": "BULACAN (FOURTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "06/09/2022",
+    "completion_date": "2023-07-14",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "1e360104-03e4-4335-a2ca-a04059731de2",
+    "project_description": "Construction of Flood Mitigation Structure along Meycauayan River (Liputan - Nagbalon), Sta. 04+400 - Sta. 04+800, Meycauayan, Bulacan",
+    "year": 2022,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MEYCAUAYAN (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96497603.14,
+    "contract_id": "22CD0087",
+    "legislative_district": "BULACAN (FOURTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "06/09/2022",
+    "completion_date": "2023-07-31",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "695c93f2-1e76-4aa6-b365-40c2063247c0",
+    "project_description": "Construction of Flood Control Structure along Bulo River, Sta. 14+200 - Sta. 14+800, Sta. Lucia, San Miguel, Bulacan",
+    "year": 2022,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "SAN MIGUEL (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96497418.82,
+    "contract_id": "22CD0160",
+    "legislative_district": "BULACAN (THIRD LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "03/30/2022",
+    "completion_date": "2023-04-18",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "d13ffd93-5234-4eec-a6bb-e1c61ed4bf1d",
+    "project_description": "Construction of Flood Control Structure, Dulong Bayan (Phase III), City of San jose Del Monte, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF SAN JOSE DEL MONTE (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96496572.72,
+    "contract_id": "23CD0065",
+    "legislative_district": "CITY OF SAN JOSE DEL MONTE (LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "03/01/2023",
+    "completion_date": "2023-10-16",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "689ff708-7348-44f7-9406-91fc88540ad1",
+    "project_description": "Construction of Flood Control Structure along Bulo River, Sta. 13+600 - Sta. 14+200, Sta. Lucia, San Miguel, Bulacan",
+    "year": 2022,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "SAN MIGUEL (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96496520.01,
+    "contract_id": "22CD0159",
+    "legislative_district": "BULACAN (THIRD LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "03/30/2022",
+    "completion_date": "2023-05-26",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "d3b04b23-4698-4ee0-a723-cc1415ff4af5",
+    "project_description": "Construction of Dike along Santo Cristo River, Barangay Kaypian, San Jose del Monte City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF SAN JOSE DEL MONTE (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Dike",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96496378.66,
+    "contract_id": "24CD0078",
+    "legislative_district": "CITY OF SAN JOSE DEL MONTE (LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "02/26/2024",
+    "completion_date": "2024-12-17",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "e4f3ed6b-c875-474c-b882-3f06c1b08ae7",
+    "project_description": "Rehabilitation of Waterways and Construction of Water Pumping Station at Barangay Poblacion, Guiguinto, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "GUIGUINTO (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 96495872.05,
+    "contract_id": "23CC0104",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2024-02-07",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "cd4baaea-f649-4b0f-ab40-e9d846022a79",
+    "project_description": "Construction of River Control Project along Balagtas River, Pandi Section, Sta. 01+690 to Sta. 02+040, Pandi, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "PANDI (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 96447739.58,
+    "contract_id": "23CC0135",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-09-11",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "ef4b4168-072e-46a5-b979-30cc51ce6e98",
+    "project_description": "Construction of Structure for River Protection Along Malitlit Waterways, (Near Eton Road), Sta. Rosa City, Laguna Phase II",
+    "year": 2023,
+    "region": "Region IV-A",
+    "province": "LAGUNA",
+    "municipality": "CITY OF SANTA ROSA (LAGUNA)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "LE BRON CONSTRUCTION",
+    "contract_cost": 96427776.33,
+    "contract_id": "23DI0117",
+    "legislative_district": "CITY OF STA. ROSA (LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Laguna 2nd District Engineering Office",
+    "start_date": "04/14/2023",
+    "completion_date": "2023-12-12",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: JV partner in flagged contract with conflict-of-interest concerns",
+        "source": "COA building contract audit",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "9ab7ab47-6828-46f6-9d04-28cbfde52bc1",
+    "project_description": "Construction of Structure for River Protection Along Malitlit Waterways, (Near Eton Road), Sta. Rosa City, Laguna",
+    "year": 2023,
+    "region": "Region IV-A",
+    "province": "LAGUNA",
+    "municipality": "CITY OF SANTA ROSA (LAGUNA)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "LE BRON CONSTRUCTION",
+    "contract_cost": 96427413.15,
+    "contract_id": "23DI0116",
+    "legislative_district": "CITY OF STA. ROSA (LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Laguna 2nd District Engineering Office",
+    "start_date": "04/14/2023",
+    "completion_date": "2023-12-12",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: JV partner in flagged contract with conflict-of-interest concerns",
+        "source": "COA building contract audit",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "be364679-92ba-468b-9c84-1d225c653cb4",
+    "project_description": "Construction of Structure for River Protection Along Malitlit Waterways, (Near Ust), Sta. Rosa City, Laguna",
+    "year": 2023,
+    "region": "Region IV-A",
+    "province": "LAGUNA",
+    "municipality": "CITY OF SANTA ROSA (LAGUNA)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 96408436.09,
+    "contract_id": "23DI0118",
+    "legislative_district": "CITY OF STA. ROSA (LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Laguna 2nd District Engineering Office",
+    "start_date": "04/14/2023",
+    "completion_date": "2024-02-08",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "92f50427-d1fa-4e8b-ac50-57ea023cbd1f",
+    "project_description": "Construction of River Control Project along Balagtas River, Barangay Malibong Bata, Sta. 02+250 to Sta. 02+600, Pandi, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "PANDI (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 96317780.07,
+    "contract_id": "23CC0128",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-09-11",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "493ac024-b3e0-4c04-a16f-01ef6aa716ef",
+    "project_description": "Improvement of Poblacion - Sta. Clara Creek, Sta. Maria River Improvement, Sta. Maria, Bulacan",
+    "year": 2022,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "SANTA MARIA (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 95533084.87,
+    "contract_id": "22CD0043",
+    "legislative_district": "BULACAN (FOURTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "03/07/2022",
+    "completion_date": "2023-04-15",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "590131b0-3dd5-402c-a0d1-896f95313d86",
+    "project_description": "Construction of Flood Control Structure, along NCR/ Bulacan Bdry. - Bigte - Ipo Dam Road Ilog Bayan River, San Jose Del Monte City, Bulacan",
+    "year": 2022,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF SAN JOSE DEL MONTE (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 94569655.86,
+    "contract_id": "22CD0056",
+    "legislative_district": "CITY OF SAN JOSE DEL MONTE (LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "03/07/2022",
+    "completion_date": "2022-11-23",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "5463fc3b-5f4c-47c0-9353-38eb3ee4f060",
+    "project_description": "Construction of Flood Control Structure, Ilog Bayan River, San Jose Del Monte City, Bulacan",
+    "year": 2022,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF SAN JOSE DEL MONTE (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 94568676.93,
+    "contract_id": "22CD0055",
+    "legislative_district": "CITY OF SAN JOSE DEL MONTE (LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 2nd District Engineering Office",
+    "start_date": "03/07/2022",
+    "completion_date": "2022-11-23",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "01ee7089-8aed-4a99-beef-56cc01b330ab",
+    "project_description": "Improvement of Marikina River, Barangay Tumana, Marikina City (Phase 2)",
+    "year": 2024,
+    "region": "National Capital Region",
+    "province": "MARIKINA CITY",
+    "municipality": "CITY OF MARIKINA (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 94547887.26,
+    "contract_id": "24OB0328",
+    "legislative_district": "CITY OF MARIKINA (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Metro Manila 1st District Engineering Office",
+    "start_date": "04/01/2024",
+    "completion_date": "2024-09-02",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "18d408cb-b928-4635-a705-819cbb353b93",
+    "project_description": "Improvement of Nangka River, Marikina City",
+    "year": 2024,
+    "region": "National Capital Region",
+    "province": "MARIKINA CITY",
+    "municipality": "CITY OF MARIKINA (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 94534207.04,
+    "contract_id": "24OB0329",
+    "legislative_district": "CITY OF MARIKINA (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Metro Manila 1st District Engineering Office",
+    "start_date": "03/14/2024",
+    "completion_date": "2024-10-21",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "75ed8520-0bd3-446e-92e9-57ceb2e319cf",
+    "project_description": "Improvement of Marikina River, Barangay Tumana, Marikina City (Phase 1)",
+    "year": 2024,
+    "region": "National Capital Region",
+    "province": "MARIKINA CITY",
+    "municipality": "CITY OF MARIKINA (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 94376471.21,
+    "contract_id": "24OB0327",
+    "legislative_district": "CITY OF MARIKINA (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Metro Manila 1st District Engineering Office",
+    "start_date": "03/22/2024",
+    "completion_date": "2024-09-16",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "1fa7c2e4-c069-40bd-bf1a-f93ecd49d6d6",
+    "project_description": "Construction of Revetment along Imus River (Tributary to Manila Bay), Brgy. Fatima, Dasmariñas City, Cavite",
+    "year": 2022,
+    "region": "Region IV-A",
+    "province": "CAVITE",
+    "municipality": "CITY OF DASMARIÑAS (CAVITE)",
+    "barangay": "",
+    "type_of_work": "Construction of Revetment",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 94300703.89,
+    "contract_id": "22DQ0005",
+    "legislative_district": "CAVITE (FOURTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Cavite 3rd District Engineering Office",
+    "start_date": "02/23/2022",
+    "completion_date": "2023-04-18",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "408b473f-ba00-4174-96b6-5395822591ab",
+    "project_description": "Improvement Marikina River at Sta. 17 + 490 to Sta. 18 + 510, Marikina City",
+    "year": 2023,
+    "region": "National Capital Region",
+    "province": "MARIKINA CITY",
+    "municipality": "CITY OF MARIKINA (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Facility",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 93035955.95,
+    "contract_id": "23OB0408",
+    "legislative_district": "CITY OF MARIKINA (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Metro Manila 1st District Engineering Office",
+    "start_date": "06/09/2023",
+    "completion_date": "2024-02-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "940c8147-b5ce-48a9-b3ba-5dfdf5e4f03a",
+    "project_description": "Improvement along Nangka River, Left Side Facing Upstream, from Sta. 5+156.00 to Sta. 5+524.80",
+    "year": 2022,
+    "region": "National Capital Region",
+    "province": "MARIKINA CITY",
+    "municipality": "CITY OF MARIKINA (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 91630467.22,
+    "contract_id": "22OB0201",
+    "legislative_district": "CITY OF MARIKINA (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Metro Manila 1st District Engineering Office",
+    "start_date": "03/18/2022",
+    "completion_date": "2022-12-12",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "46e2ca4e-4499-460b-8bba-4b6379694c2c",
+    "project_description": "Improvement along Nangka River, Left Side Facing Upstream, from Sta. 5+524.80 to Sta. 5+893.60",
+    "year": 2022,
+    "region": "National Capital Region",
+    "province": "MARIKINA CITY",
+    "municipality": "CITY OF MARIKINA (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 91620467.22,
+    "contract_id": "22OB0202",
+    "legislative_district": "CITY OF MARIKINA (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Metro Manila 1st District Engineering Office",
+    "start_date": "03/17/2022",
+    "completion_date": "2022-12-11",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "76fab1f8-7cd8-40cb-ab55-1b97f5f490af",
+    "project_description": "Bank Improvement of Slope Protection along Marikina River (Package 3), Pasig City",
+    "year": 2022,
+    "region": "National Capital Region",
+    "province": "PASIG CITY",
+    "municipality": "CITY OF PASIG (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 88395424.56,
+    "contract_id": "22OB0072",
+    "legislative_district": "PASIG CITY (LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Metro Manila 1st District Engineering Office",
+    "start_date": "02/16/2022",
+    "completion_date": "2023-10-17",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "c2057406-f4e8-4e07-b067-2834abd1fb3a",
+    "project_description": "Construction of Flood Control Structure along Banks of Creeks, Barangay 172, Caloocan City (Phase 3)",
+    "year": 2023,
+    "region": "National Capital Region",
+    "province": "CALOOCAN CITY",
+    "municipality": "CALOOCAN CITY (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 85195339.66,
+    "contract_id": "23OD0126",
+    "legislative_district": "CALOOCAN CITY (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Metro Manila 3rd District Engineering Office",
+    "start_date": "03/17/2023",
+    "completion_date": "2024-02-08",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "4abf3de9-cc2a-4db0-ab3f-fa31fbcfdf28",
+    "project_description": "Construction of Flood Control Structure along the Banks of Creeks along Kabatuhan Rd., Barangay 168, Caloocan City (Phase 3)",
+    "year": 2023,
+    "region": "National Capital Region",
+    "province": "CALOOCAN CITY",
+    "municipality": "CALOOCAN CITY (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 85034813.77,
+    "contract_id": "23OD0140",
+    "legislative_district": "CALOOCAN CITY (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Metro Manila 3rd District Engineering Office",
+    "start_date": "04/24/2023",
+    "completion_date": "2023-12-13",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "9dca6a68-93c1-45de-bf36-f6fd81577b09",
+    "project_description": "Rehabilitation of Waterways and Construction of Concrete Slope Protection with Steel Sheet Piles along Bocaue River, K009 + 840 to K009 + 990, Bambang, Bocaue, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "BOCAUE (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 77682498.59,
+    "contract_id": "23CC0094",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/14/2023",
+    "completion_date": "2023-11-28",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "27a3c010-be14-4f7f-80f3-4deb82e41386",
+    "project_description": "Rehabilitation of Waterways and Construction of Water Pumping Station at Barangay Malis, Guiguinto, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "GUIGUINTO (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 77682237.38,
+    "contract_id": "23CC0095",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2024-01-08",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "38c6d3ea-83be-4fd1-823d-6f12338c01e3",
+    "project_description": "Construction of Flood Control Structure along Sabang River, Barangay San Jose, General Luna, Quezon",
+    "year": 2024,
+    "region": "Region IV-A",
+    "province": "QUEZON",
+    "municipality": "GENERAL LUNA (QUEZON)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77200000.0,
+    "contract_id": "24DM0135",
+    "legislative_district": "QUEZON (THIRD LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Quezon 3rd District Engineering Office",
+    "start_date": "06/05/2024",
+    "completion_date": "2025-02-11",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "b968a426-3f23-4fbd-8c38-4156ed1e19c7",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay Frances, Calumpit, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CALUMPIT (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199999.65,
+    "contract_id": "23CC0123",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "f56936ce-8ccf-428a-824e-2a25b26cb870",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay San Nicolas, Hagonoy, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "HAGONOY (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199997.92,
+    "contract_id": "23CC0109",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "08a1189e-bdbc-42a3-8bf3-e3ea5130fe04",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay San Miguel, Hagonoy, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "HAGONOY (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199994.01,
+    "contract_id": "23CC0108",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "a7f0989c-d0f4-45ba-bedc-3470dc093f85",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Anilao, Malolos City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MALOLOS (CAPITAL) (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 77199993.5,
+    "contract_id": "24CC0008",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-04-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "f6131afd-7eb1-4d5e-87eb-a4443941984b",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay Bulusan, Calumpit, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CALUMPIT (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199991.76,
+    "contract_id": "23CC0156",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "059449bc-f6b3-43d7-8883-1c9bf6183c88",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay San Agustin, Hagonoy, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "HAGONOY (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199989.04,
+    "contract_id": "23CC0102",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "d90b7bd4-9cff-4b3f-ba56-0227477e8771",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Abulalas, Hagonoy, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "HAGONOY (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 77199988.25,
+    "contract_id": "24CC0007",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-04-22",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "5635ea3d-0244-4882-bb1c-cef7b063d49d",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay San Juan, Hagonoy, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "HAGONOY (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199987.19,
+    "contract_id": "23CC0103",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "740bd316-6c4c-4ce8-b7e3-0aff19b331b6",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay Matungao, Bulacan, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "BULACAN (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199986.09,
+    "contract_id": "23CC0124",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "35469fc0-2d7f-45e0-8ed1-53d801d09e52",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Mambog, Malolos City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MALOLOS (CAPITAL) (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 77199984.52,
+    "contract_id": "24CC0015",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-04-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "ec4750c0-acfa-464d-8221-5768ddd0f67e",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay San Pablo, Hagonoy, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "HAGONOY (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199981.45,
+    "contract_id": "23CC0110",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "e3223afd-5634-4cde-94f1-d93a541538a1",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay Sta. Lucia, Calumpit, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CALUMPIT (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199980.44,
+    "contract_id": "23CC0105",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "6ac4a3b8-5b80-473a-8f50-bb956804e8d5",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay Bambang, Bulacan, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "BULACAN (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199976.53,
+    "contract_id": "23CC0126",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-11-13",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "733063e7-c90f-4c7b-a453-4fe91e40a27b",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay Bagumbayan, Bulacan, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "BULACAN (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199971.28,
+    "contract_id": "23CC0125",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-08-16",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "b896acdd-b517-4863-b0cd-c73b3fd95fce",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Batbatnin, Malolos City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MALOLOS (CAPITAL) (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 77199938.27,
+    "contract_id": "24CC0087",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-04-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "9fca5866-c815-46fe-b8d8-7ec471609386",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Carillo, Hagonoy, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "HAGONOY (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 77199918.56,
+    "contract_id": "24CC0011",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-04-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "81b86dec-fc59-4f4a-8616-e0f7f5c75686",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Atlag, Malolos City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MALOLOS (CAPITAL) (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 77199896.46,
+    "contract_id": "24CC0009",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-04-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "29ad676f-81e8-4fbe-9184-b8f9dce4b8fa",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay San Vicente, Malolos City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MALOLOS (CAPITAL) (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 77199461.62,
+    "contract_id": "24CC0020",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-07-04",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "8efeaeed-e4c8-4989-9b26-4dd49d928f60",
+    "project_description": "Construction of Flood Control System along Angat River Lumang Bayan Section, Plaridel, Bulacan (Sta. 19+300 to Sta. 19+460)",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "PLARIDEL (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 77199391.48,
+    "contract_id": "23CC0308",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/14/2023",
+    "completion_date": "2023-12-08",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "33f99fd9-cff9-4763-bbbc-ef63d71bfaf4",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Iba, Hagonoy, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "HAGONOY (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199192.34,
+    "contract_id": "24CC0013",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-09-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "46017859-8939-4f22-ac16-16d6e3a262e3",
+    "project_description": "Construction of Reinforced Concrete Flood Control Structure at Barangay Pagala (Purok 3 to Purok 4), Baliuag, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 77199166.63,
+    "contract_id": "24CC0171",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/28/2024",
+    "completion_date": "2024-10-24",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "06633465-621f-4343-b09e-37f641d06b71",
+    "project_description": "Construction of Reinforced Concrete Flood Control Structure along Angat River, Tanawan Section, Bustos, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "BUSTOS (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77199138.89,
+    "contract_id": "24CC0384",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "04/23/2024",
+    "completion_date": "2024-12-18",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "065268fd-5c3a-4964-aa74-31465760c1a5",
+    "project_description": "Construction of Reinforced Concrete Flood Control Structure along Angat River, San Pedro Section, Bustos, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "BUSTOS (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "SYMS CONSTRUCTION TRADING",
+    "contract_cost": 77199087.48,
+    "contract_id": "24CC0370",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "04/23/2024",
+    "completion_date": "2024-08-02",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Fully-paid but non-existent or substandard flood-control works in Bulacan",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "47c9b496-dc05-4dee-a34a-e91299b9a977",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Meysulao, Calumpit, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CALUMPIT (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 77198007.55,
+    "contract_id": "24CC0016",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-10-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "afe03ccc-6933-4301-81ba-6c63a73cc7de",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Calero, Malolos City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MALOLOS (CAPITAL) (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77197885.27,
+    "contract_id": "24CC0034",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-04-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "c79b6a41-6182-44a6-84fe-245562712059",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Iba-Ibayo, Hagonoy, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "HAGONOY (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77197558.67,
+    "contract_id": "24CC0014",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-10-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "79c49cc6-ccd4-4a5f-925f-035d931cf396",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay San Roque, Paombong, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "PAOMBONG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77197446.53,
+    "contract_id": "23CC0101",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/28/2023",
+    "completion_date": "2023-12-27",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "629184ab-b53d-47dc-8a25-ca1e54ba2a77",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay San Miguel, Calumpit, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CALUMPIT (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77197298.97,
+    "contract_id": "24CC0018",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-04-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "833e736b-9bac-4a27-8dd1-1f0d1a09125f",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay Pinalagdan, Paombong, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "PAOMBONG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77194184.92,
+    "contract_id": "23CC0107",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/28/2023",
+    "completion_date": "2023-08-09",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "f1a06019-931c-4d79-8fdf-1cac03debfdd",
+    "project_description": "Construction of Flood Control System at Barangay Pagala, Baliuag, Bulacan (Sta. 02+900 to Sta. 03+160)",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 77188797.98,
+    "contract_id": "23CC0267",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/14/2023",
+    "completion_date": "2023-10-02",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "4c07a7f6-4e48-4b64-a009-28b133c89b03",
+    "project_description": "Construction of Riverbank Protection Structure at Barangay Bulihan, Malolos City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MALOLOS (CAPITAL) (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77188533.89,
+    "contract_id": "24CC0032",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-04-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "ae24affb-1bfd-4928-952c-4429b606aa27",
+    "project_description": "Construction of Flood Mitigation Structures along Barangay Sta. Monica, Hagonoy, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "HAGONOY (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 77140881.95,
+    "contract_id": "23CC0111",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/13/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "227407ae-5821-4f57-bcef-88a2ecd606ce",
+    "project_description": "Construction of Slope Protection along Salapan Creek, San Juan City",
+    "year": 2022,
+    "region": "National Capital Region",
+    "province": "SAN JUAN CITY",
+    "municipality": "CITY OF SAN JUAN (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 75344255.34,
+    "contract_id": "22OB0243",
+    "legislative_district": "SAN JUAN CITY (LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Metro Manila 1st District Engineering Office",
+    "start_date": "03/24/2022",
+    "completion_date": "2023-03-12",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "9df3882a-0189-494e-a6ca-00704e064299",
+    "project_description": "Rehabilitation of Flood Control Structure, Barangay Gulod, Quezon City",
+    "year": 2022,
+    "region": "National Capital Region",
+    "province": "QUEZON CITY",
+    "municipality": "QUEZON CITY (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "LE BRON CONSTRUCTION",
+    "contract_cost": 73477621.25,
+    "contract_id": "22OF0075",
+    "legislative_district": "QUEZON CITY (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Quezon City 1st District Engineering Office",
+    "start_date": "02/16/2022",
+    "completion_date": "2023-02-28",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: JV partner in flagged contract with conflict-of-interest concerns",
+        "source": "COA building contract audit",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "b6d5842c-97dc-41c8-9d57-ad7d04004bc2",
+    "project_description": "Rehabilitation of Flood Control of Barangay San Bartolome, Quezon City",
+    "year": 2022,
+    "region": "National Capital Region",
+    "province": "QUEZON CITY",
+    "municipality": "QUEZON CITY (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "LE BRON CONSTRUCTION",
+    "contract_cost": 73386271.5,
+    "contract_id": "22OF0153",
+    "legislative_district": "QUEZON CITY (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Quezon City 1st District Engineering Office",
+    "start_date": "03/22/2022",
+    "completion_date": "2023-04-30",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: JV partner in flagged contract with conflict-of-interest concerns",
+        "source": "COA building contract audit",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "9d346af4-e898-465b-9d86-1040aa474503",
+    "project_description": "Rehabilitation of Flood Control Structure, Barangay Sta. Lucia, Quezon City",
+    "year": 2022,
+    "region": "National Capital Region",
+    "province": "QUEZON CITY",
+    "municipality": "QUEZON CITY (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "LE BRON CONSTRUCTION",
+    "contract_cost": 73288204.5,
+    "contract_id": "22OF0026",
+    "legislative_district": "QUEZON CITY (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Quezon City 1st District Engineering Office",
+    "start_date": "02/16/2022",
+    "completion_date": "2023-02-20",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: JV partner in flagged contract with conflict-of-interest concerns",
+        "source": "COA building contract audit",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "504fd26c-982f-4c7e-991f-807062889339",
+    "project_description": "Maintenance/Rehabilitation of Flood Control Structures, Brgy. Sta. Lucia, Quezon City",
+    "year": 2022,
+    "region": "National Capital Region",
+    "province": "QUEZON CITY",
+    "municipality": "QUEZON CITY (METROPOLITAN MANILA)",
+    "barangay": "",
+    "type_of_work": "Rehabilitation / Major Repair of Flood Control Structure",
+    "contractor": "LE BRON CONSTRUCTION",
+    "contract_cost": 72548700.0,
+    "contract_id": "22OF0027",
+    "legislative_district": "QUEZON CITY (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Quezon City 1st District Engineering Office",
+    "start_date": "02/16/2022",
+    "completion_date": "2023-01-29",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: JV partner in flagged contract with conflict-of-interest concerns",
+        "source": "COA building contract audit",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 3,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "d9f0d1f8-26a6-4e21-a026-9a2bdbb6aa28",
+    "project_description": "Construction of Revetment along Pampanga River at Barangay Meyto, Calumpit, Bulacan",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CALUMPIT (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Revetment",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 72374980.21,
+    "contract_id": "23CC0230",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/14/2023",
+    "completion_date": "2023-07-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "65993a96-a84a-445c-bc1a-facf56418226",
+    "project_description": "Construction of Reinforced Concrete Flood Control Structure, Barangay Atlag, Malolos City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MALOLOS (CAPITAL) (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "SYMS CONSTRUCTION TRADING",
+    "contract_cost": 72374953.65,
+    "contract_id": "24CC0264",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "04/02/2024",
+    "completion_date": "2024-06-11",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Fully-paid but non-existent or substandard flood-control works in Bulacan",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "077b91aa-3ea4-459a-aace-738d538a6f8c",
+    "project_description": "Construction of Flood Control Structure, Barangay Atlag, Malolos City, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF MALOLOS (CAPITAL) (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "SYMS CONSTRUCTION TRADING",
+    "contract_cost": 72374895.37,
+    "contract_id": "24CC0261",
+    "legislative_district": "BULACAN (FIRST LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "04/02/2024",
+    "completion_date": "2024-06-11",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Fully-paid but non-existent or substandard flood-control works in Bulacan",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "b6604f2e-fe6f-48a2-b3be-89fbade63484",
+    "project_description": "Construction of Riverbank Protection Structure along Angat River, Barangay Poblacion, Plaridel, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "PLARIDEL (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 72374778.18,
+    "contract_id": "24CC0080",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-10-03",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "d584610f-3e20-49ba-a155-e9823b847f3c",
+    "project_description": "Construction of Flood Control Structure along Bocaue River, Barangay Bambang, Bocaue, Bulacan (K011+490 to K011+640)",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "BOCAUE (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 72374656.27,
+    "contract_id": "23CC0322",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/28/2023",
+    "completion_date": "2024-01-21",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "dc196cee-4de8-4990-889a-6c1d08101ae2",
+    "project_description": "Construction of Riverbank Protection Structure (Phase IV) at Barangay San Roque, Baliuag, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Slope Protection Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 72374388.95,
+    "contract_id": "24CC0025",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-11-02",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "40d21adc-4e20-46fb-8e51-0ed41cc0d9a2",
+    "project_description": "Construction of Flood Control Structure, Barangay Santa Cruz, Guiguinto, Bulacan",
+    "year": 2024,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "GUIGUINTO (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "WAWAO BUILDERS",
+    "contract_cost": 72374267.49,
+    "contract_id": "24CC0051",
+    "legislative_district": "BULACAN (FIFTH LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "02/07/2024",
+    "completion_date": "2024-06-19",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Flagged in COA Bulacan fraud findings for flood-mitigation projects",
+        "source": "COA Bulacan fraud reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 1,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "f47d866d-3d35-429b-9e91-59b071177dfc",
+    "project_description": "Construction of Flood Control Structure along Angat River, Barangay Sabang Baliuag, Bulacan (K000+871 to K001+171)",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "DARCY & ANNA BUILDERS & TRADING",
+    "contract_cost": 72373243.31,
+    "contract_id": "23CC0296",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/14/2023",
+    "completion_date": "2023-12-08",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Implicated in flagged Bulacan flood-control projects",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  },
+  {
+    "project_id": "4cca5463-dc64-4628-8797-94facff598ef",
+    "project_description": "Construction of Flood Control Structure along Angat River, Sta. Barbara, Baliuag, Bulacan (K010+080 to K010+380)",
+    "year": 2023,
+    "region": "Region III",
+    "province": "BULACAN",
+    "municipality": "CITY OF BALIUAG (BULACAN)",
+    "barangay": "",
+    "type_of_work": "Construction of Flood Mitigation Structure",
+    "contractor": "L.R. TIQUI BUILDERS, INC.",
+    "contract_cost": 72373023.56,
+    "contract_id": "23CC0213",
+    "legislative_district": "BULACAN (SECOND LEGISLATIVE DISTRICT)",
+    "district_engineering_office": "Bulacan 1st District Engineering Office",
+    "start_date": "03/14/2023",
+    "completion_date": "2023-12-08",
+    "flags": [
+      {
+        "type": "KNOWN_PROBLEMATIC_CONTRACTOR",
+        "reason": "Contractor flagged by COA: Named in flagged Bulacan works, associated with M3 Konstract JVs",
+        "source": "COA reports",
+        "field": "contractor",
+        "weight": 80
+      }
+    ],
+    "flag_count": 1,
+    "suspicion_score": 80,
+    "max_severity": "CRITICAL",
+    "data_completeness": {
+      "score": 100.0,
+      "completed_fields": 7,
+      "total_fields": 7,
+      "missing": [],
+      "is_incomplete": false
+    },
+    "color_triage": "RED",
+    "triage_rating": "Critical Risk",
+    "triage_action": "IMMEDIATE INVESTIGATION. Strong evidence of anomaly.",
+    "triage_priority": 1,
+    "contextual_info": {
+      "project_age_years": 2,
+      "satellite_eligible": true,
+      "satellite_note": "Eligible (Location Present)"
+    }
+  }
+]
