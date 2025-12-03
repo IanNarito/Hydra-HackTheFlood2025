@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { X, Calendar, DollarSign, Clock, AlertTriangle, Map, Eye, Shield } from 'lucide-react';
+import { X, Calendar, DollarSign, Clock, AlertTriangle, Map, Eye, Shield, ExternalLink } from 'lucide-react';
 
 const ProjectModal = ({ project, onClose }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,11 +20,8 @@ const ProjectModal = ({ project, onClose }) => {
   if (!project) return null;
 
   // --- SYNC LOGIC START ---
-  
-  // 1. Risk Label (Critical, High, Low)
   const riskLabel = (project.risk || 'LOW').toUpperCase();
   
-  // 2. Color mapping
   const getRiskLabelColor = (label) => {
     switch (label) {
       case 'CRITICAL': return 'text-red-500';
@@ -37,46 +34,38 @@ const ProjectModal = ({ project, onClose }) => {
 
   const riskLabelColor = getRiskLabelColor(riskLabel);
 
-  // 3. ROBUST SCORE PARSING - Check if score is actually calculated
+  // Score logic
   const rawScore = project.score;
   const numScore = parseFloat(rawScore);
   const hasValidScore = !isNaN(numScore) && numScore > 0;
   const scoreDisplay = hasValidScore ? numScore.toFixed(0) : null;
       
-  // 4. Currency formatting
+  // Formatters
   const formatCurrency = (value) => {
       if (!value) return "N/A";
       const numVal = typeof value === 'string' ? parseFloat(value.replace(/[^0-9.-]+/g,"")) : value;
       return new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(numVal);
   };
   
-  // 5. Date Formatting
   const formatDate = (dateStr) => {
       if (!dateStr) return 'N/A';
       return new Date(dateStr).toLocaleDateString();
   };
 
-  // 6. Get risk description
   const getRiskDescription = () => {
-    if (project.risk_description) {
-      return project.risk_description;
-    }
-    
-    // Fallback descriptions based on risk level
+    if (project.risk_description) return project.risk_description;
     switch (riskLabel) {
-      case 'CRITICAL':
-        return "IMMEDIATE INVESTIGATION. Strong, confirmed evidence of fraud.";
-      case 'HIGH':
-        return "PRIORITY INVESTIGATION. Serious red flags are present.";
+      case 'CRITICAL': return "IMMEDIATE INVESTIGATION. Strong, confirmed evidence of fraud.";
+      case 'HIGH': return "PRIORITY INVESTIGATION. Serious red flags are present.";
       case 'MEDIUM':
-      case 'LOW':
-        return "CONTINUOUS MONITORING. Low-level anomalies detected.";
-      default:
-        return "Risk assessment based on available data.";
+      case 'LOW': return "CONTINUOUS MONITORING. Low-level anomalies detected.";
+      default: return "Risk assessment based on available data.";
     }
   };
   
-  // --- SYNC LOGIC END ---
+  // --- IMAGE HANDLING LOGIC ---
+  const placeholderImage = "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1000&auto=format&fit=crop";
+  const hasSatelliteImage = !!project.satellite_image_url;
 
   return (
     <div
@@ -122,13 +111,12 @@ const ProjectModal = ({ project, onClose }) => {
               <h3 className={`font-bold mb-2 flex items-center gap-2 ${riskLabelColor}`}>
                 <AlertTriangle size={16} /> Risk Assessment
               </h3>
-
               <p className="text-gray-300 text-xs md:text-sm leading-relaxed">
                 {getRiskDescription()}
               </p>
             </div>
 
-            {/* Show Score Circle ONLY if score > 0, otherwise show Risk Badge */}
+            {/* Score Circle or Shield */}
             {hasValidScore ? (
               <div className={`shrink-0 relative w-24 h-24 flex items-center justify-center rounded-full border-4 shadow-[0_0_20px_rgba(0,0,0,0.3)] ${
                  riskLabel === 'CRITICAL' ? 'bg-red-900/20 border-red-900/30' :
@@ -139,9 +127,7 @@ const ProjectModal = ({ project, onClose }) => {
                   <span className={`text-3xl font-black block leading-none ${riskLabelColor}`}>
                     {scoreDisplay}
                   </span>
-                  <span
-                    className={`text-[10px] uppercase tracking-widest font-bold ${riskLabelColor}`}
-                  >
+                  <span className={`text-[10px] uppercase tracking-widest font-bold ${riskLabelColor}`}>
                     SCORE
                   </span>
                 </div>
@@ -155,9 +141,6 @@ const ProjectModal = ({ project, onClose }) => {
                 <Shield className={`mb-1 ${riskLabelColor}`} size={32} />
                 <span className={`text-sm font-black uppercase tracking-wider ${riskLabelColor}`}>
                   {riskLabel}
-                </span>
-                <span className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">
-                  RISK
                 </span>
               </div>
             )}
@@ -183,24 +166,53 @@ const ProjectModal = ({ project, onClose }) => {
             </div>
           )}
 
-          {/* Preview Image */}
+          {/* === SATELLITE IMAGE SECTION === */}
           <div className="relative group rounded-xl overflow-hidden border border-gray-800 h-48 bg-gray-900">
+            
+            {/* Badge */}
             <div className="absolute top-3 left-3 bg-black/60 backdrop-blur text-xs text-white px-2 py-1 rounded flex items-center gap-2 z-10">
-              <Map size={12} /> Project Preview
+              {hasSatelliteImage ? (
+                <>
+                  <Eye size={12} className="text-green-400" /> 
+                  <span className="text-green-400 font-bold">Sentinel-2 Satellite View</span>
+                </>
+              ) : (
+                <>
+                  <Map size={12} /> Project Preview
+                </>
+              )}
             </div>
+
             <img
-              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1000&auto=format&fit=crop"
-              alt="Construction Site"
-              className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+              src={project.satellite_image_url || placeholderImage}
+              alt="Project Site"
+              onError={(e) => {
+                e.target.onerror = null; // Prevent infinite loop
+                e.target.src = placeholderImage;
+              }}
+              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
             />
           </div>
         </div>
 
-        {/* Footer */}
+        {/* === FOOTER BUTTONS === */}
         <div className="p-6 border-t border-gray-800 bg-[#161616] flex gap-4 shrink-0">
-          <button className="flex-1 bg-red-900/80 hover:bg-red-800 text-white py-3 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2 border border-red-900 shadow-lg shadow-red-900/20">
-            <Eye size={16} /> View Satellite Evidence
-          </button>
+          
+          {hasSatelliteImage ? (
+            <a 
+              href={project.satellite_image_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-red-900/80 hover:bg-red-800 text-white py-3 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2 border border-red-900 shadow-lg shadow-red-900/20 cursor-pointer no-underline"
+            >
+              <Eye size={16} /> View Full Evidence
+            </a>
+          ) : (
+            <button disabled className="flex-1 bg-gray-800 text-gray-500 py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 border border-gray-700 cursor-not-allowed">
+              <Eye size={16} /> No Satellite Data
+            </button>
+          )}
+
           <button
             onClick={handleClose}
             className="flex-1 bg-transparent hover:bg-gray-800 text-gray-300 py-3 rounded-lg font-bold text-sm transition-all border border-gray-700"
