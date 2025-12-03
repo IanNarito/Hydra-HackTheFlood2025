@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { LayoutDashboard, Map, FolderOpen, AlertCircle, ShieldAlert, Activity, Menu, X, Loader } from 'lucide-react';
 import { Link } from 'react-router-dom';
+// Ensure these imports match your actual file structure
 import { fetchStats, fetchProjects, getRiskConfig } from '../services/api.js';
 
 const Dashboard = () => {
@@ -16,6 +17,7 @@ const Dashboard = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // 1. Fetch Data on Load
   useEffect(() => {
     const loadDashboardData = async () => {
       try {
@@ -40,29 +42,40 @@ const Dashboard = () => {
 
   // --- ANALYTICS LOGIC ---
 
-  // 1. Calculate Top Contractors
+  // 2. Calculate Top Contractors (Client-side Aggregation)
   const topContractors = useMemo(() => {
+    if (!projects.length) return [];
+    
     const contractorCounts = {};
+    
     projects.forEach(p => {
       const name = p.contractor || "Unknown Contractor";
+      // Cleanup name (remove extra spaces)
       const cleanName = name.replace(/_/, ' ').trim();
       contractorCounts[cleanName] = (contractorCounts[cleanName] || 0) + 1;
     });
+
+    // Convert to array and sort by count descending
     return Object.entries(contractorCounts)
       .map(([name, count]) => ({ name, count }))
       .sort((a, b) => b.count - a.count)
-      .slice(0, 8);
+      .slice(0, 8); // Take Top 8
   }, [projects]);
 
-  // 2. Filter Top Red-Flagged Projects
+  // 3. Filter Top Red-Flagged Projects
   const topRedFlags = useMemo(() => {
+    if (!projects.length) return [];
+    
     return projects
-      .filter(p => p.score >= 80 || p.risk === 'Critical')
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 8);
+      // Filter for High or Critical risk
+      .filter(p => p.score >= 60 || p.risk === 'Critical' || p.risk === 'High') 
+      // Sort Highest score first
+      .sort((a, b) => (b.score || 0) - (a.score || 0)) 
+      // Take Top 8
+      .slice(0, 8); 
   }, [projects]);
 
-  // 3. Process Chart Data (Risk Distribution by Year)
+  // 4. Process Chart Data
   const chartData = useMemo(() => {
     if (projects.length === 0) return [];
 
@@ -95,25 +108,22 @@ const Dashboard = () => {
 
     const data = Object.values(yearMap).sort((a, b) => a.year - b.year);
 
-    // --- LOGARITHMIC SCALING FIX ---
-    // We use Math.log() to make small bars visible next to huge bars
-    // +1 prevents log(0) errors
+    // Logarithmic scaling to make small bars visible
     const maxVal = Math.max(...data.map(d => Math.max(d.critical, d.high, d.low)), 1);
     const maxLog = Math.log(maxVal + 1);
 
     return data.map(d => ({
       ...d,
-      // Logarithmic height calculation
       h_crit: (Math.log(d.critical + 1) / maxLog) * 100,
       h_high: (Math.log(d.high + 1) / maxLog) * 100,
       h_low: (Math.log(d.low + 1) / maxLog) * 100,
-      // Pass raw values for tooltip
       raw_crit: d.critical,
       raw_high: d.high,
       raw_low: d.low
     })).slice(-12);
   }, [projects]);
 
+  // Helper for Money
   const formatMoney = (amount) => {
     return new Intl.NumberFormat('en-PH', { 
       style: 'currency', 
@@ -140,6 +150,8 @@ const Dashboard = () => {
                 <Link to="/" className="text-white px-3 py-2 rounded-md text-sm font-medium border-b-2 border-red-500">Overview</Link>
                 <Link to="/map" className="text-gray-400 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md text-sm font-medium transition-colors">Investigator map</Link>
                 <Link to="/dropbox" className="text-gray-400 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md text-sm font-medium transition-colors">Dropbox</Link>
+                <Link to="/public-reports" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</Link>
+                <Link to="/admin" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin</Link>
               </div>
             </div>
 
@@ -182,22 +194,23 @@ const Dashboard = () => {
             <h3 className="text-gray-200 font-semibold mb-4 text-sm uppercase tracking-wider">Triage Legend</h3>
             <div className="space-y-4">
               <TriageItem color="bg-red-600" title="Critical" desc="Score 80-100: Immediate investigation required" />
-              <TriageItem color="bg-yellow-600" title="High" desc="Score 40-79: Elevated risk indicators detected" />
-              <TriageItem color="bg-emerald-600" title="Low" desc="Score <40: Minimal risk, within status" />
+              <TriageItem color="bg-yellow-600" title="High" desc="Score 60-79: Elevated risk indicators detected" />
+              <TriageItem color="bg-emerald-600" title="Low" desc="Score <60: Minimal risk, within status" />
               <TriageItem color="bg-gray-600" title="Indeterminate" desc="Insufficient data for assessment" />
             </div>
           </div>
 
-          {/* Stat Cards */}
+          {/* Stat Card 1: Total Projects */}
           <div className="lg:col-span-3 bg-[#1a1a1a] rounded-xl p-6 border border-gray-800/50 flex flex-col justify-center shadow-lg relative overflow-hidden">
             {loading && <div className="absolute inset-0 bg-black/50 z-10 animate-pulse"></div>}
-            <h3 className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">Total Monitored Projects</h3>
+            <h3 className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">Total Actively Monitored Projects</h3>
             <div className="text-4xl font-bold text-white mb-1">
               {stats.total_projects > 0 ? stats.total_projects.toLocaleString() : "..."}
             </div>
-            <div className="text-sm text-gray-500">Scraped & Analyzed</div>
+            <div className="text-sm text-gray-500">Projects Scraped & Analyzed</div>
           </div>
 
+          {/* Stat Card 2: Total Budget */}
           <div className="lg:col-span-3 bg-[#1a1a1a] rounded-xl p-6 border border-gray-800/50 flex flex-col justify-center shadow-lg relative overflow-hidden">
             {loading && <div className="absolute inset-0 bg-black/50 z-10 animate-pulse"></div>}
             <h3 className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">Total Budget Under Scrutiny</h3>
@@ -213,7 +226,7 @@ const Dashboard = () => {
         {/* Dynamic Chart Section */}
         <div className="bg-[#1a1a1a] rounded-xl p-6 border border-gray-800/50 mb-8 shadow-lg">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-gray-200 font-semibold">Risk Distribution Over Time (Log Scale)</h3>
+            <h3 className="text-gray-200 font-semibold">Risk Distribution Over Time (By Year)</h3>
             <div className="flex gap-4 text-xs">
               <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-500"></span>Low</div>
               <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-yellow-500"></span>High</div>
@@ -262,7 +275,7 @@ const Dashboard = () => {
         {/* Bottom Lists Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
-          {/* Top Contractors */}
+          {/* Top Contractors (Dynamic) */}
           <div className="bg-[#1a1a1a] rounded-xl border border-gray-800/50 shadow-lg flex flex-col h-[500px]">
             <div className="p-6 border-b border-gray-800">
               <h3 className="text-white font-semibold text-lg">Top contractors</h3>
@@ -297,7 +310,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Top Red-Flagged Projects */}
+          {/* Top Red-Flagged Projects (Dynamic) */}
           <div className="bg-[#1a1a1a] rounded-xl border border-gray-800/50 shadow-lg flex flex-col h-[500px]">
              <div className="p-6 border-b border-gray-800">
               <h3 className="text-white font-semibold text-lg">Top Red-Flagged Projects</h3>
@@ -317,7 +330,7 @@ const Dashboard = () => {
                     <div className="flex justify-between items-start mb-2">
                       <h4 className="text-sm font-semibold text-gray-200 max-w-[70%] leading-tight truncate">{project.name}</h4>
                       <span className="bg-red-900/30 text-red-400 border border-red-900/50 text-[10px] uppercase font-bold px-2 py-0.5 rounded tracking-wide">
-                        {project.score.toFixed(0)}
+                        {Math.round(project.score)}
                       </span>
                     </div>
                     <div className="flex justify-between items-end">

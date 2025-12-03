@@ -1,25 +1,20 @@
 import sqlite3
 import json
 import os
+import sys
 
-# ================= PATH CONFIGURATION =================
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), "Datas")
+# --- SETUP PATHS DYNAMICALLY ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, '..', 'Datas')
 
+# Define paths relative to the Datas folder
 CLEAN_INPUT_FILE = os.path.join(DATA_DIR, "flood_projects.json")
 FLAGGED_INPUT_FILE = os.path.join(DATA_DIR, "flood_flagged_projects.json")
 DATABASE_FILE = os.path.join(DATA_DIR, "flood_control.db")
-# ======================================================
-
 
 def create_tables(cursor):
     """Create database tables and indexes"""
     print("Creating database tables...")
-
-    # --- FORCE DELETE OLD TABLES TO PREVENT SCHEMA ERRORS ---
-    cursor.execute("DROP TABLE IF EXISTS project_flags")
-    cursor.execute("DROP TABLE IF EXISTS projects")
-    # ------------------------------------------------------
 
     # Create main projects table
     cursor.execute('''
@@ -46,9 +41,8 @@ def create_tables(cursor):
             color_triage TEXT,
             triage_rating TEXT,
             triage_action TEXT,
-            latitude REAL, 
-            longitude REAL, 
-            satellite_image_url TEXT
+            latitude REAL,
+            longitude REAL
         )
     ''')
 
@@ -64,46 +58,42 @@ def create_tables(cursor):
             FOREIGN KEY (project_id) REFERENCES projects(project_id)
         )
     ''')
+    
+    # Create reports table (For Dropbox)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS reports (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            case_id TEXT UNIQUE,
+            description TEXT,
+            files TEXT,
+            status TEXT DEFAULT 'PENDING', 
+            ai_flags TEXT,
+            timestamp TEXT,
+            admin_notes TEXT
+        )
+    ''')
 
     print("Creating indexes...")
-    cursor.execute(
-        'CREATE INDEX IF NOT EXISTS idx_project_id ON projects(project_id)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_project_id ON projects(project_id)')
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_region ON projects(region)')
-    cursor.execute(
-        'CREATE INDEX IF NOT EXISTS idx_province ON projects(province)')
-    cursor.execute(
-        'CREATE INDEX IF NOT EXISTS idx_contractor ON projects(contractor)')
-    cursor.execute(
-        'CREATE INDEX IF NOT EXISTS idx_is_flagged ON projects(is_flagged)')
-    cursor.execute(
-        'CREATE INDEX IF NOT EXISTS idx_max_severity ON projects(max_severity)')
-    cursor.execute(
-        'CREATE INDEX IF NOT EXISTS idx_suspicion_score ON projects(suspicion_score)')
-    cursor.execute('CREATE INDEX IF NOT EXISTS idx_year ON projects(year)')
-    cursor.execute(
-        'CREATE INDEX IF NOT EXISTS idx_flag_project_id ON project_flags(project_id)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_suspicion_score ON projects(suspicion_score)')
 
     print("Tables and indexes created successfully")
 
-
 def normalize_pid(pid):
-    """Normalize project_id for consistent dictionary keys."""
-    if pid is None:
-        return None
+    if pid is None: return None
     s = str(pid).strip()
     return s if s != '' else None
 
-
 def load_json_data():
-    """Load projects and flagged data from JSON files"""
-    print("\nLoading data from JSON files...")
+    print(f"\nLoading data from: {DATA_DIR}")
 
     try:
         with open(CLEAN_INPUT_FILE, 'r', encoding='utf-8') as f:
             projects = json.load(f)
-        print(f"Loaded {len(projects):,} projects from {CLEAN_INPUT_FILE}")
+        print(f"Loaded {len(projects):,} projects from JSON")
     except FileNotFoundError:
-        print(f"Error: {CLEAN_INPUT_FILE} not found!")
+        print(f"❌ Error: Could not find {CLEAN_INPUT_FILE}")
         return None, None
 
     flagged_dict = {}
@@ -112,29 +102,26 @@ def load_json_data():
             flagged_projects = json.load(f)
         for fp in flagged_projects:
             pid = normalize_pid(fp.get('project_id'))
-            if not pid:
-                continue
-            flagged_dict[pid] = fp
-        print(
-            f"Loaded {len(flagged_dict):,} flagged projects from {FLAGGED_INPUT_FILE}")
+            if pid: flagged_dict[pid] = fp
+        print(f"Loaded {len(flagged_dict):,} flagged records")
     except FileNotFoundError:
-        print(
-            f"Warning: {FLAGGED_INPUT_FILE} not found. Proceeding without flags.")
+        print(f"⚠️ Warning: {FLAGGED_INPUT_FILE} not found. Proceeding without flags.")
 
     return projects, flagged_dict
 
-
 def insert_projects(cursor, projects, flagged_dict):
-    """Insert projects and flags into database"""
     print("\nInserting projects into database...")
     inserted = 0
-    errors = 0
+    
+    # Clear existing data to avoid duplicates/stale data
+    cursor.execute("DELETE FROM projects")
+    cursor.execute("DELETE FROM project_flags")
 
     for project in projects:
         raw_pid = project.get('project_id')
         project_id = normalize_pid(raw_pid)
 
-        # Default values
+        # Merge Flag Data
         is_flagged = 0
         flag_count = 0
         max_severity = None
@@ -143,7 +130,6 @@ def insert_projects(cursor, projects, flagged_dict):
         triage_rating = None
         triage_action = None
 
-        # Check if flagged
         flagged_data = flagged_dict.get(project_id) if project_id else None
         if flagged_data:
             is_flagged = 1
@@ -156,13 +142,14 @@ def insert_projects(cursor, projects, flagged_dict):
 
         try:
             cursor.execute('''
-                INSERT OR REPLACE INTO projects (
+                INSERT INTO projects (
                     project_id, project_description, year, region, province,
                     municipality, type_of_work, contractor, contract_cost,
                     contract_id, legislative_district, district_engineering_office,
                     start_date, completion_date, is_flagged, flag_count, max_severity,
-                    suspicion_score, color_triage, triage_rating, triage_action
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    suspicion_score, color_triage, triage_rating, triage_action,
+                    latitude, longitude
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
                 project_id,
                 project.get('project_description'),
@@ -184,70 +171,41 @@ def insert_projects(cursor, projects, flagged_dict):
                 suspicion_score,
                 color_triage,
                 triage_rating,
-                triage_action
+                triage_action,
+                project.get('latitude'),  # Ensure lat/lng are passed if they exist in JSON
+                project.get('longitude')
             ))
             inserted += 1
 
-            # Insert specific flags into the separate table
+            # Insert Flags
             if flagged_data and project_id:
                 flags = flagged_data.get('flags', [])
                 for flag in flags:
-                    weight = flag.get('weight', 0)
-
-                    # Logic to determine label based on weight
-                    severity_label = "LOW"
-                    if weight >= 80:
-                        severity_label = "CRITICAL"
-                    elif weight >= 60:
-                        severity_label = "HIGH"
-                    elif weight >= 40:
-                        severity_label = "MEDIUM"
-
                     cursor.execute('''
                         INSERT INTO project_flags (project_id, severity, flag_type, reason, weight)
                         VALUES (?, ?, ?, ?, ?)
                     ''', (
                         project_id,
-                        severity_label,
+                        flag.get('severity', 'UNKNOWN'),
                         flag.get('type'),
                         flag.get('reason'),
-                        weight
+                        flag.get('weight', 0)
                     ))
 
-            if inserted % 1000 == 0:
-                print(f"  Inserted {inserted:,} projects...")
-
         except Exception as e:
-            errors += 1
-            if errors <= 5:
-                print(f"Error inserting project {project_id}: {e}")
+            print(f"Error inserting project {project_id}: {e}")
 
-    print(f"Successfully inserted {inserted:,} projects ({errors} errors)")
+    print(f"Successfully inserted {inserted:,} projects.")
 
-
-def print_database_stats(cursor):
-    """Print database statistics"""
-    print("\n" + "=" * 80)
-    print("DATABASE STATISTICS")
+def create_database():
+    print("=" * 80)
+    print(f"BUILDING DATABASE AT: {DATABASE_FILE}")
     print("=" * 80)
 
-    total_projects = cursor.execute(
-        'SELECT COUNT(*) FROM projects').fetchone()[0]
-    flagged_count = cursor.execute(
-        'SELECT COUNT(*) FROM projects WHERE is_flagged = 1').fetchone()[0]
-    total_flags = cursor.execute(
-        'SELECT COUNT(*) FROM project_flags').fetchone()[0]
-
-    print(f"Total projects: {total_projects:,}")
-    print(f"Flagged projects: {flagged_count:,}")
-    print(f"Total flag records: {total_flags:,}")
-    print("=" * 80)
-
-
-def main():
-    print("=" * 80)
-    print("CREATING SQLITE DATABASE (FULL VERSION)")
-    print("=" * 80)
+    # Ensure Datas directory exists
+    if not os.path.exists(DATA_DIR):
+        print(f"❌ Error: Directory {DATA_DIR} does not exist.")
+        return
 
     projects, flagged_dict = load_json_data()
     if not projects:
@@ -261,14 +219,12 @@ def main():
         conn.commit()
         insert_projects(cursor, projects, flagged_dict or {})
         conn.commit()
-        print_database_stats(cursor)
-        print("\nDATABASE CREATED SUCCESSFULLY!")
+        print("\n✅ DATABASE CREATED SUCCESSFULLY!")
     except Exception as e:
         print(f"Error: {e}")
         conn.rollback()
     finally:
         conn.close()
 
-
 if __name__ == "__main__":
-    main()
+    create_database()

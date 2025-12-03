@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, CircleMarker } from 'react-leaflet';
 import { Filter, Globe, Loader, AlertCircle, DollarSign, AlertTriangle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import 'leaflet/dist/leaflet.css';
-// KEEP THIS IMPORT EXACTLY AS IS (Matches your folder structure)
+// Ensure this matches your folder casing exactly
 import ProjectModal from '../components/Dashboard/ProjectModal'; 
 import { fetchProjects, fetchStats, getRiskConfig } from '../services/api.js';
 
@@ -30,7 +30,6 @@ const PHILIPPINE_REGIONS = [
 ];
 
 // 2. The Translation Map: Dropdown Name -> Database Name
-// Based on the logs you shared (e.g., 'Region IV-A', 'National Capital Region')
 const REGION_DB_MAPPING = {
   "All regions": "ALL",
   "National Capital Region (NCR)": "National Capital Region",
@@ -71,12 +70,20 @@ const InvestigatorMap = () => {
         
         setStats(statsData);
         
-        // Safety Check: Filter out projects with invalid coordinates
-        const validProjects = projectsData.filter(p => 
-          p.latitude && p.longitude && 
-          !isNaN(parseFloat(p.latitude)) && 
-          !isNaN(parseFloat(p.longitude))
-        );
+        // --- CRITICAL FIX: Robust Coordinate Checking ---
+        const validProjects = projectsData.filter(p => {
+          // Handle various casing: lat, latitude, Latitude
+          const lat = p.latitude ?? p.lat ?? p.Latitude;
+          const lng = p.longitude ?? p.lng ?? p.Longitude;
+          
+          // Must be a number and not null
+          return lat && lng && !isNaN(parseFloat(lat)) && !isNaN(parseFloat(lng));
+        }).map(p => ({
+          ...p,
+          // Normalize coordinates to standard keys for easier use later
+          lat: parseFloat(p.latitude ?? p.lat ?? p.Latitude),
+          lng: parseFloat(p.longitude ?? p.lng ?? p.Longitude)
+        }));
         
         setProjects(validProjects);
       } catch (err) {
@@ -92,14 +99,8 @@ const InvestigatorMap = () => {
   // --- EXPLICIT FILTER LOGIC ---
   const filteredProjects = useMemo(() => {
     if (activeRegion === "All regions") return projects;
-    
-    // Get the exact database string for the selected region
     const targetRegion = REGION_DB_MAPPING[activeRegion];
-
-    return projects.filter(p => {
-      // Direct exact match (Robust and fast)
-      return p.region === targetRegion;
-    });
+    return projects.filter(p => p.region === targetRegion);
   }, [projects, activeRegion]);
 
   const mapRenderOrder = useMemo(() => {
@@ -123,7 +124,6 @@ const InvestigatorMap = () => {
   return (
     <div className="h-screen bg-[#111111] text-gray-300 font-sans flex flex-col overflow-hidden">
       
-      {/* Navigation Bar */}
       <nav className="border-b border-gray-800 bg-[#161616] z-50 shrink-0">
         <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -135,9 +135,11 @@ const InvestigatorMap = () => {
             
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <Link to="/" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Overview</Link>
+                <Link to="/Dashboard" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Overview</Link>
                 <Link to="/map" className="text-white border-b-2 border-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Investigator map</Link>
                 <Link to="/dropbox" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Dropbox</Link>
+                <Link to="/public-reports" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</Link>
+                <Link to="/admin" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin</Link>
               </div>
             </div>
           </div>
@@ -145,8 +147,6 @@ const InvestigatorMap = () => {
       </nav>
 
       <div className="flex flex-1 overflow-hidden relative">
-        
-        {/* SIDEBAR */}
         <div className="w-80 bg-[#161616] border-r border-gray-800 flex flex-col z-20 shadow-2xl">
           <div className="p-6 pb-2 shrink-0">
             <h1 className="text-2xl font-bold text-white">Investigator Map</h1>
@@ -235,7 +235,7 @@ const InvestigatorMap = () => {
                          <span 
                            className="w-2 h-2 rounded-full flex-shrink-0" 
                            style={{
-                               backgroundColor: riskConfig.color, // Fixed: Use color from API helper
+                               backgroundColor: riskConfig.color,
                                boxShadow: `0 0 5px ${riskConfig.color}`
                            }}
                          ></span>
@@ -279,12 +279,15 @@ const InvestigatorMap = () => {
 
               {mapRenderOrder.map((project) => {
                 const config = getRiskConfig(project.risk);
+                // Extra safety: Don't render if lat/lng are still somehow missing
+                if (!project.lat || !project.lng) return null;
+
                 return (
                   <CircleMarker 
                     key={project.id}
-                    center={[parseFloat(project.latitude), parseFloat(project.longitude)]}
+                    center={[project.lat, project.lng]}
                     pathOptions={{ 
-                      color: config.color, // Color border (Red/Yellow/Green)
+                      color: config.color, 
                       fillColor: config.color, 
                       fillOpacity: 0.7,
                       weight: 1
@@ -313,10 +316,19 @@ const InvestigatorMap = () => {
       </div>
       
       <style>{`
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #161616; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #555; }
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #1a1a1a; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #333; 
+          border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #444; 
+        }
       `}</style>
     </div>
   );
