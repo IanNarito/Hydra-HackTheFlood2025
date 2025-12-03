@@ -1,5 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { X, Calendar, DollarSign, Clock, AlertTriangle, Map, Eye, Shield, ExternalLink } from 'lucide-react';
+import { X, Calendar, Clock, AlertTriangle, Map, Eye, ExternalLink } from 'lucide-react';
+
+// Custom Peso Icon to ensure it renders without library updates
+const PesoIcon = ({ size = 16, className = "" }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M4 10h12" />
+    <path d="M4 14h9" />
+    <path d="M7 21V4a1 1 0 0 1 1-1h4a1 1 0 0 1 0 2H8" />
+  </svg>
+);
 
 const ProjectModal = ({ project, onClose }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,11 +54,12 @@ const ProjectModal = ({ project, onClose }) => {
 
   const riskLabelColor = getRiskLabelColor(riskLabel);
 
-  // Score logic
+  // --- UPDATED SCORE LOGIC ---
   const rawScore = project.score;
   const numScore = parseFloat(rawScore);
-  const hasValidScore = !isNaN(numScore) && numScore > 0;
-  const scoreDisplay = hasValidScore ? numScore.toFixed(0) : null;
+  
+  // We treat NaN as 0, and we allow 0 to be a valid score to display
+  const scoreDisplay = !isNaN(numScore) ? numScore.toFixed(0) : "0";
       
   // Formatters
   const formatCurrency = (value) => {
@@ -57,8 +78,8 @@ const ProjectModal = ({ project, onClose }) => {
     switch (riskLabel) {
       case 'CRITICAL': return "IMMEDIATE INVESTIGATION. Strong, confirmed evidence of fraud.";
       case 'HIGH': return "PRIORITY INVESTIGATION. Serious red flags are present.";
-      case 'MEDIUM':
-      case 'LOW': return "CONTINUOUS MONITORING. Low-level anomalies detected.";
+      case 'MEDIUM': return "MODERATE CONCERN. Some data irregularities detected.";
+      case 'LOW': return "CONTINUOUS MONITORING. No major anomalies detected.";
       default: return "Risk assessment based on available data.";
     }
   };
@@ -116,39 +137,26 @@ const ProjectModal = ({ project, onClose }) => {
               </p>
             </div>
 
-            {/* Score Circle or Shield */}
-            {hasValidScore ? (
-              <div className={`shrink-0 relative w-24 h-24 flex items-center justify-center rounded-full border-4 shadow-[0_0_20px_rgba(0,0,0,0.3)] ${
+            {/* Score Circle - NOW SHOWS EVEN FOR SCORE 0 */}
+            <div className={`shrink-0 relative w-24 h-24 flex items-center justify-center rounded-full border-4 shadow-[0_0_20px_rgba(0,0,0,0.3)] ${
                  riskLabel === 'CRITICAL' ? 'bg-red-900/20 border-red-900/30' :
                  riskLabel === 'HIGH' ? 'bg-yellow-900/20 border-yellow-900/30' :
                  'bg-green-900/20 border-green-900/30'
               }`}>
-                <div className="text-center">
-                  <span className={`text-3xl font-black block leading-none ${riskLabelColor}`}>
-                    {scoreDisplay}
-                  </span>
-                  <span className={`text-[10px] uppercase tracking-widest font-bold ${riskLabelColor}`}>
-                    SCORE
-                  </span>
-                </div>
-              </div>
-            ) : (
-              <div className={`shrink-0 relative px-6 py-4 flex flex-col items-center justify-center rounded-xl border-2 shadow-lg ${
-                 riskLabel === 'CRITICAL' ? 'bg-red-900/30 border-red-900/50' :
-                 riskLabel === 'HIGH' ? 'bg-yellow-900/30 border-yellow-900/50' :
-                 'bg-green-900/30 border-green-900/50'
-              }`}>
-                <Shield className={`mb-1 ${riskLabelColor}`} size={32} />
-                <span className={`text-sm font-black uppercase tracking-wider ${riskLabelColor}`}>
-                  {riskLabel}
+              <div className="text-center">
+                <span className={`text-3xl font-black block leading-none ${riskLabelColor}`}>
+                  {scoreDisplay}
+                </span>
+                <span className={`text-[10px] uppercase tracking-widest font-bold ${riskLabelColor}`}>
+                  SCORE
                 </span>
               </div>
-            )}
+            </div>
           </div>
 
-          {/* Stats Section */}
+          {/* Stats Section - Updated Icon to Peso */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <StatBox icon={<DollarSign size={16} />} label="Budget" value={formatCurrency(project.budget)} />
+            <StatBox icon={<PesoIcon size={16} />} label="Budget" value={formatCurrency(project.budget)} />
             <StatBox icon={<Clock size={16} />} label="Status" value={project.status || 'Unknown'} isTag />
             <StatBox icon={<Calendar size={16} />} label="Start Date" value={formatDate(project.start_date || project.startDate)} />
             <StatBox icon={<Calendar size={16} />} label="Expected Completion" value={formatDate(project.end_date || project.endDate)} />
