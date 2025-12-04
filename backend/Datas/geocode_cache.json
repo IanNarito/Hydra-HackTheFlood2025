@@ -1,0 +1,407 @@
+{
+  "BALAGTAS (BIGAA) (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8019865,
+    "lon": 120.9021698,
+    "display_name": "Balagtas River, San Juan, Balagtas, Bulacan, Central Luzon, 3016, Philippines",
+    "type": "river",
+    "class": "waterway"
+  },
+  "BOCAUE (BULACAN), BULACAN, Philippines": {
+    "lat": 14.7927905,
+    "lon": 120.9318018,
+    "display_name": "Iteen Philippines, MacArthur Highway, Biñang 2nd, Bocaue, Bulacan, Central Luzon, 3018, Philippines",
+    "type": "studio",
+    "class": "amenity"
+  },
+  "CITY OF MALABON (METROPOLITAN MANILA), MALABON CITY, Philippines": null,
+  "CITY OF GENERAL TRIAS (CAVITE), CAVITE, Philippines": {
+    "lat": 14.3748334,
+    "lon": 120.9115264,
+    "display_name": "City of General Trias Hall of Justice, Damayan Street, Navarro, General Trias, Cavite, Calabarzon, 4107, Philippines",
+    "type": "yes",
+    "class": "building"
+  },
+  "QUEZON CITY (METROPOLITAN MANILA), QUEZON CITY, Philippines": null,
+  "CITY OF TARLAC (CAPITAL) (TARLAC), TARLAC, Philippines": null,
+  "GUIGUINTO (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8344839,
+    "lon": 120.8648224,
+    "display_name": "Korea Philippines IT Training Center, MacArthur Highway, Masagana Homes, St. Peter Village, Tabang, Guiguinto, Bulacan, Central Luzon, 3015, Philippines",
+    "type": "government",
+    "class": "office"
+  },
+  "PLARIDEL (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8574478,
+    "lon": 120.8151641,
+    "display_name": "Girl Scouts of the Philippines, Plaridel-Malolos Road, Bulacan Provincial Capitol Complex, Guinhawa, Sumapang Matanda, Malolos, Bulacan, Central Luzon, 3000, Philippines",
+    "type": "public",
+    "class": "building"
+  },
+  "SANTA MARIA (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8696175,
+    "lon": 120.9989376,
+    "display_name": "Polytechnic University of the Philippines, Norzagaray-Santa Maria Road, Pulong Buhangin, Pulong Yantok, Santa Maria, Bulacan, Central Luzon, 3022, Philippines",
+    "type": "university",
+    "class": "amenity"
+  },
+  "CITY OF MEYCAUAYAN (BULACAN), BULACAN, Philippines": {
+    "lat": 14.754578,
+    "lon": 120.9562387,
+    "display_name": "SM City Marilao, MacArthur Highway, Rosas Centro, Ibayo, Marilao, Bulacan, Central Luzon, 3019, Philippines",
+    "type": "mall",
+    "class": "shop"
+  },
+  "CITY OF BALIUAG (BULACAN), BULACAN, Philippines": {
+    "lat": 14.9595091,
+    "lon": 120.8996101,
+    "display_name": "Pamahalaang Lungsod ng Baliwag, Santo Cristo, Baliwag, Bulacan, Central Luzon, Philippines",
+    "type": "commercial",
+    "class": "landuse"
+  },
+  "SAN MIGUEL (BULACAN), BULACAN, Philippines": {
+    "lat": 15.1675157,
+    "lon": 121.04161,
+    "display_name": "Iglesia Ni Cristo, Lokal ng Tartaro, San Miguel, Bulacan, Camias-Sibul Road, Pulang Lupa, Tartaro, San Miguel, Bulacan, Central Luzon, 3011, Philippines",
+    "type": "place_of_worship",
+    "class": "amenity"
+  },
+  "CITY OF SAN JOSE DEL MONTE (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8312558,
+    "lon": 121.0842872,
+    "display_name": "Philippines Street, Benjamin 3 Community Housing, Santo Cristo, San Jose del Monte, Bulacan, Central Luzon, 3024, Philippines",
+    "type": "residential",
+    "class": "highway"
+  },
+  "PANDI (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8654061,
+    "lon": 120.9572464,
+    "display_name": "Pandi, Bulacan, Central Luzon, Philippines",
+    "type": "administrative",
+    "class": "boundary"
+  },
+  "CITY OF SANTA ROSA (LAGUNA), LAGUNA, Philippines": {
+    "lat": 14.3135306,
+    "lon": 121.1066441,
+    "display_name": "Polytechnic University of the Philippines - Santa Rosa, Arcillas Boulevard, Kanluran, Santa Rosa, Laguna, Calabarzon, 4026, Philippines",
+    "type": "university",
+    "class": "amenity"
+  },
+  "CITY OF MARIKINA (METROPOLITAN MANILA), MARIKINA CITY, Philippines": null,
+  "CITY OF DASMARIÑAS (CAVITE), CAVITE, Philippines": {
+    "lat": 14.285149,
+    "lon": 120.9895932,
+    "display_name": "Saffron Philippines, Paliparan 1, Paliparan, Dasmariñas, Cavite, Calabarzon, 4114, Philippines",
+    "type": "industrial",
+    "class": "landuse"
+  },
+  "CITY OF PASIG (METROPOLITAN MANILA), PASIG CITY, Philippines": null,
+  "CALOOCAN CITY (METROPOLITAN MANILA), CALOOCAN CITY, Philippines": null,
+  "GENERAL LUNA (QUEZON), QUEZON, Philippines": {
+    "lat": 13.690927,
+    "lon": 122.1714362,
+    "display_name": "PUP Genluna Campus, Vercelos Street, San Jose, San Isidro Ibaba, General Luna, Quezon, Calabarzon, 4310, Philippines",
+    "type": "college",
+    "class": "amenity"
+  },
+  "CALUMPIT (BULACAN), BULACAN, Philippines": {
+    "lat": 14.9183583,
+    "lon": 120.7670558,
+    "display_name": "TESDA Provincial Training Center Calumpit, Arce Street, Sapang Bayan, Poblacion, Calumpit, Bulacan, Central Luzon, 3003, Philippines",
+    "type": "school",
+    "class": "amenity"
+  },
+  "HAGONOY (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8658846,
+    "lon": 120.7665754,
+    "display_name": "Bulacan State University - Hagonoy Campus, Iba-Longos Road, Iba-Ibayo, Hagonoy, Bulacan, Central Luzon, 3002, Philippines",
+    "type": "university",
+    "class": "amenity"
+  },
+  "CITY OF MALOLOS (CAPITAL) (BULACAN), BULACAN, Philippines": null,
+  "BULACAN (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8696175,
+    "lon": 120.9989376,
+    "display_name": "Polytechnic University of the Philippines, Norzagaray-Santa Maria Road, Pulong Buhangin, Pulong Yantok, Santa Maria, Bulacan, Central Luzon, 3022, Philippines",
+    "type": "university",
+    "class": "amenity"
+  },
+  "BUSTOS (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8563067,
+    "lon": 120.8609065,
+    "display_name": "emelita cordova (friday) malamig bustos bulacan, Juanita Santos Street, Masagana Homes - Phase 1, Santa Rita, Guiguinto, Bulacan, Central Luzon, 3015, Philippines",
+    "type": "variety_store",
+    "class": "shop"
+  },
+  "PAOMBONG (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8363954,
+    "lon": 120.7874997,
+    "display_name": "Paombong, Bulacan, Central Luzon, 3001, Philippines",
+    "type": "administrative",
+    "class": "boundary"
+  },
+  "CITY OF SAN JUAN (METROPOLITAN MANILA), SAN JUAN CITY, Philippines": null,
+  "SAN ILDEFONSO (BULACAN), BULACAN, Philippines": {
+    "lat": 15.0720204,
+    "lon": 120.9495655,
+    "display_name": "ASA Foundation Philippines, Matimbubong, San Ildefonso, Bulacan, Central Luzon, 3010, Philippines",
+    "type": "commercial"
+  },
+  "JALA-JALA (RIZAL), RIZAL, Philippines": {
+    "lat": 14.3536306,
+    "lon": 121.3237656,
+    "display_name": "Jalajala, Rizal, Calabarzon, 1990, Philippines",
+    "type": "administrative"
+  },
+  "PULILAN (BULACAN), BULACAN, Philippines": {
+    "lat": 14.9024228,
+    "lon": 120.8675998,
+    "display_name": "Land Bank of the Philippines, Doña Remedios Trinidad Highway, Villa Modesta Village, Tarcan, Santo Cristo, Pulilan, Bulacan, Central Luzon, 3004, Philippines",
+    "type": "bank"
+  },
+  "NORZAGARAY (BULACAN), BULACAN, Philippines": {
+    "lat": 14.8696175,
+    "lon": 120.9989376,
+    "display_name": "Polytechnic University of the Philippines, Norzagaray-Santa Maria Road, Pulong Buhangin, Pulong Yantok, Santa Maria, Bulacan, Central Luzon, 3022, Philippines",
+    "type": "university"
+  },
+  "PADRE GARCIA (BATANGAS), BATANGAS, Philippines": {
+    "lat": 13.8795271,
+    "lon": 121.213594,
+    "display_name": "Padre Garcia, Cattle Trading Capital of the Philippines, V. Luna Street, Poblacion, Padre Garcia, Batangas, Calabarzon, 4224, Philippines",
+    "type": "artwork"
+  },
+  "DONSOL (SORSOGON), SORSOGON, Philippines": {
+    "lat": 12.9077161,
+    "lon": 123.5986056,
+    "display_name": "Donsol, Sorsogon, Bicol Region, 4715, Philippines",
+    "type": "administrative"
+  },
+  "BAGUIO CITY (BENGUET), BENGUET, Philippines": {
+    "lat": 16.3577637,
+    "lon": 120.715724,
+    "display_name": "Baguio City – Twin River – Keweng – Dalupirip National Road, Petican, Tinongdan, Benguet, Cordillera Administrative Region, Philippines",
+    "type": "unclassified"
+  },
+  "CITY OF TABACO (ALBAY), ALBAY, Philippines": {
+    "lat": 13.1603223,
+    "lon": 123.7514137,
+    "display_name": "One Half Philippines, Peñaranda Street, PNR-Peñaranda St.-Iraya, Tamaoyan, Legazpi, Albay, Bicol Region, 4500, Philippines",
+    "type": "yes"
+  },
+  "SURALLAH (SOUTH COTABATO), SOUTH COTABATO, Philippines": {
+    "lat": 6.3417489,
+    "lon": 124.7221484,
+    "display_name": "United Church of Christ in the Philippines, Surallah-Lake Sebu Road, Asparagus, Colongolo, South Cotabato, Soccsksargen, 9512, Philippines",
+    "type": "place_of_worship"
+  },
+  "BANGA (SOUTH COTABATO), SOUTH COTABATO, Philippines": {
+    "lat": 6.4232286,
+    "lon": 124.7761628,
+    "display_name": "Banga, South Cotabato, Soccsksargen, 9511, Philippines",
+    "type": "town"
+  },
+  "LIBON (ALBAY), ALBAY, Philippines": {
+    "lat": 13.2988701,
+    "lon": 123.4360839,
+    "display_name": "Libon, Albay, Bicol Region, 4507, Philippines",
+    "type": "town"
+  },
+  "NORALA (SOUTH COTABATO), SOUTH COTABATO, Philippines": {
+    "lat": 6.5202692,
+    "lon": 124.660334,
+    "display_name": "Norala, South Cotabato, Soccsksargen, 9508, Philippines",
+    "type": "town"
+  },
+  "POLANGUI (ALBAY), ALBAY, Philippines": {
+    "lat": 13.293769,
+    "lon": 123.4843893,
+    "display_name": "Polangui, Albay, Bicol Region, 4506, Philippines",
+    "type": "administrative"
+  },
+  "CITY OF LIGAO (ALBAY), ALBAY, Philippines": {
+    "lat": 13.238216,
+    "lon": 123.542562,
+    "display_name": "PROPOSED LIGAO CITY TERMINAL (FINAL), Ligao, Albay, Bicol Region, 4504, Philippines",
+    "type": "industrial"
+  },
+  "MALILIPOT (ALBAY), ALBAY, Philippines": {
+    "lat": 13.3190483,
+    "lon": 123.7392658,
+    "display_name": "Malilipot, Albay, Bicol Region, 4510, Philippines",
+    "type": "administrative"
+  },
+  "MAGALLANES (SORSOGON), SORSOGON, Philippines": {
+    "lat": 12.828538,
+    "lon": 123.8344127,
+    "display_name": "Magallanes, Sorsogon, Bicol Region, 4705, Philippines",
+    "type": "town"
+  },
+  "GUBAT (SORSOGON), SORSOGON, Philippines": {
+    "lat": 12.9176112,
+    "lon": 124.1231882,
+    "display_name": "Gubat, Sorsogon, Bicol Region, 4710, Philippines",
+    "type": "town"
+  },
+  "MATNOG (SORSOGON), SORSOGON, Philippines": {
+    "lat": 12.5854588,
+    "lon": 124.0847727,
+    "display_name": "Matnog, Sorsogon, Bicol Region, 4708, Philippines",
+    "type": "town"
+  },
+  "OAS (ALBAY), ALBAY, Philippines": {
+    "lat": 13.2570425,
+    "lon": 123.5001669,
+    "display_name": "Oas, Albay, Bicol Region, 4505, Philippines",
+    "type": "town"
+  },
+  "SABLAYAN (OCCIDENTAL MINDORO), OCCIDENTAL MINDORO, Philippines": {
+    "lat": 12.8474995,
+    "lon": 120.7849518,
+    "display_name": "Polytechnic University of the Philippines, Sablayan, Salvo Street, Macambang, Buenavista, Sablayan, Occidental Mindoro, Mimaropa, 5104, Philippines",
+    "type": "university"
+  },
+  "MALINAO (ALBAY), ALBAY, Philippines": {
+    "lat": 13.3974574,
+    "lon": 123.7049776,
+    "display_name": "Malinao, Albay, Bicol Region, 4514, Philippines",
+    "type": "town"
+  },
+  "CITY OF CARMONA (CAVITE), CAVITE, Philippines": {
+    "lat": 14.2751378,
+    "lon": 121.0105873,
+    "display_name": "Nonwoven Philippines, Bancal, Carmona, Cavite, Calabarzon, 4116, Philippines",
+    "type": "industrial"
+  },
+  "PIO DURAN (ALBAY), ALBAY, Philippines": {
+    "lat": 13.0296985,
+    "lon": 123.4431423,
+    "display_name": "Pio Duran, Albay, Bicol Region, 4516, Philippines",
+    "type": "town"
+  },
+  "GUINOBATAN (ALBAY), ALBAY, Philippines": {
+    "lat": 13.1904597,
+    "lon": 123.5999458,
+    "display_name": "Guinobatan, Albay, Bicol Region, 4503, Philippines",
+    "type": "town"
+  },
+  "PILAR (SORSOGON), SORSOGON, Philippines": {
+    "lat": 12.9235719,
+    "lon": 123.675399,
+    "display_name": "Pilar, Sorsogon, Bicol Region, 4714, Philippines",
+    "type": "administrative"
+  },
+  "CARAMORAN (CATANDUANES), CATANDUANES, Philippines": {
+    "lat": 13.9838351,
+    "lon": 124.1338718,
+    "display_name": "Caramoran, Catanduanes, Bicol Region, 4808, Philippines",
+    "type": "administrative"
+  },
+  "IROSIN (SORSOGON), SORSOGON, Philippines": {
+    "lat": 12.7038417,
+    "lon": 124.0320966,
+    "display_name": "Irosin, Sorsogon, Bicol Region, 4707, Philippines",
+    "type": "town"
+  },
+  "AGUINALDO (IFUGAO), IFUGAO, Philippines": {
+    "lat": 16.9781924,
+    "lon": 121.3281101,
+    "display_name": "Aguinaldo, Ifugao, Cordillera Administrative Region, Philippines",
+    "type": "town"
+  },
+  "CASTILLA (SORSOGON), SORSOGON, Philippines": {
+    "lat": 12.9539515,
+    "lon": 123.8751711,
+    "display_name": "Castilla, Sorsogon, Bicol Region, 4713, Philippines",
+    "type": "administrative"
+  },
+  "BACOOR CITY (CAVITE), CAVITE, Philippines": {
+    "lat": 14.4311318,
+    "lon": 120.9680621,
+    "display_name": "City of Bacoor Government Center, Bayanan, Bacoor, Cavite, Calabarzon, 4102, Philippines",
+    "type": "civic_admin"
+  },
+  "BULUSAN (SORSOGON), SORSOGON, Philippines": {
+    "lat": 12.7517375,
+    "lon": 124.1352434,
+    "display_name": "Bulusan, Sorsogon, Bicol Region, 4704, Philippines",
+    "type": "town"
+  },
+  "PRIETO DIAZ (SORSOGON), SORSOGON, Philippines": {
+    "lat": 13.0404252,
+    "lon": 124.1935375,
+    "display_name": "Prieto Diaz, Sorsogon, Bicol Region, Philippines",
+    "type": "town"
+  },
+  "BULAN (SORSOGON), SORSOGON, Philippines": {
+    "lat": 12.6689078,
+    "lon": 123.8769586,
+    "display_name": "Bulan, Sorsogon, Bicol Region, 4706, Philippines",
+    "type": "town"
+  },
+  "BACACAY (ALBAY), ALBAY, Philippines": {
+    "lat": 13.2892045,
+    "lon": 123.8095871,
+    "display_name": "Igang, Bacacay, Albay, 415, Bes Street, Igang, Bacacay, Albay, Bicol Region, 4509, Philippines",
+    "type": "community_centre"
+  },
+  "T'BOLI (SOUTH COTABATO), SOUTH COTABATO, Philippines": {
+    "lat": 6.2138317,
+    "lon": 124.8229251,
+    "display_name": "T'Boli, South Cotabato, Soccsksargen, 9513, Philippines",
+    "type": "administrative"
+  },
+  "MALASIQUI (PANGASINAN), PANGASINAN, Philippines": {
+    "lat": 15.9199144,
+    "lon": 120.4138181,
+    "display_name": "Malasiqui, Pangasinan, Ilocos Region, 2421, Philippines",
+    "type": "administrative"
+  },
+  "MAGDIWANG (ROMBLON), ROMBLON, Philippines": {
+    "lat": 12.4707989,
+    "lon": 122.5506836,
+    "display_name": "DENR to Camp 1 Trail, Magdiwang, Romblon, Mimaropa, Philippines",
+    "type": "path"
+  },
+  "ALFONSO LISTA (POTIA) (IFUGAO), IFUGAO, Philippines": {
+    "lat": 16.9256809,
+    "lon": 121.4841675,
+    "display_name": "Alfonso Lista Central School, Paracelis-Lista Road, Alfonso Lista, Ifugao, Cordillera Administrative Region, 3608, Philippines",
+    "type": "school"
+  },
+  "TIWI (ALBAY), ALBAY, Philippines": {
+    "lat": 13.4569196,
+    "lon": 123.6796912,
+    "display_name": "Tiwi, Albay, Bicol Region, 4513, Philippines",
+    "type": "town"
+  },
+  "BARCELONA (SORSOGON), SORSOGON, Philippines": {
+    "lat": 12.8682088,
+    "lon": 124.1418908,
+    "display_name": "Barcelona, Sorsogon, Bicol Region, 4712, Philippines",
+    "type": "town"
+  },
+  "BAYAMBANG (PANGASINAN), PANGASINAN, Philippines": {
+    "lat": 15.7599434,
+    "lon": 120.4518022,
+    "display_name": "HARBRINK House Philippines, 156, Pugo Barangay Road, Pugo, Bayambang, Pangasinan, Ilocos Region, 2423, Philippines",
+    "type": "guest_house"
+  },
+  "SAN CARLOS CITY (PANGASINAN), PANGASINAN, Philippines": {
+    "lat": 15.9260531,
+    "lon": 120.3464235,
+    "display_name": "San Carlos City Old Public Market, Bonifacio, San Carlos, Pangasinan, Ilocos Region, 2420, Philippines",
+    "type": "commercial"
+  },
+  "GEN. MARIANO ALVAREZ (CAVITE), CAVITE, Philippines": {
+    "lat": 14.2954628,
+    "lon": 121.0070814,
+    "display_name": "General Mariano Alvarez, Cavite, Calabarzon, 4117, Philippines",
+    "type": "administrative"
+  },
+  "SILANG (CAVITE), CAVITE, Philippines": {
+    "lat": 14.2171239,
+    "lon": 121.0407164,
+    "display_name": "Adventist University of the Philippines, Santa Rosa-Tagaytay Road, Puting Kahoy, Silang, Cavite, Calabarzon, 4118, Philippines",
+    "type": "university"
+  }
+}

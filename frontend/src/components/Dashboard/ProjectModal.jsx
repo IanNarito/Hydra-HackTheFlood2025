@@ -23,11 +23,8 @@ const ProjectModal = ({ project, onClose }) => {
   if (!project) return null;
 
   // --- SYNC LOGIC START ---
-  
-  // 1. Risk Label (Critical, High, Low)
   const riskLabel = (project.risk || 'LOW').toUpperCase();
   
-  // 2. Color mapping
   const getRiskLabelColor = (label) => {
     switch (label) {
       case 'CRITICAL': return 'text-red-500';
@@ -40,46 +37,35 @@ const ProjectModal = ({ project, onClose }) => {
 
   const riskLabelColor = getRiskLabelColor(riskLabel);
 
-  // 3. ROBUST SCORE PARSING - Check if score is actually calculated
+  // --- UPDATED SCORE LOGIC ---
   const rawScore = project.score;
   const numScore = parseFloat(rawScore);
-  const hasValidScore = !isNaN(numScore) && numScore > 0;
-  const scoreDisplay = hasValidScore ? numScore.toFixed(0) : null;
+  
+  // We treat NaN as 0, and we allow 0 to be a valid score to display
+  const scoreDisplay = !isNaN(numScore) ? numScore.toFixed(0) : "0";
       
-  // 4. Currency formatting
+  // Formatters
   const formatCurrency = (value) => {
       if (!value) return "N/A";
       const numVal = typeof value === 'string' ? parseFloat(value.replace(/[^0-9.-]+/g,"")) : value;
       return new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(numVal);
   };
   
-  // 5. Date Formatting
   const formatDate = (dateStr) => {
       if (!dateStr) return 'N/A';
       return new Date(dateStr).toLocaleDateString();
   };
 
-  // 6. Get risk description
   const getRiskDescription = () => {
-    if (project.risk_description) {
-      return project.risk_description;
-    }
-    
-    // Fallback descriptions based on risk level
+    if (project.risk_description) return project.risk_description;
     switch (riskLabel) {
-      case 'CRITICAL':
-        return "IMMEDIATE INVESTIGATION. Strong, confirmed evidence of fraud.";
-      case 'HIGH':
-        return "PRIORITY INVESTIGATION. Serious red flags are present.";
-      case 'MEDIUM':
-      case 'LOW':
-        return "CONTINUOUS MONITORING. Low-level anomalies detected.";
-      default:
-        return "Risk assessment based on available data.";
+      case 'CRITICAL': return "IMMEDIATE INVESTIGATION. Strong, confirmed evidence of fraud.";
+      case 'HIGH': return "PRIORITY INVESTIGATION. Serious red flags are present.";
+      case 'MEDIUM': return "MODERATE CONCERN. Some data irregularities detected.";
+      case 'LOW': return "CONTINUOUS MONITORING. No major anomalies detected.";
+      default: return "Risk assessment based on available data.";
     }
   };
-  
-  // --- SYNC LOGIC END ---
 
   return (
     <div
@@ -125,45 +111,26 @@ const ProjectModal = ({ project, onClose }) => {
               <h3 className={`font-bold mb-2 flex items-center gap-2 ${riskLabelColor}`}>
                 <AlertTriangle size={16} /> Risk Assessment
               </h3>
-
               <p className="text-gray-300 text-xs md:text-sm leading-relaxed">
                 {getRiskDescription()}
               </p>
             </div>
 
-            {/* Show Score Circle ONLY if score > 0, otherwise show Risk Badge */}
-            {hasValidScore ? (
-              <div className={`shrink-0 relative w-24 h-24 flex items-center justify-center rounded-full border-4 shadow-[0_0_20px_rgba(0,0,0,0.3)] ${
+            {/* Score Circle - NOW SHOWS EVEN FOR SCORE 0 */}
+            <div className={`shrink-0 relative w-24 h-24 flex items-center justify-center rounded-full border-4 shadow-[0_0_20px_rgba(0,0,0,0.3)] ${
                  riskLabel === 'CRITICAL' ? 'bg-red-900/20 border-red-900/30' :
                  riskLabel === 'HIGH' ? 'bg-yellow-900/20 border-yellow-900/30' :
                  'bg-green-900/20 border-green-900/30'
               }`}>
-                <div className="text-center">
-                  <span className={`text-3xl font-black block leading-none ${riskLabelColor}`}>
-                    {scoreDisplay}
-                  </span>
-                  <span
-                    className={`text-[10px] uppercase tracking-widest font-bold ${riskLabelColor}`}
-                  >
-                    SCORE
-                  </span>
-                </div>
-              </div>
-            ) : (
-              <div className={`shrink-0 relative px-6 py-4 flex flex-col items-center justify-center rounded-xl border-2 shadow-lg ${
-                 riskLabel === 'CRITICAL' ? 'bg-red-900/30 border-red-900/50' :
-                 riskLabel === 'HIGH' ? 'bg-yellow-900/30 border-yellow-900/50' :
-                 'bg-green-900/30 border-green-900/50'
-              }`}>
-                <Shield className={`mb-1 ${riskLabelColor}`} size={32} />
-                <span className={`text-sm font-black uppercase tracking-wider ${riskLabelColor}`}>
-                  {riskLabel}
+              <div className="text-center">
+                <span className={`text-3xl font-black block leading-none ${riskLabelColor}`}>
+                  {scoreDisplay}
                 </span>
-                <span className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">
-                  RISK
+                <span className={`text-[10px] uppercase tracking-widest font-bold ${riskLabelColor}`}>
+                  SCORE
                 </span>
               </div>
-            )}
+            </div>
           </div>
 
           {/* Stats Section */}
@@ -194,7 +161,7 @@ const ProjectModal = ({ project, onClose }) => {
           />
         </div>
 
-        {/* Footer */}
+        {/* === FOOTER BUTTONS === */}
         <div className="p-6 border-t border-gray-800 bg-[#161616] flex gap-4 shrink-0">
           <button 
             onClick={() => navigate(`/satellite/${project.id}`)}

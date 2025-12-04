@@ -6,6 +6,9 @@ import InvestigatorMap from './pages/InvestigatorMap.jsx';
 import Dropbox from './pages/Dropbox.jsx';
 import SatelliteEvidence from './pages/SatelliteEvidence.jsx';
 import { LoadingPage } from './components/LoadingPage.jsx';
+import AdminPanel from './pages/AdminPanel.jsx'; 
+import PublicReports from './pages/PublicReports.jsx'; 
+import AdminLogin from './pages/AdminLogin.jsx'; 
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -47,6 +50,15 @@ function App() {
 
         {/* Dropbox route */}
         <Route path="/dropbox" element={<Dropbox />} />
+
+        {/* Admin route */}
+        <Route path="/admin" element={<AdminPanel />} />
+        
+        {/* Reports route */}
+        <Route path="/public-reports" element={<PublicReports />} />
+
+        {/* Admin Login route */}
+        <Route path="/admin/login" element={<AdminLogin />} /> {/* New Route */}
 
         {/* Loading page route for testing */}
         <Route path="/loading" element={<LoadingPage />} />
