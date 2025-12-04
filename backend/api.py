@@ -32,283 +32,242 @@ print(f"⚡ Database Path: {DATABASE_FILE}")
 KNOWN_BAD_CONTRACTORS = {
     'SYMS CONSTRUCTION TRADING': {'reason': 'Ghost projects', 'severity': 'CRITICAL'},
     'M3 KONSTRUCT CORPORATION': {'reason': 'Irregularities', 'severity': 'CRITICAL'},
-    'WAWAO BUILDERS': {'reason': 'Fraud findings', 'severity': 'CRITICAL'},
-    'ST. TIMOTHY CONSTRUCTION': {'reason': 'Serious discrepancies', 'severity': 'CRITICAL'},
-    'AMETHYST HORIZON BUILDERS': {'reason': 'Substandard works', 'severity': 'CRITICAL'},
-    'L.R. TIQUI BUILDERS': {'reason': 'Flagged Joint Ventures', 'severity': 'CRITICAL'},
-    'SBD BUILDERS INC': {'reason': 'Expired licenses', 'severity': 'HIGH'},
-    'ADL GENERAL CONSTRUCTION': {'reason': 'Blacklisted firm', 'severity': 'HIGH'},
-    'TAWID BUILDERS CORP': {'reason': 'Re-awarded contracts after blacklist', 'severity': 'MEDIUM'},
-    'R.U. AQUINO CONSTRUCTION': {'reason': 'Conflict of interest', 'severity': 'MEDIUM'},
-    'LE BRON CONSTRUCTION': {'reason': 'Conflict of interest', 'severity': 'MEDIUM'}
+    'WAWAO BUILDERS': {'reason': 'Fraud flagged', 'severity': 'CRITICAL'}
+}
+PROBLEMATIC_LOCATIONS = {
+    'BULACAN': 'High fraud risk',
+    'QUEZON CITY': 'Audit flags'
 }
 
-# ============================================================
-# 3. DATABASE HELPERS & INITIALIZATION
-# ============================================================
+# Add Scripts to path for imports if needed
+SCRIPTS_DIR = os.path.join(BASE_DIR, 'Scripts')
+if os.path.exists(SCRIPTS_DIR): sys.path.append(SCRIPTS_DIR)
 
+# Set Upload Folder next to DB
+UPLOAD_FOLDER = os.path.join(os.path.dirname(DATABASE_FILE), 'secure_uploads')
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+# --- DB HELPERS ---
 def dict_factory(cursor, row):
     d = {}
     for idx, col in enumerate(cursor.description):
         d[col[0]] = row[idx]
     return d
 
-
 def get_db_connection():
     try:
         conn = sqlite3.connect(DATABASE_FILE)
         conn.row_factory = dict_factory
         return conn
-    except Exception as e:
-        print(f"❌ DB Connection Error: {e}")
-        return None
+    except: return None
 
-
-def init_tables():
-    """Initialize tables for storing files in database + reports"""
-    conn = get_db_connection()
-    if not conn:
-        return
-
-    try:
-        # 1. Reports table
-        conn.execute('''
-            CREATE TABLE IF NOT EXISTS reports (
-                id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                case_id TEXT UNIQUE, 
-                description TEXT, 
-                status TEXT DEFAULT "PENDING", 
-                ai_flags TEXT, 
-                timestamp TEXT,
-                admin_notes TEXT,
-                linked_project_id INTEGER
-            )
-        ''')
-
-        # 2. Files table (BLOB storage)
-        conn.execute('''
-            CREATE TABLE IF NOT EXISTS report_files (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                report_id INTEGER NOT NULL,
-                case_id TEXT NOT NULL,
-                original_filename TEXT,
-                file_data BLOB,
-                file_type TEXT,
-                file_size INTEGER,
-                uploaded_at TEXT,
-                FOREIGN KEY (report_id) REFERENCES reports(id)
-            )
-        ''')
-
-        # 3. Published Reports table (For the Public Page)
-        conn.execute('''
-            CREATE TABLE IF NOT EXISTS published_reports (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                report_id INTEGER NOT NULL UNIQUE,
-                published_at TEXT,
-                public_summary TEXT,
-                admin_notes TEXT,
-                FOREIGN KEY (report_id) REFERENCES reports(id)
-            )
-        ''')
-
-        conn.commit()
-        print("✅ Database tables initialized successfully.")
-    except Exception as e:
-        print(f"❌ Table Init Error: {e}")
-    finally:
-        conn.close()
-
-
-# Run init immediately
-init_tables()
-
-# ============================================================
-# 4. INTELLIGENCE LOGIC
-# ============================================================
-
-
-def calculate_risk_level(suspicion_score, max_severity):
-    """Strict logic to ensure map colors appear correctly."""
-    sev = (max_severity or '').upper()
-    score = float(suspicion_score) if suspicion_score else 0
-
-    if sev == 'CRITICAL' or score >= 80:
-        return ('Critical', 'Red', 'IMMEDIATE INVESTIGATION. Strong evidence of anomaly.')
-    if sev == 'HIGH' or score >= 40:
-        return ('High', 'Yellow', 'PRIORITY INVESTIGATION. Serious red flags detected.')
-    return ('Low', 'Green', 'CONTINUOUS MONITORING. No major anomalies detected.')
-
-
-def check_database_for_matches(user_text):
-    """Scans text to find if it matches a High Risk project, to update its score."""
-    if not user_text or len(user_text) < 5:
-        return None
-    conn = get_db_connection()
-    if not conn:
-        return None
-
-    user_text_upper = user_text.upper()
-    try:
-        # Look for projects that already have some suspicion or high cost
-        query = 'SELECT * FROM projects WHERE suspicion_score > 10 OR contract_cost > 10000000'
-        projects = conn.execute(query).fetchall()
-
-        for project in projects:
-            contractor = (project.get('contractor') or '').strip().upper()
-            mun = (project.get('municipality') or '').strip().upper()
-            prov = (project.get('province') or '').strip().upper()
-
-            # Match Contractor
-            if len(contractor) > 5 and contractor in user_text_upper:
-                return project
-            # Match Location
-            if mun and prov and f"{mun}, {prov}" in user_text_upper:
-                return project
-    except:
-        pass
-    finally:
-        conn.close()
-    return None
-
+# --- AUTH & INTELLIGENCE ---
+ADMIN_PASSWORD = "hydra_admin_2025" 
 
 def analyze_text_flags(text):
     flags = []
-    if not text:
-        return flags
+    if not text: return flags
     text_upper = text.upper()
-
+    
     for contractor in KNOWN_BAD_CONTRACTORS:
         if contractor in text_upper:
             flags.append(f"BLACKLIST MATCH: {contractor}")
-
-    keywords = ["GHOST", "INCOMPLETE", "BRIBE",
-                "SUBSTANDARD", "CRACK", "DELAY", "ABANDONED"]
+            
+    keywords = ["GHOST", "INCOMPLETE", "BRIBE", "SUBSTANDARD", "CRACK", "DELAY", "ABANDONED"]
     for word in keywords:
-        if word in text_upper:
-            flags.append(word)
+        if word in text_upper: flags.append(word)
     return flags
 
+def scan_database_for_match(text, conn):
+    if not text: return None
+    text_upper = text.upper()
+    cursor = conn.cursor()
+    
+    try:
+        cursor.execute("SELECT * FROM projects WHERE is_flagged = 1")
+        flagged_projects = cursor.fetchall()
+        
+        possible_matches = []
+        for proj in flagged_projects:
+            contractor = (proj.get('contractor') or '').upper()
+            location = (proj.get('municipality') or '').upper()
+            
+            if contractor and len(contractor) > 5 and contractor in text_upper:
+                possible_matches.append(proj)
+            elif location and len(location) > 5 and location in text_upper:
+                possible_matches.append(proj)
+                
+        possible_matches.sort(key=lambda x: x.get('suspicion_score', 0), reverse=True)
+        return possible_matches[0] if possible_matches else None
+    except:
+        return None
 
-def get_mime_type(filename):
-    ext = os.path.splitext(filename)[1].lower()
-    mime_types = {
-        '.jpg': 'image/jpeg',
-        '.jpeg': 'image/jpeg',
-        '.png': 'image/png',
-        '.pdf': 'application/pdf',
-        '.docx': 'application/msword',
-        '.mp4': 'video/mp4',   # <--- ADDED THIS
-        '.mov': 'video/quicktime',
-        '.avi': 'video/x-msvideo'
-    }
-    return mime_types.get(ext, 'application/octet-stream')
+# --- ROUTES ---
 
-# ============================================================
-# 5. API ROUTES
-# ============================================================
-
+@app.route('/api/admin/login', methods=['POST'])
+def admin_login():
+    data = request.json
+    if data.get('password') == ADMIN_PASSWORD:
+        return jsonify({"status": "success", "token": "verified_admin_token"}), 200
+    return jsonify({"status": "error", "message": "Invalid credentials"}), 401
 
 @app.route('/api/submit-evidence', methods=['POST'])
 def submit_evidence():
     try:
         text_content = request.form.get('description', '')
         files = request.files.getlist('files')
-
-        # 1. Check for intelligence matches
-        matched_project = check_database_for_matches(text_content)
-        linked_project_id = None
-
         conn = get_db_connection()
-        if not conn:
-            return jsonify({"error": "DB Error"}), 500
+        if not conn: return jsonify({"error": "DB Error"}), 500
 
-        # 2. If match found, UPDATE the project stats
-        if matched_project:
-            linked_project_id = matched_project['id']
-            conn.execute('''
-                UPDATE projects 
-                SET is_flagged = 1, 
-                    color_triage = 'RED', 
-                    suspicion_score = CASE 
-                        WHEN suspicion_score < 90 THEN suspicion_score + 10 
-                        ELSE 100 
-                    END,
-                    flag_count = flag_count + 1
-                WHERE id = ?
-            ''', (linked_project_id,))
+        conn.execute('''
+            CREATE TABLE IF NOT EXISTS reports (
+                id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                case_id TEXT UNIQUE, 
+                description TEXT, 
+                files TEXT, 
+                status TEXT DEFAULT "PENDING", 
+                ai_flags TEXT, 
+                timestamp TEXT, 
+                admin_notes TEXT,
+                linked_project_id INTEGER
+            )
+        ''')
 
-        # 3. Create Report Record
+        existing_match = scan_database_for_match(text_content, conn)
+        if existing_match:
+            conn.close()
+            return jsonify({
+                "status": "match_found",
+                "message": "This project is already in our database.",
+                "match_data": existing_match
+            }), 200
+
         case_id = str(uuid.uuid4())[:8].upper()
-        ai_flags = analyze_text_flags(text_content)
-        timestamp = datetime.datetime.now().isoformat()
-
-        cursor = conn.execute('''
-            INSERT INTO reports (case_id, description, status, ai_flags, timestamp, linked_project_id)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', (case_id, text_content, 'PENDING', json.dumps(ai_flags), timestamp, linked_project_id))
-
-        report_id = cursor.lastrowid
-
-        # 4. Save Files to Database (BLOB)
+        saved_files = []
         for file in files:
-            if file.filename == '':
-                continue
-            file_data = file.read()
-            file_type = get_mime_type(file.filename)
-            conn.execute('''
-                INSERT INTO report_files (report_id, case_id, original_filename, file_data, file_type, file_size, uploaded_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-            ''', (report_id, case_id, file.filename, file_data, file_type, len(file_data), timestamp))
+            if file.filename == '': continue
+            ext = os.path.splitext(file.filename)[1]
+            safe_name = f"{case_id}_{uuid.uuid4().hex[:6]}{ext}"
+            file.save(os.path.join(UPLOAD_FOLDER, safe_name))
+            saved_files.append(safe_name)
 
+        ai_flags = analyze_text_flags(text_content)
+
+        conn.execute('''
+            INSERT INTO reports (case_id, description, files, status, ai_flags, timestamp)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (case_id, text_content, json.dumps(saved_files), 'PENDING', json.dumps(ai_flags), datetime.datetime.now().isoformat()))
         conn.commit()
         conn.close()
 
         return jsonify({
             "status": "queued_for_admin",
             "case_id": case_id,
-            "flags_detected": ai_flags,
-            "match_found": True if matched_project else False
+            "flags_detected": ai_flags
         }), 200
-
     except Exception as e:
-        print(f"Submit Error: {e}")
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# --- FILE ROUTES ---
+# --- ADMIN MANAGEMENT ---
 
-
-@app.route('/api/files/base64/<int:file_id>', methods=['GET'])
-def get_file_base64(file_id):
+@app.route('/api/admin/reports', methods=['GET'])
+def get_admin_reports():
+    conn = get_db_connection()
+    if not conn: return jsonify([]), 200
     try:
-        conn = sqlite3.connect(DATABASE_FILE)
-        cursor = conn.cursor()
-        result = cursor.execute(
-            'SELECT original_filename, file_data, file_type FROM report_files WHERE id = ?', (file_id,)).fetchone()
+        reports = conn.execute("SELECT * FROM reports WHERE status = 'PENDING' ORDER BY id DESC").fetchall()
+        
+        # Helper for stats
+        def get_count(query):
+            try: return conn.execute(query).fetchone()['c']
+            except: return 0
+
+        total_reports = get_count("SELECT COUNT(*) as c FROM reports")
+        published = get_count("SELECT COUNT(*) as c FROM reports WHERE status = 'PUBLISHED'")
+        
         conn.close()
-        if not result:
-            return jsonify({"error": "Not found"}), 404
-        filename, data, ftype = result
-        b64 = base64.b64encode(data).decode('utf-8')
-        return jsonify({"filename": filename, "type": ftype, "data": f"data:{ftype};base64,{b64}"}), 200
+        return jsonify({
+            "reports": reports,
+            "stats": {
+                "pending": len(reports),
+                "total": total_reports,
+                "published": published,
+                "blacklist_count": len(KNOWN_BAD_CONTRACTORS)
+            }
+        }), 200
+    except: return jsonify({"reports": [], "stats": {}}), 200
+
+@app.route('/api/admin/publish/<int:report_id>', methods=['POST'])
+def publish_report(report_id):
+    conn = get_db_connection()
+    
+    # Create published_reports table if needed
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS published_reports (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            report_id INTEGER,
+            published_at TEXT,
+            public_summary TEXT,
+            FOREIGN KEY(report_id) REFERENCES reports(id)
+        )
+    ''')
+    
+    conn.execute("UPDATE reports SET status = 'PUBLISHED' WHERE id = ?", (report_id,))
+    
+    # Add entry to public table
+    conn.execute('''
+        INSERT INTO published_reports (report_id, published_at, public_summary)
+        VALUES (?, ?, ?)
+    ''', (report_id, datetime.datetime.now().isoformat(), "Verified by HYDRA Investigation Unit."))
+    
+    conn.commit()
+    conn.close()
+    return jsonify({"status": "success"}), 200
+
+@app.route('/api/admin/delete/<int:report_id>', methods=['POST'])
+def delete_report(report_id):
+    conn = get_db_connection()
+    conn.execute("DELETE FROM reports WHERE id = ?", (report_id,))
+    conn.commit()
+    conn.close()
+    return jsonify({"status": "success"}), 200
+
+# --- PUBLIC ROUTES ---
+
+@app.route('/api/public-reports', methods=['GET'])
+def get_public_reports():
+    conn = get_db_connection()
+    if not conn: return jsonify([]), 200
+    try:
+        query = '''
+            SELECT 
+                pr.id as pub_id, 
+                pr.published_at, 
+                pr.public_summary, 
+                r.case_id, 
+                r.description, 
+                r.ai_flags, 
+                r.timestamp
+            FROM published_reports pr
+            JOIN reports r ON pr.report_id = r.id
+            ORDER BY pr.id DESC
+        '''
+        reports = conn.execute(query).fetchall()
+        conn.close()
+        return jsonify(reports), 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-
-@app.route('/api/files/<case_id>', methods=['GET'])
-def get_case_files(case_id):
-    try:
-        conn = get_db_connection()
-        files = conn.execute(
-            'SELECT id, original_filename, file_type, file_size FROM report_files WHERE case_id = ?', (case_id,)).fetchall()
-        conn.close()
-        return jsonify(files), 200
-    except:
+        print(f"Public Reports Error: {e}")
         return jsonify([]), 200
 
-# --- PROJECT DATA ROUTE ---
-
+# Helper function
+def calculate_risk_level(suspicion_score, max_severity):
+    sev = (max_severity or '').upper()
+    score = float(suspicion_score) if suspicion_score else 0
+    if sev == 'CRITICAL' or score >= 80:
+        return ('Critical', 'Red', 'IMMEDIATE INVESTIGATION. Strong evidence of anomaly.')
+    if sev == 'HIGH' or score >= 40:
+        return ('High', 'Yellow', 'PRIORITY INVESTIGATION. Serious red flags detected.')
+    return ('Low', 'Green', 'CONTINUOUS MONITORING. No major anomalies detected.')
 
 @app.route('/api/projects', methods=['GET'])
 def get_projects():
@@ -358,143 +317,40 @@ def get_projects():
     except Exception as e:
         return jsonify([]), 200
 
-# --- ADMIN ROUTES ---
-
-
-@app.route('/api/admin/login', methods=['POST'])
-def admin_login():
-    if request.json.get('password') == "hydra_admin_2025":
-        return jsonify({"status": "success", "token": "verified_admin_token"}), 200
-    return jsonify({"status": "error"}), 401
-
-
-@app.route('/api/admin/reports', methods=['GET'])
-def get_admin_reports():
-    conn = get_db_connection()
-    if not conn:
-        return jsonify({"reports": [], "stats": {}}), 200
-    try:
-        pending_reports = conn.execute('''
-            SELECT r.id, r.case_id, r.description, r.status, r.ai_flags, r.timestamp,
-                   (SELECT COUNT(*) FROM report_files rf WHERE rf.case_id = r.case_id) as file_count
-            FROM reports r 
-            WHERE r.status = 'PENDING' 
-            ORDER BY r.id DESC
-        ''').fetchall()
-
-        stats_result = conn.execute('''
-            SELECT 
-                (SELECT COUNT(*) FROM reports WHERE status = 'PENDING') as pending,
-                (SELECT COUNT(*) FROM published_reports) as published,
-                (SELECT COUNT(*) FROM reports) as total
-        ''').fetchone()
-
-        stats = {
-            "pending": stats_result['pending'] or 0,
-            "published": stats_result['published'] or 0,
-            "total": stats_result['total'] or 0,
-            "blacklist_count": len(KNOWN_BAD_CONTRACTORS)
-        }
-        conn.close()
-        return jsonify({"reports": pending_reports, "stats": stats}), 200
-    except:
-        return jsonify({"reports": [], "stats": {}}), 200
-
-
 @app.route('/api/stats', methods=['GET'])
 def get_stats():
     try:
         conn = get_db_connection()
-        stats = {'total_projects': 0, 'total_budget': 0, 'flagged_projects': 0}
-        res = conn.execute(
-            'SELECT COUNT(*) as c, SUM(contract_cost) as s FROM projects').fetchone()
-        stats['total_projects'] = res['c'] or 0
-        stats['total_budget'] = res['s'] or 0
-        res_f = conn.execute(
-            'SELECT COUNT(*) as c FROM projects WHERE suspicion_score >= 40').fetchone()
-        stats['flagged_projects'] = res_f['c'] or 0
+        if not conn: return jsonify({'error': 'DB Error'}), 500
+        cursor = conn.cursor()
+        
+        stats = {'total_projects': 0, 'total_budget': 0, 'flagged_projects': 0, 'flagged_percentage': 0}
+        
+        try:
+            cursor.execute('SELECT COUNT(*) as count, SUM(contract_cost) as total_money FROM projects')
+            total_row = cursor.fetchone()
+            if total_row:
+                stats['total_projects'] = total_row['count'] or 0
+                stats['total_budget'] = total_row['total_money'] or 0
+
+            cursor.execute(f'''
+                SELECT COUNT(*) as count 
+                FROM projects 
+                WHERE suspicion_score >= 40 OR max_severity IN ('HIGH', 'CRITICAL')
+            ''')
+            flagged_row = cursor.fetchone()
+            if flagged_row:
+                stats['flagged_projects'] = flagged_row['count'] or 0
+
+            if stats['total_projects'] > 0:
+                stats['flagged_percentage'] = round((stats['flagged_projects'] / stats['total_projects']) * 100, 1)
+        except sqlite3.OperationalError:
+            pass
+
         conn.close()
         return jsonify(stats), 200
-    except:
-        return jsonify({}), 200
-
-# ⚠️ THIS WAS MISSING BEFORE - THE PUBLISH ROUTE
-
-
-@app.route('/api/admin/publish/<int:report_id>', methods=['POST'])
-def publish_report(report_id):
-    try:
-        conn = get_db_connection()
-        if not conn:
-            return jsonify({"error": "DB Error"}), 500
-
-        # 1. Update Main Report Status
-        conn.execute(
-            "UPDATE reports SET status = 'PUBLISHED' WHERE id = ?", (report_id,))
-
-        # 2. Add to Published Reports Table
-        row = conn.execute(
-            "SELECT description FROM reports WHERE id = ?", (report_id,)).fetchone()
-        summary = row['description'] if row else "No description"
-        timestamp = datetime.datetime.now().isoformat()
-
-        conn.execute('''
-            INSERT OR IGNORE INTO published_reports (report_id, published_at, public_summary)
-            VALUES (?, ?, ?)
-        ''', (report_id, timestamp, summary))
-
-        conn.commit()
-        conn.close()
-        return jsonify({"status": "success"}), 200
     except Exception as e:
-        print(f"Publish Error: {e}")
-        return jsonify({"status": "error", "message": str(e)}), 500
-
-
-@app.route('/api/public-reports', methods=['GET'])
-def get_public_reports():
-    conn = get_db_connection()
-    if not conn:
-        return jsonify([]), 200
-    try:
-        # UPGRADED QUERY: Fetches filenames AND file types
-        query = '''
-            SELECT 
-                pr.id as pub_id, 
-                pr.published_at, 
-                pr.public_summary, 
-                r.case_id, 
-                r.description, 
-                r.ai_flags, 
-                r.timestamp,
-                p.contractor as contractor_name,
-                (SELECT COUNT(*) FROM report_files rf WHERE rf.case_id = r.case_id) as file_count,
-                (SELECT GROUP_CONCAT(file_type) FROM report_files rf WHERE rf.case_id = r.case_id) as raw_file_types,
-                (SELECT GROUP_CONCAT(original_filename) FROM report_files rf WHERE rf.case_id = r.case_id) as raw_filenames
-            FROM published_reports pr
-            JOIN reports r ON pr.report_id = r.id
-            LEFT JOIN projects p ON r.linked_project_id = p.id
-            ORDER BY pr.id DESC
-        '''
-        reports = conn.execute(query).fetchall()
-        conn.close()
-        return jsonify(reports), 200
-    except Exception as e:
-        print(f"Public Reports Error: {e}")
-        return jsonify([]), 200
-
-
-@app.route('/api/admin/delete/<int:report_id>', methods=['POST', 'DELETE'])
-def delete_report(report_id):
-    try:
-        conn = get_db_connection()
-        conn.execute("DELETE FROM reports WHERE id = ?", (report_id,))
-        conn.commit()
-        conn.close()
-        return jsonify({"status": "success"}), 200
-    except Exception as e:
-        return jsonify({"status": "error"}), 500
-
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
