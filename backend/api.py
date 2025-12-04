@@ -5,6 +5,8 @@ import datetime
 import sqlite3
 import json
 import base64
+# --- 1. NEW IMPORT FOR AI ---
+import google.generativeai as genai
 from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
 
@@ -27,7 +29,19 @@ DATABASE_FILE = next((p for p in POSSIBLE_DB_PATHS if os.path.exists(p)),
 print(f"⚡ Database Path: {DATABASE_FILE}")
 
 # ============================================================
-# 2. INTELLIGENCE DATA (Hardcoded for Stability)
+# 2. AI CONFIGURATION (NEW SECTION)
+# ============================================================
+# ⚠️ PASTE YOUR KEY HERE ⚠️
+GENAI_API_KEY = "Blanko"
+
+try:
+    genai.configure(api_key=GENAI_API_KEY)
+    print("🤖 AI Neural Core: ONLINE")
+except Exception as e:
+    print(f"⚠️ AI Config Error: {e}")
+
+# ============================================================
+# 3. INTELLIGENCE DATA (Hardcoded for Stability)
 # ============================================================
 KNOWN_BAD_CONTRACTORS = {
     'SYMS CONSTRUCTION TRADING': {'reason': 'Ghost projects', 'severity': 'CRITICAL'},
@@ -44,7 +58,7 @@ KNOWN_BAD_CONTRACTORS = {
 }
 
 # ============================================================
-# 3. DATABASE HELPERS & INITIALIZATION
+# 4. DATABASE HELPERS & INITIALIZATION
 # ============================================================
 
 
@@ -125,7 +139,7 @@ def init_tables():
 init_tables()
 
 # ============================================================
-# 4. INTELLIGENCE LOGIC
+# 5. INTELLIGENCE LOGIC
 # ============================================================
 
 
@@ -199,15 +213,94 @@ def get_mime_type(filename):
         '.png': 'image/png',
         '.pdf': 'application/pdf',
         '.docx': 'application/msword',
-        '.mp4': 'video/mp4',   # <--- ADDED THIS
+        '.mp4': 'video/mp4',
         '.mov': 'video/quicktime',
         '.avi': 'video/x-msvideo'
     }
     return mime_types.get(ext, 'application/octet-stream')
 
 # ============================================================
-# 5. API ROUTES
+# 6. API ROUTES
 # ============================================================
+
+# --- NEW: AI CHAT ROUTE ---
+
+
+@app.route('/api/chat', methods=['POST'])
+def chat_with_hydra():
+    conn = None
+    try:
+        user_message = request.json.get('message', '') if request.json else ''
+
+        if not user_message:
+            return jsonify({"reply": "Please provide a message."}), 400
+
+        # 1. GET DATABASE DATA
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({"reply": "⚠️ Database offline."}), 500
+
+        stats = conn.execute(
+            "SELECT COUNT(*) as c, COALESCE(SUM(contract_cost), 0) as s FROM projects"
+        ).fetchone()
+
+        worst_projects = conn.execute("""
+            SELECT project_description, contractor, suspicion_score, municipality 
+            FROM projects WHERE suspicion_score > 0 ORDER BY suspicion_score DESC LIMIT 3
+        """).fetchall()
+
+        conn.close()
+        conn = None
+
+        # 2. CREATE AI PROMPT
+        system_instruction = f"""You are HYDRA, an AI Investigator for the Philippines Dept of Public Works.
+
+SYSTEM STATUS:
+- Projects Monitored: {stats['c']}
+- Total Budget: ₱{stats['s']:,.2f}
+
+HIGH RISK PROJECTS:
+{json.dumps([dict(r) for r in worst_projects], indent=2)}
+
+BLACKLISTED CONTRACTORS:
+{', '.join(KNOWN_BAD_CONTRACTORS.keys())}
+
+USER QUERY: {user_message}
+
+INSTRUCTIONS: Answer as a professional investigator. Keep responses concise (max 3-4 sentences). Reference data when relevant."""
+
+        # 3. TRY MULTIPLE MODEL NAMES (IN ORDER OF PREFERENCE)
+        model_names_to_try = [
+            'models/gemini-2.5-flash',       # Latest stable (Dec 2024)
+            'models/gemini-2.0-flash-exp',   # Experimental backup
+            'models/gemini-2.5-pro',         # More powerful alternative
+        ]
+
+        last_error = None
+
+        for model_name in model_names_to_try:
+            try:
+                model = genai.GenerativeModel(model_name)
+                response = model.generate_content(system_instruction)
+
+                if response and hasattr(response, 'text'):
+                    return jsonify({"reply": response.text}), 200
+
+            except Exception as model_error:
+                last_error = str(model_error)
+                continue
+
+        # If all models failed
+        return jsonify({
+            "reply": f"⚠️ All AI models unavailable. Last error: {last_error}"
+        }), 500
+
+    except Exception as e:
+        return jsonify({"reply": f"⚠️ System Error: {str(e)}"}), 500
+
+    finally:
+        if conn:
+            conn.close()
 
 
 @app.route('/api/submit-evidence', methods=['POST'])
@@ -405,20 +498,55 @@ def get_admin_reports():
 def get_stats():
     try:
         conn = get_db_connection()
-        stats = {'total_projects': 0, 'total_budget': 0, 'flagged_projects': 0}
-        res = conn.execute(
-            'SELECT COUNT(*) as c, SUM(contract_cost) as s FROM projects').fetchone()
-        stats['total_projects'] = res['c'] or 0
-        stats['total_budget'] = res['s'] or 0
-        res_f = conn.execute(
-            'SELECT COUNT(*) as c FROM projects WHERE suspicion_score >= 40').fetchone()
-        stats['flagged_projects'] = res_f['c'] or 0
-        conn.close()
-        return jsonify(stats), 200
-    except:
-        return jsonify({}), 200
+        if not conn:
+            return jsonify({
+                'total_projects': 0,
+                'total_budget': 0,
+                'flagged_projects': 0,
+                'flagged_percentage': 0
+            }), 200
 
-# ⚠️ THIS WAS MISSING BEFORE - THE PUBLISH ROUTE
+        # Get total projects and budget
+        res = conn.execute(
+            'SELECT COUNT(*) as c, COALESCE(SUM(contract_cost), 0) as s FROM projects'
+        ).fetchone()
+
+        total_projects = res['c'] or 0
+        total_budget = res['s'] or 0
+
+        # Get flagged projects count
+        res_f = conn.execute(
+            'SELECT COUNT(*) as c FROM projects WHERE suspicion_score >= 40'
+        ).fetchone()
+
+        flagged_projects = res_f['c'] or 0
+
+        # Calculate percentage (avoid division by zero)
+        if total_projects > 0:
+            flagged_percentage = round(
+                (flagged_projects / total_projects) * 100, 1)
+        else:
+            flagged_percentage = 0
+
+        conn.close()
+
+        stats = {
+            'total_projects': total_projects,
+            'total_budget': total_budget,
+            'flagged_projects': flagged_projects,
+            'flagged_percentage': flagged_percentage
+        }
+
+        return jsonify(stats), 200
+
+    except Exception as e:
+        print(f"Stats Error: {e}")
+        return jsonify({
+            'total_projects': 0,
+            'total_budget': 0,
+            'flagged_projects': 0,
+            'flagged_percentage': 0
+        }), 200
 
 
 @app.route('/api/admin/publish/<int:report_id>', methods=['POST'])

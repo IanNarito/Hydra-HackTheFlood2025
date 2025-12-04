@@ -3,6 +3,8 @@ import { LayoutDashboard, Map, FolderOpen, AlertCircle, ShieldAlert, Activity, M
 import { Link } from 'react-router-dom';
 // Ensure these imports match your actual file structure
 import { fetchStats, fetchProjects, getRiskConfig } from '../services/api.js';
+// 1. IMPORT THE CHATBOT
+import ChatBot from "../components/ChatBot";
 
 const Dashboard = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -134,7 +136,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#111111] text-gray-300 font-sans selection:bg-red-900 selection:text-white">
+    <div className="min-h-screen bg-[#111111] text-gray-300 font-sans selection:bg-red-900 selection:text-white relative">
       {/* Navigation Bar */}
       <nav className="border-b border-gray-800 bg-[#161616] sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -355,6 +357,9 @@ const Dashboard = () => {
         </div>
 
       </main>
+
+      {/* 2. CHATBOT IS PLACED HERE */}
+      <ChatBot />
 
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
