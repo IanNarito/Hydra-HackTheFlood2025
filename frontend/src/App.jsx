@@ -4,6 +4,7 @@ import { LandingPage } from './pages/LandingPage.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import InvestigatorMap from './pages/InvestigatorMap.jsx'; 
 import Dropbox from './pages/Dropbox.jsx';
+import SatelliteEvidence from './pages/SatelliteEvidence.jsx';
 import { LoadingPage } from './components/LoadingPage.jsx';
 
 function App() {
@@ -49,6 +50,9 @@ function App() {
 
         {/* Loading page route for testing */}
         <Route path="/loading" element={<LoadingPage />} />
+
+        {/* Satellite Evidence page route */}
+        <Route path="/satellite/:projectId" element={<SatelliteEvidence />} />
       </Routes>
     </Router>
   );

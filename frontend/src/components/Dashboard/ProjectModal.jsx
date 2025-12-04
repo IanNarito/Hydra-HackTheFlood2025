@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { X, Calendar, DollarSign, Clock, AlertTriangle, Map, Eye, Shield } from 'lucide-react';
+import SatellitePreviewImage from './SatellitePreviewImage';
 
 const ProjectModal = ({ project, onClose }) => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -184,21 +187,19 @@ const ProjectModal = ({ project, onClose }) => {
           )}
 
           {/* Preview Image */}
-          <div className="relative group rounded-xl overflow-hidden border border-gray-800 h-48 bg-gray-900">
-            <div className="absolute top-3 left-3 bg-black/60 backdrop-blur text-xs text-white px-2 py-1 rounded flex items-center gap-2 z-10">
-              <Map size={12} /> Project Preview
-            </div>
-            <img
-              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1000&auto=format&fit=crop"
-              alt="Construction Site"
-              className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-            />
-          </div>
+          <SatellitePreviewImage
+            latitude={project.latitude}
+            longitude={project.longitude}
+            projectName={project.name}
+          />
         </div>
 
         {/* Footer */}
         <div className="p-6 border-t border-gray-800 bg-[#161616] flex gap-4 shrink-0">
-          <button className="flex-1 bg-red-900/80 hover:bg-red-800 text-white py-3 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2 border border-red-900 shadow-lg shadow-red-900/20">
+          <button 
+            onClick={() => navigate(`/satellite/${project.id}`)}
+            className="flex-1 bg-red-900/80 hover:bg-red-800 text-white py-3 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2 border border-red-900 shadow-lg shadow-red-900/20"
+          >
             <Eye size={16} /> View Satellite Evidence
           </button>
           <button
