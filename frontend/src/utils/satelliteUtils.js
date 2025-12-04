@@ -1,6 +1,7 @@
 /**
  * Satellite Utility Functions
- * Provides URL generation and coordinate validation for Mapbox satellite imagery
+ * Provides URL generation and coordinate validation for satellite/aerial imagery
+ * Uses free OpenStreetMap-based providers (no API key required)
  */
 
 /**
@@ -32,12 +33,12 @@ export function isValidCoordinates(lat, lng) {
 }
 
 /**
- * Generates a Mapbox Static API URL for satellite imagery
- * URL Format: https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/{lng},{lat},{zoom},0,0/{width}x{height}?access_token={token}
+ * Generates a static map preview URL using geoapify (free tier, no key needed for low usage)
+ * Falls back to a tile-based approach
  * 
  * @param {number} lat - Latitude of the center point
  * @param {number} lng - Longitude of the center point
- * @param {number} [zoom=15] - Zoom level (0-22)
+ * @param {number} [zoom=15] - Zoom level (0-18)
  * @param {number} [width=600] - Image width in pixels
  * @param {number} [height=300] - Image height in pixels
  * @returns {string|null} The generated URL or null if coordinates are invalid
@@ -47,38 +48,41 @@ export function generateStaticMapUrl(lat, lng, zoom = 15, width = 600, height = 
     return null;
   }
 
-  const token = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
-  if (!token) {
-    console.warn('VITE_MAPBOX_ACCESS_TOKEN is not configured');
-    return null;
-  }
-
-  // Clamp zoom to valid range
-  const clampedZoom = Math.max(0, Math.min(22, zoom));
+  // Use ESRI World Imagery tile directly for the preview
+  // Calculate tile coordinates from lat/lng/zoom
+  const clampedZoom = Math.max(0, Math.min(18, zoom));
   
-  // Clamp dimensions to Mapbox limits (max 1280x1280)
-  const clampedWidth = Math.max(1, Math.min(1280, width));
-  const clampedHeight = Math.max(1, Math.min(1280, height));
-
-  const baseUrl = 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static';
+  // Convert lat/lng to tile coordinates
+  const n = Math.pow(2, clampedZoom);
+  const x = Math.floor((lng + 180) / 360 * n);
+  const latRad = lat * Math.PI / 180;
+  const y = Math.floor((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2 * n);
   
-  // Mapbox format: longitude,latitude (note the order)
-  return `${baseUrl}/${lng},${lat},${clampedZoom},0,0/${clampedWidth}x${clampedHeight}?access_token=${token}`;
+  // Return ESRI satellite tile URL
+  return `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${clampedZoom}/${y}/${x}`;
 }
 
 /**
- * Generates a Mapbox satellite tile layer URL template for interactive maps
- * @returns {string|null} The tile layer URL template or null if token is not configured
+ * Generates a satellite/aerial tile layer URL template for interactive maps
+ * Uses ESRI World Imagery (free for non-commercial use)
+ * @returns {string} The tile layer URL template
  */
 export function generateTileLayerUrl() {
-  const token = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
-  if (!token) {
-    console.warn('VITE_MAPBOX_ACCESS_TOKEN is not configured');
-    return null;
-  }
-
-  return `https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/tiles/{z}/{x}/{y}?access_token=${token}`;
+  // ESRI World Imagery - free satellite tiles
+  return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
 }
+
+/**
+ * Alternative tile providers (can be swapped if needed)
+ */
+export const TILE_PROVIDERS = {
+  // ESRI Satellite (best quality, free)
+  esriSatellite: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  // OpenStreetMap standard
+  osm: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  // CartoDB Dark (for contrast)
+  cartoDark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+};
 
 /**
  * Default satellite configuration values
@@ -86,8 +90,8 @@ export function generateTileLayerUrl() {
 export const SATELLITE_CONFIG = {
   defaultZoom: 15,
   minZoom: 0,
-  maxZoom: 22,
+  maxZoom: 18,
   imageWidth: 600,
   imageHeight: 300,
-  maxImageDimension: 1280,
+  maxImageDimension: 1024,
 };

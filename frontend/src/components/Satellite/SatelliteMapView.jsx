@@ -49,12 +49,8 @@ const SatelliteMapView = ({
   // Generate tile layer URL on mount
   useEffect(() => {
     const url = generateTileLayerUrl();
-    if (url) {
-      setTileUrl(url);
-      setHasError(false);
-    } else {
-      setHasError(true);
-    }
+    setTileUrl(url);
+    setHasError(!url);
     setIsLoading(false);
   }, []);
 
@@ -207,9 +203,7 @@ const SatelliteMapView = ({
       >
         <TileLayer
           url={tileUrl}
-          attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
-          tileSize={512}
-          zoomOffset={-1}
+          attribution='&copy; <a href="https://www.esri.com/">Esri</a> World Imagery'
         />
         <ZoomControl position="bottomright" />
         <MapCenterUpdater latitude={latitude} longitude={longitude} />

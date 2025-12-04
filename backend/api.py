@@ -451,6 +451,66 @@ def get_projects():
     except Exception as e:
         return jsonify([]), 200
 
+
+@app.route('/api/projects/<int:project_id>', methods=['GET'])
+def get_project_by_id(project_id):
+    """Get a single project by ID for satellite evidence page"""
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({"error": "Database connection failed"}), 500
+        
+        cursor = conn.cursor()
+        query = '''
+            SELECT id, project_id, project_description, contractor, contract_cost,
+                region, province, municipality, start_date, completion_date,
+                is_flagged, max_severity, suspicion_score, color_triage, 
+                latitude, longitude, year, satellite_image_url
+            FROM projects
+            WHERE id = ?
+        '''
+        cursor.execute(query, (project_id,))
+        row = cursor.fetchone()
+        conn.close()
+        
+        if not row:
+            return jsonify({"error": "Project not found"}), 404
+        
+        raw_score = row.get('suspicion_score', 0)
+        score = float(raw_score) if raw_score is not None else 0.0
+        risk_level, color_name, risk_desc = calculate_risk_level(
+            score, row.get('max_severity'))
+        
+        project = {
+            'id': row['id'],
+            'project_id': row.get('project_id'),
+            'project_description': row.get('project_description'),
+            'name': row.get('project_description') or f"Project {row.get('project_id')}",
+            'contractor': row.get('contractor') or 'Unknown Contractor',
+            'risk': risk_level,
+            'color': color_name,
+            'score': score,
+            'latitude': row['latitude'],
+            'longitude': row['longitude'],
+            'contract_cost': row.get('contract_cost') or 0,
+            'budget': row.get('contract_cost') or 0,
+            'start_date': row.get('start_date') or 'N/A',
+            'completion_date': row.get('completion_date') or 'N/A',
+            'end_date': row.get('completion_date') or 'N/A',
+            'status': 'Flagged' if score >= 40 else 'Normal',
+            'risk_description': risk_desc,
+            'region': row.get('region'),
+            'province': row.get('province'),
+            'municipality': row.get('municipality'),
+            'year': row.get('year'),
+            'satellite_image_url': row.get('satellite_image_url')
+        }
+        
+        return jsonify(project), 200
+    except Exception as e:
+        print(f"Error fetching project {project_id}: {e}")
+        return jsonify({"error": str(e)}), 500
+
 # --- ADMIN ROUTES ---
 
 
