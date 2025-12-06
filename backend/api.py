@@ -28,7 +28,7 @@ print(f"⚡ Database Path: {DATABASE_FILE}")
 # 2. AI CONFIGURATION
 # ============================================================
 # ⚠️ PASTE YOUR KEY HERE ⚠️
-GENAI_API_KEY = "AIzaSyC7eE_XihiaxxDo27ctMITl0d0VwcsD2bE"
+GENAI_API_KEY = "AIzaSyBSLl29pvFc6hgrFecaLXs0pb1gev5RKiI"
 VALID_AI_MODELS = []
 
 try:
