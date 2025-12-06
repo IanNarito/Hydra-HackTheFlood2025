@@ -69,64 +69,66 @@ const ProjectModal = ({ project, onClose }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center px-4 transition-all duration-300 ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-2 sm:px-4 transition-all duration-300 ${
         isVisible
           ? 'bg-black/80 backdrop-blur-sm opacity-100'
           : 'bg-transparent opacity-0 pointer-events-none'
       }`}
+      onClick={handleClose}
     >
       {/* Modal Window */}
       <div
-        className={`bg-[#111] border border-gray-800 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] transition-all duration-300 transform ${
+        className={`bg-[#111] border border-gray-800 w-full max-w-2xl rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh] sm:max-h-[90vh] transition-all duration-300 transform ${
           isVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
         }`}
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="p-6 border-b border-gray-800 flex justify-between items-start bg-[#161616]">
-          <div>
-            <h2 className="text-xl md:text-2xl font-bold text-white tracking-wide uppercase">
+        <div className="p-4 sm:p-6 border-b border-gray-800 flex justify-between items-start bg-[#161616]">
+          <div className="flex-1 pr-2">
+            <h2 className="text-base sm:text-xl md:text-2xl font-bold text-white tracking-wide uppercase leading-tight">
               {project.name}
             </h2>
-            <p className="text-gray-400 text-sm mt-1">{project.contractor || "Unknown Contractor"}</p>
+            <p className="text-gray-400 text-xs sm:text-sm mt-1 truncate">{project.contractor || "Unknown Contractor"}</p>
           </div>
           <button
             onClick={handleClose}
-            className="text-gray-500 hover:text-white transition-colors p-1 hover:bg-gray-800 rounded-full"
+            className="text-gray-500 hover:text-white transition-colors p-1 hover:bg-gray-800 rounded-full flex-shrink-0"
           >
-            <X size={24} />
+            <X size={20} className="sm:w-6 sm:h-6" />
           </button>
         </div>
 
         {/* Body */}
-        <div className="overflow-y-auto p-6 space-y-6 custom-scrollbar">
+        <div className="overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-6 custom-scrollbar">
           
           {/* Risk Assessment Box */}
-          <div className={`bg-gradient-to-br border rounded-xl p-6 flex flex-col md:flex-row items-center gap-6 relative overflow-hidden ${
+          <div className={`bg-gradient-to-br border rounded-xl p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 relative overflow-hidden ${
              riskLabel === 'CRITICAL' ? 'from-red-900/20 to-transparent border-red-900/50' :
              riskLabel === 'HIGH' ? 'from-yellow-900/20 to-transparent border-yellow-900/50' :
              'from-green-900/20 to-transparent border-green-900/50'
           }`}>
             
-            <div className="flex-1 relative z-10">
-              <h3 className={`font-bold mb-2 flex items-center gap-2 ${riskLabelColor}`}>
-                <AlertTriangle size={16} /> Risk Assessment
+            <div className="flex-1 relative z-10 text-center sm:text-left">
+              <h3 className={`font-bold mb-2 flex items-center gap-2 justify-center sm:justify-start text-sm sm:text-base ${riskLabelColor}`}>
+                <AlertTriangle size={14} className="sm:w-4 sm:h-4" /> Risk Assessment
               </h3>
-              <p className="text-gray-300 text-xs md:text-sm leading-relaxed">
+              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
                 {getRiskDescription()}
               </p>
             </div>
 
             {/* Score Circle - NOW SHOWS EVEN FOR SCORE 0 */}
-            <div className={`shrink-0 relative w-24 h-24 flex items-center justify-center rounded-full border-4 shadow-[0_0_20px_rgba(0,0,0,0.3)] ${
+            <div className={`shrink-0 relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full border-4 shadow-[0_0_20px_rgba(0,0,0,0.3)] ${
                  riskLabel === 'CRITICAL' ? 'bg-red-900/20 border-red-900/30' :
                  riskLabel === 'HIGH' ? 'bg-yellow-900/20 border-yellow-900/30' :
                  'bg-green-900/20 border-green-900/30'
               }`}>
               <div className="text-center">
-                <span className={`text-3xl font-black block leading-none ${riskLabelColor}`}>
+                <span className={`text-2xl sm:text-3xl font-black block leading-none ${riskLabelColor}`}>
                   {scoreDisplay}
                 </span>
-                <span className={`text-[10px] uppercase tracking-widest font-bold ${riskLabelColor}`}>
+                <span className={`text-[9px] sm:text-[10px] uppercase tracking-widest font-bold ${riskLabelColor}`}>
                   SCORE
                 </span>
               </div>
@@ -143,11 +145,11 @@ const ProjectModal = ({ project, onClose }) => {
 
           {/* Location Info */}
           {(project.region || project.province || project.municipality) && (
-            <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl p-4">
-              <div className="flex items-center gap-2 text-gray-500 text-xs mb-2 uppercase font-bold tracking-wider">
-                <Map size={16} /> Location
+            <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl p-3 sm:p-4">
+              <div className="flex items-center gap-2 text-gray-500 text-[10px] sm:text-xs mb-2 uppercase font-bold tracking-wider">
+                <Map size={14} className="sm:w-4 sm:h-4" /> Location
               </div>
-              <div className="text-white text-sm">
+              <div className="text-white text-xs sm:text-sm break-words">
                 {[project.municipality, project.province, project.region].filter(Boolean).join(', ')}
               </div>
             </div>
@@ -162,23 +164,25 @@ const ProjectModal = ({ project, onClose }) => {
         </div>
 
         {/* === FOOTER BUTTONS === */}
-        <div className="p-6 border-t border-gray-800 bg-[#161616] flex gap-4 shrink-0">
+        <div className="p-3 sm:p-6 border-t border-gray-800 bg-[#161616] flex flex-col sm:flex-row gap-2 sm:gap-4 shrink-0">
           <button 
             onClick={() => navigate(`/satellite/${project.id}`)}
-            className="flex-1 bg-red-900/80 hover:bg-red-800 text-white py-3 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2 border border-red-900 shadow-lg shadow-red-900/20"
+            className="flex-1 bg-red-900/80 hover:bg-red-800 text-white py-2.5 sm:py-3 rounded-lg font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 border border-red-900 shadow-lg shadow-red-900/20"
           >
-            <Eye size={16} /> View Satellite Evidence
+            <Eye size={14} className="sm:w-4 sm:h-4" /> 
+            <span className="hidden sm:inline">View Satellite Evidence</span>
+            <span className="sm:hidden">Satellite Evidence</span>
           </button>
           <button
             onClick={handleClose}
-            className="flex-1 bg-transparent hover:bg-gray-800 text-gray-300 py-3 rounded-lg font-bold text-sm transition-all border border-gray-700"
+            className="flex-1 bg-transparent hover:bg-gray-800 text-gray-300 py-2.5 sm:py-3 rounded-lg font-bold text-xs sm:text-sm transition-all border border-gray-700"
           >
             Back to Map
           </button>
         </div>
 
-        <div className="px-6 pb-4 bg-[#161616]">
-          <p className="text-[10px] text-gray-600 border-t border-gray-800 pt-2 text-center">
+        <div className="px-3 sm:px-6 pb-3 sm:pb-4 bg-[#161616]">
+          <p className="text-[9px] sm:text-[10px] text-gray-600 border-t border-gray-800 pt-2 text-center leading-relaxed">
             <span className="font-bold text-gray-500">Disclaimer:</span> This risk assessment is based on automated forensic analysis of publicly available government data.
           </p>
         </div>
@@ -189,18 +193,18 @@ const ProjectModal = ({ project, onClose }) => {
 
 // Reusable stat box
 const StatBox = ({ icon, label, value, isTag }) => (
-  <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl p-4 flex flex-col justify-center">
-    <div className="flex items-center gap-2 text-gray-500 text-xs mb-1 uppercase font-bold tracking-wider">
-      {icon} {label}
+  <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl p-3 sm:p-4 flex flex-col justify-center">
+    <div className="flex items-center gap-1 sm:gap-2 text-gray-500 text-[10px] sm:text-xs mb-1 uppercase font-bold tracking-wider">
+      <span className="w-3 h-3 sm:w-4 sm:h-4">{icon}</span> {label}
     </div>
     {isTag ? (
       <div className="self-start mt-1">
-        <span className="bg-yellow-900/30 text-yellow-500 border border-yellow-700/50 px-3 py-1 rounded-md text-sm font-bold">
+        <span className="bg-yellow-900/30 text-yellow-500 border border-yellow-700/50 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md text-xs sm:text-sm font-bold">
           {value}
         </span>
       </div>
     ) : (
-      <div className="text-white font-mono text-lg font-bold tracking-tight truncate w-full" title={value}>{value}</div>
+      <div className="text-white font-mono text-sm sm:text-lg font-bold tracking-tight truncate w-full" title={value}>{value}</div>
     )}
   </div>
 );

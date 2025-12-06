@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Search, Building, MapPin, FileText, ChevronRight, Loader, Filter } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { fetchProjects } from '../services/api.js';
+import { PageTransition } from '../components/PageTransition';
+import { Navbar } from '../components/Navbar';
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
@@ -38,29 +39,17 @@ const SearchPage = () => {
   }, [query, projects, filterType]);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-gray-300 font-sans">
+    <PageTransition>
+      <div className="min-h-screen bg-[#050505] text-gray-300 font-sans">
       
-      {/* Navbar */}
-      <nav className="border-b border-gray-800 bg-[#111] sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-xl font-bold tracking-widest text-red-500">HYDRA</span>
-            <span className="text-xs bg-gray-800 text-gray-400 px-2 py-0.5 rounded border border-gray-700">DATABASE ACCESS</span>
-          </div>
-          <div className="flex gap-6 text-sm font-medium">
-            <Link to="/" className="hover:text-white transition-colors">Overview</Link>
-            <Link to="/map" className="hover:text-white transition-colors">Map</Link>
-            <Link to="/search" className="text-white border-b-2 border-red-500">Search</Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
-      <main className="max-w-5xl mx-auto px-4 py-12">
+      <main className="max-w-5xl mx-auto px-4 py-12 mt-16">
         
         {/* Search Header */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-white mb-4">Intelligence Database</h1>
-          <p className="text-gray-500">Search 10,000+ government contracts, contractors, and audits.</p>
+          <p className="text-gray-500">Search 10,000+ contractors and projects.</p>
         </div>
 
         {/* Search Input Area */}
@@ -146,7 +135,8 @@ const SearchPage = () => {
         </div>
 
       </main>
-    </div>
+      </div>
+    </PageTransition>
   );
 };
 

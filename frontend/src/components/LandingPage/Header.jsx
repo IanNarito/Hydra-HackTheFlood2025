@@ -17,8 +17,8 @@ const navigationItems = [
   { label: 'Overview', href: '/dashboard' },
   { label: 'Investigator Map', href: '/map' },
   { label: 'Dropbox', href: '/dropbox' },
-  { label: 'Reports', href: '/public-reports' }, 
-  { label: 'admin', href: '/admin' },
+  { label: 'Reports', href: '/public-reports' },
+  { label: 'Search', href: '/search' },
 ];
 
 export const Header = () => {

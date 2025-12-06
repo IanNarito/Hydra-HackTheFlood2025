@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { 
-  CloudUpload, FileText, Lock, EyeOff, Ghost, ShieldCheck, Menu, X, AlertTriangle, CheckCircle 
+  CloudUpload, FileText, Lock, EyeOff, Ghost, ShieldCheck, AlertTriangle, CheckCircle 
 } from 'lucide-react';
+import { PageTransition } from '../components/PageTransition';
+import { Navbar } from '../components/Navbar';
 
 const Dropbox = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   
   // Form State
@@ -152,45 +152,12 @@ const Dropbox = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#111111] text-gray-300 font-sans flex flex-col">
-      {/* Navigation Bar */}
-      <nav className="border-b border-gray-800 bg-[#161616] sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <div className="bg-red-900/20 p-2 rounded-lg">
-                <span className="text-xl font-bold tracking-widest text-red-500">HYDRA</span>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                <Link to="/Dashboard" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Overview</Link>
-                <Link to="/map" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Investigator map</Link>
-                <Link to="/dropbox" className="text-white px-3 py-2 rounded-md text-sm font-medium border-b-2 border-red-500">Dropbox</Link>
-                {/* Optional Links for Demo purposes */}
-                <Link to="/public-reports" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</Link>
-                <Link to="/admin" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin</Link>
-                <Link to="/search" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Search</Link>
-              </div>
-            </div>
-            <div className="-mr-2 flex md:hidden">
-              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 text-gray-400 hover:text-white">
-                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-        </div>
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-[#161616] border-b border-gray-800 px-2 pt-2 pb-3 space-y-1">
-            <Link to="/" className="block text-gray-400 px-3 py-2 rounded-md hover:bg-gray-800">Overview</Link>
-            <Link to="/map" className="block text-gray-400 px-3 py-2 rounded-md hover:bg-gray-800">Investigator map</Link>
-            <Link to="/dropbox" className="block text-white bg-gray-900 px-3 py-2 rounded-md">Dropbox</Link>
-          </div>
-        )}
-      </nav>
+    <PageTransition>
+      <div className="min-h-screen bg-[#111111] text-gray-300 font-sans flex flex-col">
+        <Navbar />
 
-      {/* Main Content */}
-      <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+        {/* Main Content */}
+        <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full mt-16">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Speak Truth to Power.<br />Safely.</h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
@@ -270,7 +237,8 @@ const Dropbox = () => {
           </div>
         </div>
       </main>
-    </div>
+      </div>
+    </PageTransition>
   );
 };
 

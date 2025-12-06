@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer, CircleMarker } from 'react-leaflet';
-import { Filter, Globe, Loader, AlertCircle, DollarSign, AlertTriangle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Filter, Globe, Loader, AlertCircle, DollarSign, AlertTriangle, Menu, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import 'leaflet/dist/leaflet.css';
 // Ensure this matches your folder casing exactly
 import ProjectModal from '../components/Dashboard/ProjectModal'; 
 import { fetchProjects, fetchStats, getRiskConfig } from '../services/api.js';
+import { PageTransition } from '../components/PageTransition';
+import { Navbar } from '../components/Navbar';
 
 const PHILIPPINE_REGIONS = [
   "All regions", "National Capital Region (NCR)", "Cordillera Administrative Region (CAR)",
@@ -36,6 +37,7 @@ const InvestigatorMap = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Mobile sidebar state
 
   useEffect(() => {
     const loadData = async () => {
@@ -118,75 +120,91 @@ const InvestigatorMap = () => {
   };
 
   return (
-    <div className="h-screen bg-[#111111] text-gray-300 font-sans flex flex-col overflow-hidden">
+    <PageTransition>
+      <div className="h-screen bg-[#111111] text-gray-300 font-sans flex flex-col overflow-hidden">
       
-      <nav className="border-b border-gray-800 bg-[#161616] z-50 shrink-0">
-        <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <div className="bg-red-900/20 p-2 rounded-lg">
-                <span className="text-xl font-bold tracking-widest text-red-500 block leading-none">HYDRA</span>
+      <Navbar />
+
+      <div className="flex flex-1 overflow-hidden relative mt-16">
+        {/* Mobile Sidebar Toggle Button */}
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="lg:hidden fixed top-20 left-4 z-30 bg-[#161616] border border-gray-800 p-3 rounded-lg shadow-xl hover:bg-gray-800 transition-colors"
+          aria-label="Toggle sidebar"
+        >
+          {isSidebarOpen ? <X size={20} className="text-white" /> : <Menu size={20} className="text-white" />}
+        </button>
+
+        {/* Sidebar - Responsive */}
+        <div className={`
+          fixed lg:relative
+          w-80 lg:w-80
+          bg-[#161616] border-r border-gray-800 
+          flex flex-col z-20 shadow-2xl
+          transition-transform duration-300 ease-in-out
+          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+          h-full
+        `}>
+          <div className="p-4 lg:p-6 pb-2 shrink-0">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-xl lg:text-2xl font-bold text-white">Investigator Map</h1>
+                <p className="text-xs text-gray-500 mt-1">Real-time monitoring</p>
               </div>
-            </div>
-            
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                <Link to="/Dashboard" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Overview</Link>
-                <Link to="/map" className="text-white border-b-2 border-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Investigator map</Link>
-                <Link to="/dropbox" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Dropbox</Link>
-                <Link to="/public-reports" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</Link>
-                <Link to="/admin" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin</Link>
-                <Link to="/search" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Search</Link>
-              </div>
+              {/* Close button for mobile */}
+              <button
+                onClick={() => setIsSidebarOpen(false)}
+                className="lg:hidden p-2 hover:bg-gray-800 rounded transition-colors"
+                aria-label="Close sidebar"
+              >
+                <X size={20} className="text-gray-400" />
+              </button>
             </div>
           </div>
-        </div>
-      </nav>
 
-      <div className="flex flex-1 overflow-hidden relative">
-        <div className="w-80 bg-[#161616] border-r border-gray-800 flex flex-col z-20 shadow-2xl">
-          <div className="p-6 pb-2 shrink-0">
-            <h1 className="text-2xl font-bold text-white">Investigator Map</h1>
-            <p className="text-xs text-gray-500 mt-1">Real-time monitoring</p>
-          </div>
-
-          <div className="p-4 flex-1 overflow-y-auto custom-scrollbar space-y-6">
+          <div className="p-3 lg:p-4 flex-1 overflow-y-auto custom-scrollbar space-y-4 lg:space-y-6">
             <div className="grid grid-cols-2 gap-2">
-                <div className="bg-[#1a1a1a] p-3 rounded-xl border border-gray-800">
-                    <div className="flex items-center gap-2 text-gray-400 text-xs mb-1">
+                <div className="bg-[#1a1a1a] p-2 lg:p-3 rounded-xl border border-gray-800">
+                    <div className="flex items-center gap-1 lg:gap-2 text-gray-400 text-[10px] lg:text-xs mb-1">
                         <DollarSign size={12} className="text-green-500"/> Total Budget
                     </div>
-                    <div className="text-white font-bold text-sm">
+                    <div className="text-white font-bold text-xs lg:text-sm">
                         {stats ? formatCurrency(stats.total_budget) : '...'}
                     </div>
                 </div>
-                <div className="bg-[#1a1a1a] p-3 rounded-xl border border-gray-800">
-                    <div className="flex items-center gap-2 text-gray-400 text-xs mb-1">
+                <div className="bg-[#1a1a1a] p-2 lg:p-3 rounded-xl border border-gray-800">
+                    <div className="flex items-center gap-1 lg:gap-2 text-gray-400 text-[10px] lg:text-xs mb-1">
                         <AlertTriangle size={12} className="text-red-500"/> Flagged %
                     </div>
-                    <div className="text-white font-bold text-sm">
+                    <div className="text-white font-bold text-xs lg:text-sm">
                         {stats ? `${stats.flagged_percentage}%` : '...'}
                     </div>
                 </div>
             </div>
 
-            <div className="bg-[#1a1a1a] rounded-xl p-4 border border-gray-800">
-              <div className="flex items-center gap-2 mb-4 text-gray-200 font-semibold">
-                <Filter size={16} /> Filter by Region
+            <div className="bg-[#1a1a1a] rounded-xl p-3 lg:p-4 border border-gray-800">
+              <div className="flex items-center gap-2 mb-3 lg:mb-4 text-gray-200 font-semibold text-sm">
+                <Filter size={14} /> Filter by Region
               </div>
-              <div className="space-y-1">
+              <div className="space-y-1 max-h-[200px] lg:max-h-none overflow-y-auto custom-scrollbar">
                 {PHILIPPINE_REGIONS.map((region) => (
                   <button
                     key={region}
-                    onClick={() => setActiveRegion(region)}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-[11px] uppercase font-bold tracking-wide transition-all flex items-center gap-2 ${
+                    onClick={() => {
+                      setActiveRegion(region);
+                      // Auto-close sidebar on mobile after selection
+                      if (window.innerWidth < 1024) {
+                        setTimeout(() => setIsSidebarOpen(false), 300);
+                      }
+                    }}
+                    className={`w-full text-left px-2 lg:px-3 py-1.5 lg:py-2 rounded-lg text-[10px] lg:text-[11px] uppercase font-bold tracking-wide transition-all flex items-center gap-2 ${
                       activeRegion === region 
                         ? 'bg-red-900/20 text-red-400 border border-red-900/50 shadow-[0_0_10px_rgba(220,38,38,0.1)]' 
                         : 'bg-transparent text-gray-500 hover:bg-[#222] hover:text-gray-300 border border-transparent'
                     }`}
                   >
-                    <Globe size={12} className={activeRegion === region ? "text-red-500" : "opacity-50"} />
-                    {region}
+                    <Globe size={10} className={activeRegion === region ? "text-red-500" : "opacity-50"} />
+                    <span className="truncate">{region}</span>
                   </button>
                 ))}
               </div>
@@ -198,8 +216,8 @@ const InvestigatorMap = () => {
               </div>
             </div>
             
-            <div className="bg-[#1a1a1a] rounded-xl p-4 border border-gray-800">
-               <h3 className="text-gray-200 font-semibold mb-3 text-sm">
+            <div className="bg-[#1a1a1a] rounded-xl p-3 lg:p-4 border border-gray-800">
+               <h3 className="text-gray-200 font-semibold mb-2 lg:mb-3 text-xs lg:text-sm">
                  Projects {!loading && filteredProjects.length > 0 && `(${filteredProjects.length})`}
                </h3>
                
@@ -217,17 +235,23 @@ const InvestigatorMap = () => {
                    No projects found for this region.
                  </div>
                ) : (
-                 <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                 <div className="space-y-1 lg:space-y-2 max-h-[200px] lg:max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
                    {filteredProjects.map(p => {
                      // Use the helper to determine sidebar dot color
                      const dotColor = getProjectColor(p);
                      return (
                        <div 
                          key={p.id} 
-                         onClick={() => setSelectedProject(p)} 
-                         className="flex items-center justify-between p-2 rounded hover:bg-[#222] cursor-pointer text-xs group transition-colors"
+                         onClick={() => {
+                           setSelectedProject(p);
+                           // Auto-close sidebar on mobile when project is selected
+                           if (window.innerWidth < 1024) {
+                             setIsSidebarOpen(false);
+                           }
+                         }} 
+                         className="flex items-center justify-between p-2 rounded hover:bg-[#222] cursor-pointer text-[10px] lg:text-xs group transition-colors"
                        >
-                         <span className="text-gray-400 group-hover:text-white truncate max-w-[150px]">
+                         <span className="text-gray-400 group-hover:text-white truncate max-w-[180px] lg:max-w-[150px]">
                            {p.name}
                          </span>
                          <span 
@@ -247,8 +271,16 @@ const InvestigatorMap = () => {
           </div>
         </div>
 
+        {/* Overlay for mobile when sidebar is open */}
+        {isSidebarOpen && (
+          <div 
+            className="lg:hidden fixed inset-0 bg-black/50 z-10"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+
         {/* MAP AREA */}
-        <div className="flex-1 bg-[#0d1117] relative z-10">
+        <div className="flex-1 bg-[#0d1117] relative z-0">
           {loading ? (
             <div className="h-full w-full flex flex-col items-center justify-center gap-4">
               <Loader className="animate-spin text-red-500" size={48} />
@@ -266,7 +298,10 @@ const InvestigatorMap = () => {
             <MapContainer 
               center={[12.8797, 121.7740]} 
               zoom={6} 
-              scrollWheelZoom={true} 
+              scrollWheelZoom={true}
+              zoomControl={true}
+              touchZoom={true}
+              doubleClickZoom={true}
               className="h-full w-full outline-none"
               style={{ background: '#0d1117' }}
             >
@@ -297,7 +332,13 @@ const InvestigatorMap = () => {
                     }}
                     radius={isCritical ? 8 : 5}
                     eventHandlers={{
-                      click: () => setSelectedProject(project),
+                      click: () => {
+                        setSelectedProject(project);
+                        // Close sidebar on mobile when marker is clicked
+                        if (window.innerWidth < 1024) {
+                          setIsSidebarOpen(false);
+                        }
+                      },
                     }}
                   />
                 );
@@ -306,6 +347,23 @@ const InvestigatorMap = () => {
           )}
           
           <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-[#111111] to-transparent pointer-events-none z-[1000]"></div>
+          
+          {/* Mobile Info Badge */}
+          <div className="lg:hidden absolute bottom-4 left-4 right-4 bg-[#161616]/95 backdrop-blur-sm border border-gray-800 rounded-lg p-3 shadow-xl z-[1000]">
+            <div className="flex items-center justify-between text-xs">
+              <div className="flex items-center gap-2">
+                <Globe size={14} className="text-red-500" />
+                <span className="text-gray-400">Region:</span>
+                <span className="text-white font-semibold">{activeRegion}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-gray-400">Projects:</span>
+                <span className="text-white font-bold bg-gray-800 px-2 py-0.5 rounded">
+                  {filteredProjects.length}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Render Modal */}
@@ -333,7 +391,8 @@ const InvestigatorMap = () => {
           background: #444; 
         }
       `}</style>
-    </div>
+      </div>
+    </PageTransition>
   );
 };
 
