@@ -5,10 +5,7 @@ import datetime
 import sqlite3
 import json
 import base64
-<<<<<<< HEAD
 import re
-=======
->>>>>>> 4f153171a493203153a6128979d05170b93afa8f
 import google.generativeai as genai
 from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
