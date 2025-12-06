@@ -273,8 +273,10 @@ const InvestigatorMap = () => {
               style={{ background: '#0d1117' }}
             >
               <TileLayer
-                attribution='&copy; CARTO'
-                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                attribution='&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+                url={`https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/{z}/{x}/{y}?access_token=${import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}`}
+                tileSize={512}
+                zoomOffset={-1}
               />
 
               {mapRenderOrder.map((project) => {

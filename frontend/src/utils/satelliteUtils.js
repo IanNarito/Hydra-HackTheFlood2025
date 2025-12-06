@@ -1,7 +1,7 @@
 /**
  * Satellite Utility Functions
  * Provides URL generation and coordinate validation for satellite/aerial imagery
- * Uses free OpenStreetMap-based providers (no API key required)
+ * Uses Mapbox satellite imagery
  */
 
 /**
@@ -33,12 +33,11 @@ export function isValidCoordinates(lat, lng) {
 }
 
 /**
- * Generates a static map preview URL using geoapify (free tier, no key needed for low usage)
- * Falls back to a tile-based approach
+ * Generates a static map preview URL using Mapbox Static Images API
  * 
  * @param {number} lat - Latitude of the center point
  * @param {number} lng - Longitude of the center point
- * @param {number} [zoom=15] - Zoom level (0-18)
+ * @param {number} [zoom=15] - Zoom level (0-22)
  * @param {number} [width=600] - Image width in pixels
  * @param {number} [height=300] - Image height in pixels
  * @returns {string|null} The generated URL or null if coordinates are invalid
@@ -48,40 +47,46 @@ export function generateStaticMapUrl(lat, lng, zoom = 15, width = 600, height = 
     return null;
   }
 
-  // Use ESRI World Imagery tile directly for the preview
-  // Calculate tile coordinates from lat/lng/zoom
-  const clampedZoom = Math.max(0, Math.min(18, zoom));
+  const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+  if (!accessToken) {
+    console.error('Mapbox access token not found');
+    return null;
+  }
+
+  const clampedZoom = Math.max(0, Math.min(22, zoom));
+  const clampedWidth = Math.min(width, 1280);
+  const clampedHeight = Math.min(height, 1280);
   
-  // Convert lat/lng to tile coordinates
-  const n = Math.pow(2, clampedZoom);
-  const x = Math.floor((lng + 180) / 360 * n);
-  const latRad = lat * Math.PI / 180;
-  const y = Math.floor((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2 * n);
-  
-  // Return ESRI satellite tile URL
-  return `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${clampedZoom}/${y}/${x}`;
+  // Mapbox Static Images API
+  return `https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/${lng},${lat},${clampedZoom}/${clampedWidth}x${clampedHeight}?access_token=${accessToken}`;
 }
 
 /**
  * Generates a satellite/aerial tile layer URL template for interactive maps
- * Uses ESRI World Imagery (free for non-commercial use)
+ * Uses Mapbox Satellite imagery
  * @returns {string} The tile layer URL template
  */
 export function generateTileLayerUrl() {
-  // ESRI World Imagery - free satellite tiles
-  return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+  const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+  if (!accessToken) {
+    console.error('Mapbox access token not found');
+    return null;
+  }
+  
+  // Mapbox Satellite tiles
+  return `https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
 }
 
 /**
  * Alternative tile providers (can be swapped if needed)
  */
 export const TILE_PROVIDERS = {
-  // ESRI Satellite (best quality, free)
-  esriSatellite: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-  // OpenStreetMap standard
-  osm: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-  // CartoDB Dark (for contrast)
-  cartoDark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  // Mapbox Satellite (primary)
+  mapboxSatellite: (token) => `https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=${token}`,
+  // Mapbox Streets
+  mapboxStreets: (token) => `https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/{z}/{x}/{y}?access_token=${token}`,
+  // Mapbox Dark
+  mapboxDark: (token) => `https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/{z}/{x}/{y}?access_token=${token}`,
 };
 
 /**
@@ -90,8 +95,8 @@ export const TILE_PROVIDERS = {
 export const SATELLITE_CONFIG = {
   defaultZoom: 15,
   minZoom: 0,
-  maxZoom: 18,
+  maxZoom: 22, // Mapbox supports up to zoom 22
   imageWidth: 600,
   imageHeight: 300,
-  maxImageDimension: 1024,
+  maxImageDimension: 1280, // Mapbox Static API max dimension
 };
