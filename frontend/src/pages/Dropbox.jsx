@@ -170,6 +170,7 @@ const Dropbox = () => {
                 {/* Optional Links for Demo purposes */}
                 <Link to="/public-reports" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</Link>
                 <Link to="/admin" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin</Link>
+                <Link to="/search" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Search</Link>
               </div>
             </div>
             <div className="-mr-2 flex md:hidden">

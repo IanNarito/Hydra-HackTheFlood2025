@@ -5,7 +5,6 @@ import datetime
 import sqlite3
 import json
 import base64
-# --- 1. NEW IMPORT FOR AI ---
 import google.generativeai as genai
 from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
@@ -35,7 +34,7 @@ print(f"⚡ Database Path: {DATABASE_FILE}")
 GENAI_API_KEY = "Blanko"
 
 try:
-    genai.configure(api_key=GENAI_API_KEY)
+    genai.configure(api_key="AIzaSyC7eE_XihiaxxDo27ctMITl0d0VwcsD2bE")
     print("🤖 AI Neural Core: ONLINE")
 except Exception as e:
     print(f"⚠️ AI Config Error: {e}")

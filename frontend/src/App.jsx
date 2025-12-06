@@ -9,6 +9,8 @@ import { LoadingPage } from './components/LoadingPage.jsx';
 import AdminPanel from './pages/AdminPanel.jsx'; 
 import PublicReports from './pages/PublicReports.jsx'; 
 import AdminLogin from './pages/AdminLogin.jsx'; 
+import SearchPage from './pages/SearchPage.jsx';
+
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -62,6 +64,9 @@ function App() {
 
         {/* Loading page route for testing */}
         <Route path="/loading" element={<LoadingPage />} />
+
+        {/* Loading page route for testing */}
+        <Route path="/search" element={<SearchPage />} />
 
         {/* Satellite Evidence page route */}
         <Route path="/satellite/:projectId" element={<SatelliteEvidence />} />
