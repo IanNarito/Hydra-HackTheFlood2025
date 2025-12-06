@@ -5,7 +5,10 @@ import datetime
 import sqlite3
 import json
 import base64
+<<<<<<< HEAD
 import re
+=======
+>>>>>>> 4f153171a493203153a6128979d05170b93afa8f
 import google.generativeai as genai
 from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
@@ -33,7 +36,7 @@ GENAI_API_KEY = "AIzaSyC7eE_XihiaxxDo27ctMITl0d0VwcsD2bE"
 VALID_AI_MODELS = []
 
 try:
-    genai.configure(api_key=GENAI_API_KEY)
+    genai.configure(api_key="AIzaSyC7eE_XihiaxxDo27ctMITl0d0VwcsD2bE")
     print("🤖 AI Neural Core: ONLINE")
     
     # --- STARTUP: CHECK WHICH MODELS ACTUALLY WORK ---

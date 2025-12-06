@@ -136,6 +136,7 @@ const InvestigatorMap = () => {
                 <Link to="/dropbox" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Dropbox</Link>
                 <Link to="/public-reports" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</Link>
                 <Link to="/admin" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin</Link>
+                <Link to="/search" className="text-gray-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Search</Link>
               </div>
             </div>
           </div>
@@ -270,8 +271,10 @@ const InvestigatorMap = () => {
               style={{ background: '#0d1117' }}
             >
               <TileLayer
-                attribution='&copy; CARTO'
-                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                attribution='&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+                url={`https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/{z}/{x}/{y}?access_token=${import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}`}
+                tileSize={512}
+                zoomOffset={-1}
               />
 
               {mapRenderOrder.map((project) => {
