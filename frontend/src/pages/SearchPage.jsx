@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Search, Building, MapPin, FileText, ChevronRight, Loader, AlertTriangle, ArrowDown, Globe } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Search, Building, MapPin, FileText, ChevronRight, Loader, AlertTriangle, ArrowDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ProjectModal from '../components/Dashboard/ProjectModal';
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
@@ -9,6 +10,7 @@ const SearchPage = () => {
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   // 1. Reset everything when Query or Filter changes
   useEffect(() => {
@@ -128,6 +130,7 @@ const SearchPage = () => {
           {results.map((item) => (
             <div 
               key={item.id}
+              onClick={() => setSelectedProject(item)}
               className="flex items-center justify-between bg-[#161616] border border-gray-800/50 p-4 rounded-xl hover:border-gray-600 hover:bg-[#1a1a1a] transition-all group cursor-pointer"
             >
               <div className="flex items-start gap-4">
@@ -196,6 +199,14 @@ const SearchPage = () => {
         </div>
 
       </main>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <ProjectModal 
+          project={selectedProject} 
+          onClose={() => setSelectedProject(null)} 
+        />
+      )}
     </div>
   );
 };

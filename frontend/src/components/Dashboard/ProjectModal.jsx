@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { X, Calendar, DollarSign, Clock, AlertTriangle, Map, Eye, Shield } from 'lucide-react';
+import { X, Calendar, DollarSign, Clock, AlertTriangle, Map, Eye } from 'lucide-react';
 import SatellitePreviewImage from './SatellitePreviewImage';
 
 const ProjectModal = ({ project, onClose }) => {
@@ -46,14 +46,32 @@ const ProjectModal = ({ project, onClose }) => {
       
   // Formatters
   const formatCurrency = (value) => {
-      if (!value) return "N/A";
+      if (!value || value === 0) return "Not Available";
       const numVal = typeof value === 'string' ? parseFloat(value.replace(/[^0-9.-]+/g,"")) : value;
+      if (isNaN(numVal) || numVal === 0) return "Not Available";
       return new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(numVal);
   };
   
   const formatDate = (dateStr) => {
-      if (!dateStr) return 'N/A';
-      return new Date(dateStr).toLocaleDateString();
+      if (!dateStr || dateStr === 'null' || dateStr === 'None' || dateStr === 'undefined') return 'Not Available';
+      try {
+        let date;
+        // Handle MM/DD/YYYY format (e.g., "02/15/2024")
+        if (dateStr.includes('/')) {
+          const parts = dateStr.split('/');
+          if (parts.length === 3) {
+            // Assume MM/DD/YYYY format
+            date = new Date(parts[2], parts[0] - 1, parts[1]);
+          }
+        } else {
+          // Handle ISO format (e.g., "2024-05-23")
+          date = new Date(dateStr);
+        }
+        if (!date || isNaN(date.getTime())) return 'Not Available';
+        return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+      } catch {
+        return 'Not Available';
+      }
   };
 
   const getRiskDescription = () => {
@@ -137,10 +155,10 @@ const ProjectModal = ({ project, onClose }) => {
 
           {/* Stats Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <StatBox icon={<DollarSign size={16} />} label="Budget" value={formatCurrency(project.budget)} />
-            <StatBox icon={<Clock size={16} />} label="Status" value={project.status || 'Unknown'} isTag />
+            <StatBox icon={<DollarSign size={16} />} label="Budget" value={formatCurrency(project.budget || project.contract_cost)} />
+            <StatBox icon={<Clock size={16} />} label="Status" value={project.status || 'Active'} isTag />
             <StatBox icon={<Calendar size={16} />} label="Start Date" value={formatDate(project.start_date || project.startDate)} />
-            <StatBox icon={<Calendar size={16} />} label="Expected Completion" value={formatDate(project.end_date || project.endDate)} />
+            <StatBox icon={<Calendar size={16} />} label="Expected Completion" value={formatDate(project.end_date || project.endDate || project.completion_date)} />
           </div>
 
           {/* Location Info */}

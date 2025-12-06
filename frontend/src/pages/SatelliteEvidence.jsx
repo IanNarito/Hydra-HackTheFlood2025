@@ -33,13 +33,22 @@ const SatelliteEvidence = () => {
         
         const data = await response.json();
         
+        // Parse coordinates safely
+        const lat = data.latitude ? parseFloat(data.latitude) : null;
+        const lng = data.longitude ? parseFloat(data.longitude) : null;
+        
+        // Check if coordinates are valid
+        if (!lat || !lng || isNaN(lat) || isNaN(lng)) {
+          throw new Error('This project does not have valid location coordinates');
+        }
+        
         // Normalize project data
         setProject({
           id: data.id,
           name: data.project_description || data.name || `Project ${projectId}`,
           contractor: data.contractor || 'Unknown Contractor',
-          latitude: parseFloat(data.latitude),
-          longitude: parseFloat(data.longitude),
+          latitude: lat,
+          longitude: lng,
           budget: data.contract_cost || data.budget,
           startDate: data.start_date,
           endDate: data.completion_date || data.end_date,
@@ -107,6 +116,33 @@ const SatelliteEvidence = () => {
     const numVal = typeof value === 'string' ? parseFloat(value.replace(/[^0-9.-]+/g, '')) : value;
     if (isNaN(numVal)) return 'N/A';
     return new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(numVal);
+  };
+
+  const parseDate = (dateStr) => {
+    if (!dateStr) return new Date();
+    try {
+      // Handle MM/DD/YYYY format (e.g., "02/15/2024")
+      if (dateStr.includes('/')) {
+        const parts = dateStr.split('/');
+        if (parts.length === 3) {
+          return new Date(parts[2], parts[0] - 1, parts[1]);
+        }
+      }
+      return new Date(dateStr);
+    } catch {
+      return new Date();
+    }
+  };
+
+  const formatDateStr = (dateStr) => {
+    if (!dateStr) return 'N/A';
+    try {
+      const date = parseDate(dateStr);
+      if (!date || isNaN(date.getTime())) return 'N/A';
+      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    } catch {
+      return 'N/A';
+    }
   };
 
   // Loading state
@@ -186,7 +222,7 @@ const SatelliteEvidence = () => {
             {project.startDate && (
               <div className="flex items-center gap-2">
                 <Calendar size={14} className="text-gray-500 shrink-0 sm:w-4 sm:h-4" />
-                <span>Started: {new Date(project.startDate).toLocaleDateString()}</span>
+                <span>Started: {formatDateStr(project.startDate)}</span>
               </div>
             )}
           </div>
@@ -226,7 +262,7 @@ const SatelliteEvidence = () => {
         <div className="p-3 sm:p-4 md:p-6 lg:px-8 bg-[#0d1117] border-t border-gray-800">
           <div className="max-w-7xl mx-auto">
             <TimelineControl
-              startDate={project.startDate ? new Date(project.startDate) : new Date(Date.now() - 365 * 24 * 60 * 60 * 1000)}
+              startDate={project.startDate ? parseDate(project.startDate) : new Date(Date.now() - 365 * 24 * 60 * 60 * 1000)}
               endDate={new Date()}
               selectedDate={selectedDate}
               onDateChange={handleDateChange}

@@ -203,9 +203,12 @@ const SatelliteMapView = ({
       >
         <TileLayer
           url={tileUrl}
-          attribution='&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
-          tileSize={512}
-          zoomOffset={-1}
+          attribution={tileUrl.includes('mapbox') 
+            ? '&copy; <a href="https://www.mapbox.com/">Mapbox</a>' 
+            : '&copy; <a href="https://www.esri.com/">Esri</a> World Imagery'
+          }
+          tileSize={tileUrl.includes('mapbox') ? 512 : 256}
+          zoomOffset={tileUrl.includes('mapbox') ? -1 : 0}
         />
         <ZoomControl position="bottomright" />
         <MapCenterUpdater latitude={latitude} longitude={longitude} />

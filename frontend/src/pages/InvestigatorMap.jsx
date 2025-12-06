@@ -305,11 +305,10 @@ const InvestigatorMap = () => {
               className="h-full w-full outline-none"
               style={{ background: '#0d1117' }}
             >
+              {/* Use CartoDB Dark tiles (free, no token required) */}
               <TileLayer
-                attribution='&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
-                url={`https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/{z}/{x}/{y}?access_token=${import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}`}
-                tileSize={512}
-                zoomOffset={-1}
+                attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
               />
 
               {mapRenderOrder.map((project) => {

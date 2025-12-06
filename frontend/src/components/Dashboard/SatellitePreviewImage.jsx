@@ -26,6 +26,7 @@ const SatellitePreviewImage = ({
 
     const url = generateStaticMapUrl(latitude, longitude, zoom, width, height);
     if (!url) {
+      console.warn('Failed to generate map URL - check VITE_MAPBOX_ACCESS_TOKEN in .env');
       setIsLoading(false);
       setHasError(true);
       setImageUrl(null);
@@ -67,9 +68,10 @@ const SatellitePreviewImage = ({
         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur text-xs text-white px-2 py-1 rounded flex items-center gap-2 z-10">
           <Map size={12} /> Project Preview
         </div>
-        <div className="text-center text-gray-500">
+        <div className="text-center text-gray-500 px-4">
           <AlertCircle size={32} className="mx-auto mb-2 opacity-50" />
           <p className="text-sm">Unable to load satellite imagery</p>
+          <p className="text-xs mt-1 opacity-70">Check Mapbox token configuration</p>
         </div>
       </div>
     );

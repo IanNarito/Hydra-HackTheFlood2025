@@ -304,8 +304,12 @@ def get_projects():
                 'risk': risk, 'color': color, 'score': final_score, 'risk_description': desc,
                 'ai_audited': bool(row.get('ai_verdict')), 'ai_verdict': row.get('ai_verdict'),
                 'latitude': row['latitude'], 'longitude': row['longitude'], 'budget': row.get('contract_cost'),
+                'contract_cost': row.get('contract_cost'),
+                'start_date': row.get('start_date'), 'end_date': row.get('completion_date'),
+                'completion_date': row.get('completion_date'),
                 'region': row.get('region'), 'province': row.get('province'), 'municipality': row.get('municipality'),
-                'year': row.get('year'), 'satellite_image_url': row.get('satellite_image_url')
+                'year': row.get('year'), 'satellite_image_url': row.get('satellite_image_url'),
+                'status': 'Active'
             })
         conn.close()
         return jsonify(projects), 200
@@ -329,7 +333,9 @@ def search_projects():
         sql = '''
             SELECT 
                 p.id, p.project_id, p.project_description, p.contractor, 
-                p.municipality, p.province, p.suspicion_score, p.max_severity,
+                p.municipality, p.province, p.region, p.suspicion_score, p.max_severity,
+                p.contract_cost, p.start_date, p.completion_date, p.latitude, p.longitude,
+                p.year, p.satellite_image_url,
                 a.ai_verdict, a.ai_score, a.ai_comment
             FROM projects p
             LEFT JOIN ai_audit_results a ON p.project_id = a.project_id
@@ -379,7 +385,13 @@ def search_projects():
                 'id': row['id'], 'project_id': row['project_id'],
                 'name': row['project_description'], 'contractor': row['contractor'],
                 'municipality': row['municipality'], 'province': row['province'],
-                'risk': risk, 'score': final
+                'region': row['region'], 'risk': risk, 'score': final,
+                'budget': row['contract_cost'], 'contract_cost': row['contract_cost'],
+                'start_date': row['start_date'], 'completion_date': row['completion_date'],
+                'end_date': row['completion_date'], 'status': 'Active',
+                'latitude': row['latitude'], 'longitude': row['longitude'],
+                'year': row['year'], 'satellite_image_url': row['satellite_image_url'],
+                'risk_description': row['ai_comment'] if row['ai_comment'] else f"Score {int(final)}: Risk assessment based on data analysis"
             })
 
         conn.close()
@@ -401,13 +413,20 @@ def get_project_by_id(project_id):
         score = float(row.get('suspicion_score') or 0)
         risk, color, desc = calculate_risk_level(score, row.get('max_severity'))
         
+        # Get latitude and longitude, with fallback values
+        lat = row.get('latitude')
+        lng = row.get('longitude')
+        
         return jsonify({
             'id': row['id'], 'project_id': row.get('project_id'), 'name': row.get('project_description'),
+            'project_description': row.get('project_description'),
             'contractor': row.get('contractor'), 'risk': risk, 'color': color, 'score': score,
             'contract_cost': row.get('contract_cost'), 'budget': row.get('contract_cost'),
             'start_date': row.get('start_date'), 'end_date': row.get('completion_date'),
+            'completion_date': row.get('completion_date'),
             'status': 'Flagged' if score >= 60 else 'Normal', 'risk_description': desc,
             'region': row.get('region'), 'province': row.get('province'), 'municipality': row.get('municipality'),
+            'latitude': lat, 'longitude': lng,
             'year': row.get('year'), 'satellite_image_url': row.get('satellite_image_url')
         }), 200
     except Exception as e: return jsonify({"error": str(e)}), 500

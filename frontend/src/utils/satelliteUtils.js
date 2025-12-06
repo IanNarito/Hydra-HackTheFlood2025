@@ -1,7 +1,7 @@
 /**
  * Satellite Utility Functions
  * Provides URL generation and coordinate validation for satellite/aerial imagery
- * Uses Mapbox satellite imagery
+ * Uses ESRI World Imagery (free) with Mapbox as optional upgrade
  */
 
 /**
@@ -10,7 +10,8 @@
  * @returns {boolean} True if valid latitude (-90 to 90)
  */
 export function isValidLatitude(lat) {
-  return typeof lat === 'number' && !isNaN(lat) && lat >= -90 && lat <= 90;
+  const numLat = parseFloat(lat);
+  return !isNaN(numLat) && numLat >= -90 && numLat <= 90;
 }
 
 /**
@@ -19,7 +20,8 @@ export function isValidLatitude(lat) {
  * @returns {boolean} True if valid longitude (-180 to 180)
  */
 export function isValidLongitude(lng) {
-  return typeof lng === 'number' && !isNaN(lng) && lng >= -180 && lng <= 180;
+  const numLng = parseFloat(lng);
+  return !isNaN(numLng) && numLng >= -180 && numLng <= 180;
 }
 
 /**
@@ -33,7 +35,18 @@ export function isValidCoordinates(lat, lng) {
 }
 
 /**
- * Generates a static map preview URL using Mapbox Static Images API
+ * Checks if Mapbox token is valid (exists and starts with pk.)
+ * @returns {boolean} True if valid public token exists
+ */
+function hasValidMapboxToken() {
+  const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+  return accessToken && accessToken.startsWith('pk.') && accessToken.length > 50;
+}
+
+/**
+ * Generates a static map preview URL
+ * Uses ESRI World Imagery (free, no token required) as primary
+ * Falls back to Mapbox if configured with valid public token
  * 
  * @param {number} lat - Latitude of the center point
  * @param {number} lng - Longitude of the center point
@@ -47,34 +60,56 @@ export function generateStaticMapUrl(lat, lng, zoom = 15, width = 600, height = 
     return null;
   }
 
-  const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
-  if (!accessToken) {
-    console.error('Mapbox access token not found');
-    return null;
-  }
-
-  const clampedZoom = Math.max(0, Math.min(22, zoom));
+  const clampedZoom = Math.max(0, Math.min(18, zoom));
   const clampedWidth = Math.min(width, 1280);
   const clampedHeight = Math.min(height, 1280);
   
-  // Mapbox Static Images API
-  return `https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/${lng},${lat},${clampedZoom}/${clampedWidth}x${clampedHeight}?access_token=${accessToken}`;
+  // Try Mapbox if valid token exists
+  if (hasValidMapboxToken()) {
+    const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+    return `https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/${lng},${lat},${clampedZoom}/${clampedWidth}x${clampedHeight}?access_token=${accessToken}`;
+  }
+  
+  // Use free ESRI World Imagery Export API (no token required)
+  // This generates a static image from ESRI's satellite imagery
+  const bbox = calculateBbox(lat, lng, clampedZoom, clampedWidth, clampedHeight);
+  return `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=${bbox}&bboxSR=4326&size=${clampedWidth},${clampedHeight}&imageSR=4326&format=jpg&f=image`;
+}
+
+/**
+ * Calculate bounding box for ESRI static map
+ */
+function calculateBbox(lat, lng, zoom, width, height) {
+  // Approximate degrees per pixel at given zoom level
+  const metersPerPixel = 156543.03392 * Math.cos(lat * Math.PI / 180) / Math.pow(2, zoom);
+  const degreesPerPixelLng = metersPerPixel / 111320;
+  const degreesPerPixelLat = metersPerPixel / 110540;
+  
+  const halfWidthDeg = (width / 2) * degreesPerPixelLng;
+  const halfHeightDeg = (height / 2) * degreesPerPixelLat;
+  
+  const minLng = lng - halfWidthDeg;
+  const minLat = lat - halfHeightDeg;
+  const maxLng = lng + halfWidthDeg;
+  const maxLat = lat + halfHeightDeg;
+  
+  return `${minLng},${minLat},${maxLng},${maxLat}`;
 }
 
 /**
  * Generates a satellite/aerial tile layer URL template for interactive maps
- * Uses Mapbox Satellite imagery
+ * Uses ESRI World Imagery (free) as primary, Mapbox as optional
  * @returns {string} The tile layer URL template
  */
 export function generateTileLayerUrl() {
-  const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
-  if (!accessToken) {
-    console.error('Mapbox access token not found');
-    return null;
+  // Try Mapbox if valid token exists
+  if (hasValidMapboxToken()) {
+    const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+    return `https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
   }
   
-  // Mapbox Satellite tiles
-  return `https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
+  // Use free ESRI World Imagery tiles (no token required)
+  return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
 }
 
 /**
