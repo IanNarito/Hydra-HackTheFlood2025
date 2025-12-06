@@ -5,7 +5,7 @@ import datetime
 import sqlite3
 import json
 import base64
-# --- 1. NEW IMPORT FOR AI ---
+import re
 import google.generativeai as genai
 from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
@@ -13,9 +13,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# ============================================================
-# 1. CONFIGURATION & DATABASE PATH
-# ============================================================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 POSSIBLE_DB_PATHS = [
     os.path.join(BASE_DIR, 'Datas', 'flood_control.db'),
@@ -29,19 +26,39 @@ DATABASE_FILE = next((p for p in POSSIBLE_DB_PATHS if os.path.exists(p)),
 print(f"⚡ Database Path: {DATABASE_FILE}")
 
 # ============================================================
-# 2. AI CONFIGURATION (NEW SECTION)
+# 2. AI CONFIGURATION & SMART MODEL DETECTION
 # ============================================================
 # ⚠️ PASTE YOUR KEY HERE ⚠️
-GENAI_API_KEY = "Blanko"
+GENAI_API_KEY = "AIzaSyC7eE_XihiaxxDo27ctMITl0d0VwcsD2bE"
+VALID_AI_MODELS = []
 
 try:
     genai.configure(api_key=GENAI_API_KEY)
     print("🤖 AI Neural Core: ONLINE")
+    
+    # --- STARTUP: CHECK WHICH MODELS ACTUALLY WORK ---
+    # This prevents the 404 Error by asking Google "What do I have access to?"
+    print("🔍 Scanning for available AI models...")
+    try:
+        for m in genai.list_models():
+            if 'generateContent' in m.supported_generation_methods:
+                # We prefer flash or pro models
+                if 'gemini' in m.name:
+                    VALID_AI_MODELS.append(m.name)
+        
+        # Sort to put 'flash' models first (usually faster)
+        VALID_AI_MODELS.sort(key=lambda x: 'flash' not in x)
+        print(f"✅ Auto-Detected {len(VALID_AI_MODELS)} working models: {VALID_AI_MODELS}")
+    except Exception as e:
+        print(f"⚠️ Model Scan Failed (using defaults): {e}")
+        # Fallback hardcoded list if the scan fails (Safe defaults for older libs)
+        VALID_AI_MODELS = ['models/gemini-pro', 'gemini-pro']
+
 except Exception as e:
     print(f"⚠️ AI Config Error: {e}")
 
 # ============================================================
-# 3. INTELLIGENCE DATA (Hardcoded for Stability)
+# 3. INTELLIGENCE DATA
 # ============================================================
 KNOWN_BAD_CONTRACTORS = {
     'SYMS CONSTRUCTION TRADING': {'reason': 'Ghost projects', 'severity': 'CRITICAL'},
@@ -86,7 +103,7 @@ def init_tables():
         return
 
     try:
-        # 1. Reports table
+        # ... (Keep your existing reports/files tables code here) ...
         conn.execute('''
             CREATE TABLE IF NOT EXISTS reports (
                 id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -99,8 +116,6 @@ def init_tables():
                 linked_project_id INTEGER
             )
         ''')
-
-        # 2. Files table (BLOB storage)
         conn.execute('''
             CREATE TABLE IF NOT EXISTS report_files (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -114,8 +129,6 @@ def init_tables():
                 FOREIGN KEY (report_id) REFERENCES reports(id)
             )
         ''')
-
-        # 3. Published Reports table (For the Public Page)
         conn.execute('''
             CREATE TABLE IF NOT EXISTS published_reports (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -126,6 +139,23 @@ def init_tables():
                 FOREIGN KEY (report_id) REFERENCES reports(id)
             )
         ''')
+
+        # --- UPDATED AI TABLE WITH SCORE COLUMN ---
+        conn.execute('''
+            CREATE TABLE IF NOT EXISTS ai_audit_results (
+                project_id TEXT PRIMARY KEY,
+                ai_verdict TEXT,
+                ai_comment TEXT,
+                ai_score INTEGER, 
+                analyzed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
+        # SAFETY: If table exists but missing column (for existing DBs)
+        try:
+            conn.execute("ALTER TABLE ai_audit_results ADD COLUMN ai_score INTEGER")
+        except:
+            pass # Column likely exists
 
         conn.commit()
         print("✅ Database tables initialized successfully.")
@@ -219,11 +249,117 @@ def get_mime_type(filename):
     }
     return mime_types.get(ext, 'application/octet-stream')
 
+def clean_ai_json(text):
+    # Removes markdown formatting if the AI adds it
+    match = re.search(r'\[.*\]', text, re.DOTALL)
+    return match.group(0) if match else "[]"
+
 # ============================================================
-# 6. API ROUTES
+# API ROUTES
 # ============================================================
 
-# --- NEW: AI CHAT ROUTE ---
+# --- 1. NEW AI AUDITOR ROUTE (WITH SMART MODEL SELECTION) ---
+@app.route('/api/ai-audit-batch', methods=['POST'])
+def ai_audit_batch():
+    conn = None
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        # A. Select Data
+        user_ids = request.json.get('project_ids', [])
+        
+        if user_ids:
+            placeholders = ','.join('?' * len(user_ids))
+            query = f"""
+                SELECT project_id, project_description, contract_cost, contractor, suspicion_score 
+                FROM projects WHERE project_id IN ({placeholders})
+            """
+            cursor.execute(query, user_ids)
+        else:
+            cursor.execute("""
+                SELECT project_id, project_description, contract_cost, contractor, suspicion_score 
+                FROM projects 
+                WHERE project_id NOT IN (SELECT project_id FROM ai_audit_results)
+                LIMIT 5
+            """)
+        
+        rows = cursor.fetchall()
+        if not rows:
+            return jsonify({"status": "empty", "message": "No pending projects to analyze."}), 200
+
+        batch_data = [dict(row) for row in rows]
+
+        # B. UPDATED PROMPT WITH SCORING RULES
+        system_instruction = f"""
+        You are HYDRA, a Senior Fraud Auditor.
+        
+        TASK: Analyze these projects. Assign a 'risk_score' based on this LEGEND:
+        
+        [80 - 100] = CRITICAL
+        - Use if: Corruption is obvious, Contractor is blacklisted, or Description makes no sense for the cost.
+        
+        [60 - 79] = HIGH
+        - Use if: Vague description, generic contractor name, or minor overpricing.
+        
+        [0 - 59] = LOW
+        - Use if: Project looks legitimate and costs are reasonable.
+
+        INPUT DATA:
+        {json.dumps(batch_data, indent=2)}
+
+        OUTPUT FORMAT (Raw JSON List):
+        [
+            {{
+                "project_id": "id",
+                "ai_verdict": "CRITICAL" or "HIGH" or "LOW",
+                "ai_score": (Integer between 0-100),
+                "ai_comment": "Short reason why."
+            }}
+        ]
+        """
+
+        # C. Call Gemini (Smart List)
+        models_to_try = VALID_AI_MODELS if VALID_AI_MODELS else ['gemini-pro', 'models/gemini-pro']
+        last_error = None
+        audit_results = None
+
+        for model_name in models_to_try:
+            try:
+                print(f"🔄 Attempting AI analysis using: {model_name}")
+                model = genai.GenerativeModel(model_name)
+                response = model.generate_content(system_instruction)
+
+                if response and hasattr(response, 'text'):
+                    cleaned_json = clean_ai_json(response.text)
+                    audit_results = json.loads(cleaned_json)
+                    print(f"✅ Success with {model_name}")
+                    break 
+
+            except Exception as model_error:
+                last_error = str(model_error)
+                print(f"⚠️ Failed with {model_name}: {last_error}")
+                continue
+
+        if audit_results is None:
+            return jsonify({"status": "error", "message": f"AI Failed. Last error: {last_error}"}), 500
+
+        # D. Save to DB (Now including SCORE)
+        for res in audit_results:
+            cursor.execute("""
+                INSERT OR REPLACE INTO ai_audit_results (project_id, ai_verdict, ai_comment, ai_score)
+                VALUES (?, ?, ?, ?)
+            """, (res.get('project_id'), res.get('ai_verdict'), res.get('ai_comment'), res.get('ai_score')))
+        
+        conn.commit()
+
+        return jsonify({"status": "success", "analyzed_count": len(audit_results), "results": audit_results}), 200
+
+    except Exception as e:
+        print(f"AI Audit Error: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
+    finally:
+        if conn: conn.close()
 
 
 @app.route('/api/chat', methods=['POST'])
@@ -269,16 +405,12 @@ USER QUERY: {user_message}
 
 INSTRUCTIONS: Answer as a professional investigator. Keep responses concise (max 3-4 sentences). Reference data when relevant."""
 
-        # 3. TRY MULTIPLE MODEL NAMES (IN ORDER OF PREFERENCE)
-        model_names_to_try = [
-            'models/gemini-2.5-flash',       # Latest stable (Dec 2024)
-            'models/gemini-2.0-flash-exp',   # Experimental backup
-            'models/gemini-2.5-pro',         # More powerful alternative
-        ]
+        # 3. TRY MULTIPLE MODEL NAMES (Using Auto-Detected List)
+        models_to_try = VALID_AI_MODELS if VALID_AI_MODELS else ['gemini-pro', 'models/gemini-pro']
 
         last_error = None
 
-        for model_name in model_names_to_try:
+        for model_name in models_to_try:
             try:
                 model = genai.GenerativeModel(model_name)
                 response = model.generate_content(system_instruction)
@@ -400,7 +532,7 @@ def get_case_files(case_id):
     except:
         return jsonify([]), 200
 
-# --- PROJECT DATA ROUTE ---
+# --- PROJECT DATA ROUTE (UPDATED FOR AI MAP REPLACEMENT) ---
 
 
 @app.route('/api/projects', methods=['GET'])
@@ -409,37 +541,81 @@ def get_projects():
         conn = get_db_connection()
         if not conn:
             return jsonify([]), 200
+        
         cursor = conn.cursor()
+
+        # 1. FETCH PROJECTS + AI AUDIT RESULTS (LEFT JOIN)
+        # Added 'a.ai_score' to the selection
         query = '''
-            SELECT id, project_id, project_description, contractor, contract_cost,
-                region, province, municipality, start_date, completion_date,
-                is_flagged, max_severity, suspicion_score, color_triage, 
-                latitude, longitude, year, satellite_image_url
-            FROM projects
-            WHERE latitude IS NOT NULL AND longitude IS NOT NULL
+            SELECT 
+                p.id, p.project_id, p.project_description, p.contractor, p.contract_cost,
+                p.region, p.province, p.municipality, p.start_date, p.completion_date,
+                p.is_flagged, p.max_severity, p.suspicion_score, p.color_triage, 
+                p.latitude, p.longitude, p.year, p.satellite_image_url,
+                a.ai_verdict, a.ai_comment, a.ai_score
+            FROM projects p
+            LEFT JOIN ai_audit_results a ON p.project_id = a.project_id
+            WHERE p.latitude IS NOT NULL AND p.longitude IS NOT NULL
         '''
+        
         cursor.execute(query)
         rows = cursor.fetchall()
         projects = []
+        
         for row in rows:
-            raw_score = row.get('suspicion_score', 0)
-            score = float(raw_score) if raw_score is not None else 0.0
-            risk_level, color_name, risk_desc = calculate_risk_level(
-                score, row.get('max_severity'))
+            # -- LOGIC: Prefer AI Score if it exists, otherwise use Math Score --
+            ai_score = row.get('ai_score')
+            math_score = float(row.get('suspicion_score') or 0)
+            
+            final_score = float(ai_score) if ai_score is not None else math_score
+
+            # -- Calculate Display Colors based on FINAL SCORE --
+            # This matches your image legend strictly
+            if final_score >= 80:
+                risk_level = 'CRITICAL'
+                color_name = 'Red'
+                risk_desc = f"Score {int(final_score)}: Immediate investigation required"
+            elif final_score >= 60:
+                risk_level = 'HIGH'
+                color_name = 'Yellow'
+                risk_desc = f"Score {int(final_score)}: Elevated risk indicators"
+            else:
+                risk_level = 'LOW'
+                color_name = 'Green'
+                risk_desc = f"Score {int(final_score)}: Minimal risk"
+
+            # -- AI Override Details for Frontend --
+            ai_verdict = row.get('ai_verdict')
+            ai_comment = row.get('ai_comment')
+            
+            # If AI has something to say, append it to description
+            if ai_verdict:
+                risk_level = f"AI {ai_verdict}" # e.g., AI CRITICAL
+                risk_desc = f"AI SCORE {ai_score}: {ai_comment}"
+
             projects.append({
                 'id': row['id'],
                 'name': row.get('project_description') or f"Project {row.get('project_id')}",
                 'contractor': row.get('contractor') or 'Unknown Contractor',
+                
+                # VISUALS (Now synchronized with score)
                 'risk': risk_level,
                 'color': color_name,
-                'score': score,
+                'score': final_score, # Sending the synchronized score
+                'risk_description': risk_desc,
+                
+                # AI Specific
+                'ai_audited': bool(ai_verdict),
+                'ai_verdict': ai_verdict,
+                'ai_comment': ai_comment,
+
+                # Standard Data
                 'latitude': row['latitude'],
                 'longitude': row['longitude'],
                 'budget': row.get('contract_cost') or 0,
                 'start_date': row.get('start_date') or 'N/A',
                 'end_date': row.get('completion_date') or 'N/A',
-                'status': 'Flagged' if score >= 40 else 'Normal',
-                'risk_description': risk_desc,
+                'status': 'Flagged' if final_score >= 60 else 'Normal',
                 'region': row.get('region'),
                 'province': row.get('province'),
                 'municipality': row.get('municipality'),
@@ -449,6 +625,7 @@ def get_projects():
         conn.close()
         return jsonify(projects), 200
     except Exception as e:
+        print(f"Get Projects Error: {e}")
         return jsonify([]), 200
 
 

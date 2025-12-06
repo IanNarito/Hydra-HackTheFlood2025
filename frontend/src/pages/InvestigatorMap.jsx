@@ -7,47 +7,25 @@ import 'leaflet/dist/leaflet.css';
 import ProjectModal from '../components/Dashboard/ProjectModal'; 
 import { fetchProjects, fetchStats, getRiskConfig } from '../services/api.js';
 
-// 1. The List displayed in the Dropdown (User Friendly)
 const PHILIPPINE_REGIONS = [
-  "All regions",
-  "National Capital Region (NCR)",
-  "Cordillera Administrative Region (CAR)",
-  "Ilocos Region (Region I)",
-  "Cagayan Valley (Region II)",
-  "Central Luzon (Region III)",
-  "CALABARZON (Region IV-A)",
-  "MIMAROPA (Region IV-B)",
-  "Bicol Region (Region V)",
-  "Western Visayas (Region VI)",
-  "Central Visayas (Region VII)",
-  "Eastern Visayas (Region VIII)",
-  "Zamboanga Peninsula (Region IX)",
-  "Northern Mindanao (Region X)",
-  "Davao Region (Region XI)",
-  "SOCCSKSARGEN (Region XII)",
-  "Caraga (Region XIII)",
-  "Bangsamoro (BARMM)"
+  "All regions", "National Capital Region (NCR)", "Cordillera Administrative Region (CAR)",
+  "Ilocos Region (Region I)", "Cagayan Valley (Region II)", "Central Luzon (Region III)",
+  "CALABARZON (Region IV-A)", "MIMAROPA (Region IV-B)", "Bicol Region (Region V)",
+  "Western Visayas (Region VI)", "Central Visayas (Region VII)", "Eastern Visayas (Region VIII)",
+  "Zamboanga Peninsula (Region IX)", "Northern Mindanao (Region X)", "Davao Region (Region XI)",
+  "SOCCSKSARGEN (Region XII)", "Caraga (Region XIII)", "Bangsamoro (BARMM)"
 ];
 
-// 2. The Translation Map: Dropdown Name -> Database Name
 const REGION_DB_MAPPING = {
-  "All regions": "ALL",
-  "National Capital Region (NCR)": "National Capital Region",
+  "All regions": "ALL", "National Capital Region (NCR)": "National Capital Region",
   "Cordillera Administrative Region (CAR)": "Cordillera Administrative Region",
-  "Ilocos Region (Region I)": "Region I",
-  "Cagayan Valley (Region II)": "Region II",
-  "Central Luzon (Region III)": "Region III",
-  "CALABARZON (Region IV-A)": "Region IV-A",
-  "MIMAROPA (Region IV-B)": "Region IV-B",
-  "Bicol Region (Region V)": "Region V",
-  "Western Visayas (Region VI)": "Region VI",
-  "Central Visayas (Region VII)": "Region VII",
-  "Eastern Visayas (Region VIII)": "Region VIII",
-  "Zamboanga Peninsula (Region IX)": "Region IX",
-  "Northern Mindanao (Region X)": "Region X",
-  "Davao Region (Region XI)": "Region XI",
-  "SOCCSKSARGEN (Region XII)": "Region XII",
-  "Caraga (Region XIII)": "Region XIII",
+  "Ilocos Region (Region I)": "Region I", "Cagayan Valley (Region II)": "Region II",
+  "Central Luzon (Region III)": "Region III", "CALABARZON (Region IV-A)": "Region IV-A",
+  "MIMAROPA (Region IV-B)": "Region IV-B", "Bicol Region (Region V)": "Region V",
+  "Western Visayas (Region VI)": "Region VI", "Central Visayas (Region VII)": "Region VII",
+  "Eastern Visayas (Region VIII)": "Region VIII", "Zamboanga Peninsula (Region IX)": "Region IX",
+  "Northern Mindanao (Region X)": "Region X", "Davao Region (Region XI)": "Region XI",
+  "SOCCSKSARGEN (Region XII)": "Region XII", "Caraga (Region XIII)": "Region XIII",
   "Bangsamoro (BARMM)": "BARMM"
 };
 
@@ -70,17 +48,12 @@ const InvestigatorMap = () => {
         
         setStats(statsData);
         
-        // --- CRITICAL FIX: Robust Coordinate Checking ---
         const validProjects = projectsData.filter(p => {
-          // Handle various casing: lat, latitude, Latitude
           const lat = p.latitude ?? p.lat ?? p.Latitude;
           const lng = p.longitude ?? p.lng ?? p.Longitude;
-          
-          // Must be a number and not null
           return lat && lng && !isNaN(parseFloat(lat)) && !isNaN(parseFloat(lng));
         }).map(p => ({
           ...p,
-          // Normalize coordinates to standard keys for easier use later
           lat: parseFloat(p.latitude ?? p.lat ?? p.Latitude),
           lng: parseFloat(p.longitude ?? p.lng ?? p.Longitude)
         }));
@@ -96,23 +69,46 @@ const InvestigatorMap = () => {
     loadData();
   }, []);
 
-  // --- EXPLICIT FILTER LOGIC ---
   const filteredProjects = useMemo(() => {
     if (activeRegion === "All regions") return projects;
     const targetRegion = REGION_DB_MAPPING[activeRegion];
     return projects.filter(p => p.region === targetRegion);
   }, [projects, activeRegion]);
 
+  // --- FIX 1: UPDATED SORTING LOGIC FOR AI TAGS ---
+  // The backend sends "AI CRITICAL", so strictly checking === 'CRITICAL' fails.
+  // We use .includes() to catch both "CRITICAL" and "AI CRITICAL".
   const mapRenderOrder = useMemo(() => {
     const critical = [], high = [], low = [];
     filteredProjects.forEach(p => {
       const r = (p.risk || '').toUpperCase();
-      if (r === 'CRITICAL') critical.push(p);
-      else if (r === 'HIGH') high.push(p);
-      else low.push(p);
+      
+      if (r.includes('CRITICAL')) { 
+        critical.push(p); // Puts AI Critical on top
+      } else if (r.includes('HIGH') || r.includes('SUSPICIOUS')) {
+        high.push(p);
+      } else {
+        low.push(p);
+      }
     });
+    // Render Low first (bottom), then High, then Critical (top)
     return [...low, ...high, ...critical];
   }, [filteredProjects]);
+
+  // --- FIX 2: HELPER TO USE BACKEND COLORS ---
+  // The Python backend sends 'Red', 'Green', 'Yellow'. 
+  // We map these to the exact hex codes used in your design.
+  const getProjectColor = (project) => {
+    // 1. Priority: Use the color the Backend/AI chose
+    if (project.color) {
+      const c = project.color.toLowerCase();
+      if (c === 'red') return '#ef4444';    // Tailwind red-500
+      if (c === 'yellow') return '#eab308'; // Tailwind yellow-500
+      if (c === 'green') return '#22c55e';  // Tailwind green-500
+    }
+    // 2. Fallback: Use the frontend utility
+    return getRiskConfig(project.risk).color;
+  };
 
   const formatCurrency = (value) => {
     if (!value) return "₱0.00";
@@ -222,7 +218,8 @@ const InvestigatorMap = () => {
                ) : (
                  <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
                    {filteredProjects.map(p => {
-                     const riskConfig = getRiskConfig(p.risk);
+                     // Use the helper to determine sidebar dot color
+                     const dotColor = getProjectColor(p);
                      return (
                        <div 
                          key={p.id} 
@@ -235,8 +232,8 @@ const InvestigatorMap = () => {
                          <span 
                            className="w-2 h-2 rounded-full flex-shrink-0" 
                            style={{
-                               backgroundColor: riskConfig.color,
-                               boxShadow: `0 0 5px ${riskConfig.color}`
+                               backgroundColor: dotColor,
+                               boxShadow: `0 0 5px ${dotColor}`
                            }}
                          ></span>
                        </div>
@@ -278,21 +275,24 @@ const InvestigatorMap = () => {
               />
 
               {mapRenderOrder.map((project) => {
-                const config = getRiskConfig(project.risk);
-                // Extra safety: Don't render if lat/lng are still somehow missing
+                const finalColor = getProjectColor(project); // USE HELPER
+                
                 if (!project.lat || !project.lng) return null;
+
+                // --- CHECK FOR AI CRITICAL TO MAKE IT BIGGER ---
+                const isCritical = (project.risk || '').toUpperCase().includes('CRITICAL');
 
                 return (
                   <CircleMarker 
                     key={project.id}
                     center={[project.lat, project.lng]}
                     pathOptions={{ 
-                      color: config.color, 
-                      fillColor: config.color, 
+                      color: finalColor, 
+                      fillColor: finalColor, 
                       fillOpacity: 0.7,
                       weight: 1
                     }}
-                    radius={project.risk === 'CRITICAL' ? 8 : 5}
+                    radius={isCritical ? 8 : 5}
                     eventHandlers={{
                       click: () => setSelectedProject(project),
                     }}
