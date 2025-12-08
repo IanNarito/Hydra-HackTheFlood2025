@@ -3,9 +3,12 @@ import { X, Send, Bot, User, Sparkles } from 'lucide-react';
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  // ✅ UPDATED: Friendly Tagalog Intro
   const [messages, setMessages] = useState([
-    { role: 'bot', text: "I am HYDRA. Accessing database... Ready. What do you need to investigate?" }
+    { role: 'bot', text: "Kumusta Kababayan! Ako si HYDRA. Handa akong tumulong magbantay sa mga proyekto ng bayan. Ano ang gusto mong malaman?" }
   ]);
+  
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
@@ -35,7 +38,8 @@ const ChatBot = () => {
       const data = await res.json();
       setMessages(prev => [...prev, { role: 'bot', text: data.reply }]);
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'bot', text: "⚠️ Connection Error: Unable to reach HYDRA mainframe." }]);
+      // ✅ UPDATED: Tagalog Error Message
+      setMessages(prev => [...prev, { role: 'bot', text: "⚠️ Pasensya na, mahina ang signal ng server. Pakisubukan ulit mamaya." }]);
     } finally {
       setIsTyping(false);
     }
@@ -52,7 +56,7 @@ const ChatBot = () => {
         >
           <Bot size={24} />
           <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap font-bold">
-            AI Investigator
+            Tanungin si HYDRA
           </span>
         </button>
       )}
@@ -118,7 +122,8 @@ const ChatBot = () => {
               type="text" 
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Query the database..." 
+              // ✅ UPDATED: Tagalog Placeholder
+              placeholder="I-type ang iyong tanong..." 
               className="flex-1 bg-[#050505] border border-gray-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-red-900 transition-colors placeholder:text-gray-600"
             />
             <button 

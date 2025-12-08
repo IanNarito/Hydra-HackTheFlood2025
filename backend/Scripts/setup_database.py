@@ -12,11 +12,12 @@ CLEAN_INPUT_FILE = os.path.join(DATA_DIR, "flood_projects.json")
 FLAGGED_INPUT_FILE = os.path.join(DATA_DIR, "flood_flagged_projects.json")
 DATABASE_FILE = os.path.join(DATA_DIR, "flood_control.db")
 
+
 def create_tables(cursor):
     """Create database tables and indexes"""
     print("Creating database tables...")
 
-    # Create main projects table
+    # 1. MAIN PROJECTS TABLE (Added satellite_image_url)
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS projects (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -42,11 +43,12 @@ def create_tables(cursor):
             triage_rating TEXT,
             triage_action TEXT,
             latitude REAL,
-            longitude REAL
+            longitude REAL,
+            satellite_image_url TEXT
         )
     ''')
 
-    # Create flags table
+    # 2. FLAGS TABLE
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS project_flags (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -58,32 +60,74 @@ def create_tables(cursor):
             FOREIGN KEY (project_id) REFERENCES projects(project_id)
         )
     ''')
-    
-    # Create reports table (For Dropbox)
+
+    # 3. AI AUDIT RESULTS (CRITICAL FOR SENIOR ANALYST)
+    # We do NOT drop this table usually, as AI calls cost money/time.
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS ai_audit_results (
+            project_id TEXT PRIMARY KEY, 
+            ai_verdict TEXT, 
+            ai_comment TEXT, 
+            ai_score INTEGER, 
+            analyzed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+
+    # 4. REPORTING TABLES (Aligned with API)
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS reports (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            case_id TEXT UNIQUE,
-            description TEXT,
-            files TEXT,
-            status TEXT DEFAULT 'PENDING', 
-            ai_flags TEXT,
-            timestamp TEXT,
-            admin_notes TEXT
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            case_id TEXT UNIQUE, 
+            description TEXT, 
+            status TEXT DEFAULT "PENDING", 
+            ai_flags TEXT, 
+            timestamp TEXT, 
+            admin_notes TEXT, 
+            linked_project_id INTEGER
+        )
+    ''')
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS report_files (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            report_id INTEGER NOT NULL, 
+            case_id TEXT NOT NULL, 
+            original_filename TEXT, 
+            file_data BLOB, 
+            file_type TEXT, 
+            file_size INTEGER, 
+            uploaded_at TEXT, 
+            FOREIGN KEY (report_id) REFERENCES reports(id)
+        )
+    ''')
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS published_reports (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            report_id INTEGER NOT NULL UNIQUE, 
+            published_at TEXT, 
+            public_summary TEXT, 
+            admin_notes TEXT, 
+            FOREIGN KEY (report_id) REFERENCES reports(id)
         )
     ''')
 
     print("Creating indexes...")
-    cursor.execute('CREATE INDEX IF NOT EXISTS idx_project_id ON projects(project_id)')
+    cursor.execute(
+        'CREATE INDEX IF NOT EXISTS idx_project_id ON projects(project_id)')
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_region ON projects(region)')
-    cursor.execute('CREATE INDEX IF NOT EXISTS idx_suspicion_score ON projects(suspicion_score)')
+    cursor.execute(
+        'CREATE INDEX IF NOT EXISTS idx_suspicion_score ON projects(suspicion_score)')
 
     print("Tables and indexes created successfully")
 
+
 def normalize_pid(pid):
-    if pid is None: return None
+    if pid is None:
+        return None
     s = str(pid).strip()
     return s if s != '' else None
+
 
 def load_json_data():
     print(f"\nLoading data from: {DATA_DIR}")
@@ -102,18 +146,22 @@ def load_json_data():
             flagged_projects = json.load(f)
         for fp in flagged_projects:
             pid = normalize_pid(fp.get('project_id'))
-            if pid: flagged_dict[pid] = fp
+            if pid:
+                flagged_dict[pid] = fp
         print(f"Loaded {len(flagged_dict):,} flagged records")
     except FileNotFoundError:
-        print(f"⚠️ Warning: {FLAGGED_INPUT_FILE} not found. Proceeding without flags.")
+        print(
+            f"⚠️ Warning: {FLAGGED_INPUT_FILE} not found. Proceeding without flags.")
 
     return projects, flagged_dict
+
 
 def insert_projects(cursor, projects, flagged_dict):
     print("\nInserting projects into database...")
     inserted = 0
-    
-    # Clear existing data to avoid duplicates/stale data
+
+    # Clear existing PROJECT data to avoid duplicates/stale data
+    # NOTE: We DO NOT delete 'ai_audit_results' so you don't lose AI work
     cursor.execute("DELETE FROM projects")
     cursor.execute("DELETE FROM project_flags")
 
@@ -148,8 +196,8 @@ def insert_projects(cursor, projects, flagged_dict):
                     contract_id, legislative_district, district_engineering_office,
                     start_date, completion_date, is_flagged, flag_count, max_severity,
                     suspicion_score, color_triage, triage_rating, triage_action,
-                    latitude, longitude
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    latitude, longitude, satellite_image_url
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
                 project_id,
                 project.get('project_description'),
@@ -172,8 +220,9 @@ def insert_projects(cursor, projects, flagged_dict):
                 color_triage,
                 triage_rating,
                 triage_action,
-                project.get('latitude'),  # Ensure lat/lng are passed if they exist in JSON
-                project.get('longitude')
+                project.get('latitude'),
+                project.get('longitude'),
+                project.get('satellite_image_url')  # Added
             ))
             inserted += 1
 
@@ -196,6 +245,7 @@ def insert_projects(cursor, projects, flagged_dict):
             print(f"Error inserting project {project_id}: {e}")
 
     print(f"Successfully inserted {inserted:,} projects.")
+
 
 def create_database():
     print("=" * 80)
@@ -225,6 +275,7 @@ def create_database():
         conn.rollback()
     finally:
         conn.close()
+
 
 if __name__ == "__main__":
     create_database()
