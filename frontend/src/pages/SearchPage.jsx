@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Search, Building, MapPin, FileText, ChevronRight, Loader, AlertTriangle, ArrowDown } from 'lucide-react';
+import { Search, Building, MapPin, FileText, ChevronRight, Loader, AlertTriangle, ArrowDown, Shield, Flag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProjectModal from '../components/Dashboard/ProjectModal';
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
-  const [filterType, setFilterType] = useState("ALL"); // <--- DEFAULT IS NOW 'ALL'
+  const [filterType, setFilterType] = useState("ALL");
+  const [riskFilter, setRiskFilter] = useState("ALL"); // <--- NEW: Risk Level Filter
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // 1. Reset everything when Query or Filter changes
+  // 1. Reset everything when Query, Filter, or Risk Filter changes
   useEffect(() => {
     setResults([]); 
     setOffset(0);   
@@ -23,13 +24,13 @@ const SearchPage = () => {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [query, filterType]);
+  }, [query, filterType, riskFilter]); // <--- Added riskFilter
 
   // 2. Data Fetcher
   const loadData = async (currentOffset, isNewSearch) => {
     setLoading(true);
     try {
-      const url = `http://127.0.0.1:5000/api/search?q=${encodeURIComponent(query)}&type=${filterType}&offset=${currentOffset}`;
+      const url = `http://127.0.0.1:5000/api/search?q=${encodeURIComponent(query)}&type=${filterType}&risk=${riskFilter}&offset=${currentOffset}`;
       const response = await fetch(url);
       const data = await response.json();
 
@@ -58,7 +59,7 @@ const SearchPage = () => {
   const getPlaceholder = () => {
     if (filterType === 'PROJECT') return "Search specific Project Names...";
     if (filterType === 'CONTRACTOR') return "Search specific Contractors...";
-    return "Search Everything (Projects, Contractors, Locations)..."; // Default
+    return "Search Everything (Projects, Contractors, Locations)...";
   };
 
   return (
@@ -88,6 +89,7 @@ const SearchPage = () => {
               ? `Searching ${filterType === 'ALL' ? 'entire database' : filterType.toLowerCase() + 's'} for "${query}"` 
               : "Browsing Full Database"
             }
+            {riskFilter !== 'ALL' && ` • Showing only ${riskFilter} risk`}
           </p>
         </div>
 
@@ -108,8 +110,8 @@ const SearchPage = () => {
           </div>
         </div>
 
-        {/* 3 BUTTON FILTER (ALL IS DEFAULT) */}
-        <div className="flex gap-4 mb-8 justify-center">
+        {/* TYPE FILTER (ALL/PROJECT/CONTRACTOR) */}
+        <div className="flex gap-4 mb-4 justify-center">
           {["ALL", "PROJECT", "CONTRACTOR"].map((type) => (
             <button
               key={type}
@@ -125,6 +127,37 @@ const SearchPage = () => {
           ))}
         </div>
 
+        {/* NEW: RISK LEVEL FILTER */}
+        <div className="flex gap-3 mb-8 justify-center">
+          {[
+            { value: "ALL", label: "ALL RISKS", icon: Shield, color: "gray" },
+            { value: "CRITICAL", label: "CRITICAL", icon: AlertTriangle, color: "red" },
+            { value: "HIGH", label: "HIGH", icon: Flag, color: "yellow" },
+            { value: "LOW", label: "LOW", icon: Shield, color: "green" }
+          ].map((risk) => {
+            const Icon = risk.icon;
+            const isActive = riskFilter === risk.value;
+            
+            return (
+              <button
+                key={risk.value}
+                onClick={() => setRiskFilter(risk.value)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold tracking-wider border transition-all ${
+                  isActive
+                    ? risk.color === 'red' ? "bg-red-900/30 text-red-400 border-red-600 shadow-lg shadow-red-900/50" :
+                      risk.color === 'yellow' ? "bg-yellow-900/30 text-yellow-400 border-yellow-600" :
+                      risk.color === 'green' ? "bg-green-900/30 text-green-400 border-green-600" :
+                      "bg-gray-800 text-white border-gray-700"
+                    : "bg-transparent border-gray-800 text-gray-500 hover:border-gray-600 hover:text-gray-300"
+                }`}
+              >
+                <Icon size={14} />
+                {risk.label}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Results */}
         <div className="space-y-3">
           {results.map((item) => (
@@ -138,7 +171,6 @@ const SearchPage = () => {
                   (item.risk || '').includes('CRITICAL') ? 'bg-red-900/20 text-red-500' : 
                   (item.risk || '').includes('HIGH') ? 'bg-yellow-900/20 text-yellow-500' : 'bg-green-900/20 text-green-500'
                 }`}>
-                  {/* Dynamic Icon based on what matched or just FileText for generic */}
                   {filterType === 'CONTRACTOR' ? <Building size={20} /> : <FileText size={20} />}
                 </div>
                 <div>

@@ -7,7 +7,7 @@ import os
 # AI CONFIGURATION
 # ============================================================
 # ⚠️ PASTE YOUR KEY HERE ⚠️
-GENAI_API_KEY = "AIzaSyDcU0Yo4vaH0ce1marAuNcKD4NYf1R-rDU"
+GENAI_API_KEY = "BLANKO"
 VALID_AI_MODELS = []
 AI_AVAILABLE = False
 
@@ -92,43 +92,63 @@ def determine_project_type(desc):
     return "OTHERS"
 
 
-# ============================================================
-# 1. TAGALOG CHATBOT (STRICT & DIRECT)
-# ============================================================
-
 def get_chat_response(system_context, user_message):
     if not AI_AVAILABLE:
-        return "Pasensya na, offline ang system."
+        return "System offline. / Offline ang system."
+
+    website_info = """
+    SYSTEM MANUAL / IMPORMASYON:
+    1. SUBMISSION: Go to "Submit Evidence" page to report. (Pwede magpasa sa Submit Evidence page).
+    2. SECURITY: 100% Secure, End-to-End Encrypted, Anonymous.
+    3. NAVIGATION: Go to "Investigator Map" to see locations, or "Search Projects" for the list.
+    4. AI: We use AI for auditing and verification.
+    5. DASHBOARD: Yes, we have a Dashboard panel showing system statistics and overview.
+    6. MAP COLORS (TRIAGE LEGEND):
+       • RED (Critical): Score 80-100, Immediate investigation required
+       • ORANGE/YELLOW (High): Score 60-79, Elevated risk indicators detected
+       • GREEN (Low): Score <60, Minimal risk, within status
+       • GRAY (Indeterminate): Insufficient data for assessment
+    """
 
     full_prompt = f"""
-    ROLE: Ikaw si HYDRA, isang database search assistant.
-    HAWAK MONG DATOS (Reference Only - HUWAG SABIHIN AGAD):
+    ROLE: You are HYDRA, a database search assistant.
+    
+    SOURCE 1 (PROJECTS):
     {system_context}
-    USER QUESTION: "{user_message}"
+    
+    SOURCE 2 (WEBSITE INFO):
+    {website_info}
+    
+    USER MESSAGE: "{user_message}"
     
     STRICT RULES:
-    1. DIREKTA SA PUNTO. Bawal ang intro "Ako si Hydra".
-    2. SAGUTIN LANG ANG TINATANONG.
-    3. LANGUAGE: Tagalog na pang-masa. Simple.
-    4. HUWAG MAG-IMBENTO. Kung wala sa datos, sabihin "Wala sa record".
+    1. DIRECT TO THE POINT. No intros like "I am Hydra" or "Hello".
+    2. ANSWER ONLY THE QUESTION.
+    3. LANGUAGE ADAPTATION (IMPORTANT):
+       - If user speaks ENGLISH -> Reply in ENGLISH.
+       - If user speaks TAGALOG -> Reply in TAGALOG.
+       - If user speaks TAGLISH -> Reply in TAGLISH.
+    4. LOGIC:
+       - If asking about contractors/budget -> Use SOURCE 1. If missing, say "Not in records" / "Wala sa record".
+       - If asking about website/features/map colors/dashboard -> Use SOURCE 2.
+    5. FORMATTING: Use BULLET POINTS (•) on new lines for lists.
     
-    IYONG SAGOT (TAGALOG):
+    YOUR ANSWER:
     """
 
     for model_name in VALID_AI_MODELS:
         try:
             model = genai.GenerativeModel(model_name)
             res = model.generate_content(full_prompt)
-            # Remove bolding asterisks so it looks clean
             return res.text.replace('**', '').replace('##', '').strip()
         except:
             continue
-    return "Mahina ang signal. Pakisubukan ulit."
-
+    return "Signal weak. Retry. / Mahina ang signal."
 
 # ============================================================
 # 2. SENIOR ANALYST (MAPS & AUDIT)
 # ============================================================
+
 
 def analyze_project_with_facts(project_data):
     """

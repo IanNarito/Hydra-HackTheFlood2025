@@ -4,7 +4,6 @@ import { X, Send, Bot, User, Sparkles } from 'lucide-react';
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   
-  // ✅ UPDATED: Friendly Tagalog Intro
   const [messages, setMessages] = useState([
     { role: 'bot', text: "Kumusta Kababayan! Ako si HYDRA. Handa akong tumulong magbantay sa mga proyekto ng bayan. Ano ang gusto mong malaman?" }
   ]);
@@ -29,7 +28,6 @@ const ChatBot = () => {
     setIsTyping(true);
 
     try {
-      // Make sure this matches your Flask API URL
       const res = await fetch('http://127.0.0.1:5000/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -38,7 +36,6 @@ const ChatBot = () => {
       const data = await res.json();
       setMessages(prev => [...prev, { role: 'bot', text: data.reply }]);
     } catch (error) {
-      // ✅ UPDATED: Tagalog Error Message
       setMessages(prev => [...prev, { role: 'bot', text: "⚠️ Pasensya na, mahina ang signal ng server. Pakisubukan ulit mamaya." }]);
     } finally {
       setIsTyping(false);
@@ -91,7 +88,9 @@ const ChatBot = () => {
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-gray-700' : 'bg-red-900/20 border border-red-900/50'}`}>
                   {msg.role === 'user' ? <User size={14} /> : <Bot size={14} className="text-red-500"/>}
                 </div>
-                <div className={`max-w-[80%] p-3 rounded-xl text-xs leading-relaxed ${
+                
+                {/* ✅ UPDATED: Added whitespace-pre-wrap class here */}
+                <div className={`max-w-[80%] p-3 rounded-xl text-xs leading-relaxed whitespace-pre-wrap ${
                   msg.role === 'user' 
                     ? 'bg-gray-800 text-white rounded-tr-none' 
                     : 'bg-[#161616] border border-gray-800 text-gray-300 rounded-tl-none'
@@ -122,7 +121,6 @@ const ChatBot = () => {
               type="text" 
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              // ✅ UPDATED: Tagalog Placeholder
               placeholder="I-type ang iyong tanong..." 
               className="flex-1 bg-[#050505] border border-gray-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-red-900 transition-colors placeholder:text-gray-600"
             />

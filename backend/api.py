@@ -284,6 +284,7 @@ def search_projects():
     try:
         query = request.args.get('q', '').strip()
         filter_type = request.args.get('type', 'ALL').upper()
+        risk_filter = request.args.get('risk', 'ALL').upper()  # <--- NEW
         offset = int(request.args.get('offset', 0))
         limit = 50
 
@@ -301,21 +302,37 @@ def search_projects():
             LEFT JOIN ai_audit_results a ON p.project_id = a.project_id
         '''
         params = []
+        conditions = []
 
+        # Text Search Filter
         if query:
-            sql += " WHERE "
             search_term = f"%{query}%"
             if filter_type == 'PROJECT':
-                sql += "p.project_description LIKE ?"
+                conditions.append("p.project_description LIKE ?")
                 params.append(search_term)
             elif filter_type == 'CONTRACTOR':
-                sql += "p.contractor LIKE ?"
+                conditions.append("p.contractor LIKE ?")
                 params.append(search_term)
             else:
-                sql += "(p.project_description LIKE ? OR p.contractor LIKE ? OR p.municipality LIKE ?)"
-                params.append(search_term)
-                params.append(search_term)
-                params.append(search_term)
+                conditions.append(
+                    "(p.project_description LIKE ? OR p.contractor LIKE ? OR p.municipality LIKE ?)")
+                params.extend([search_term, search_term, search_term])
+
+        # Risk Level Filter (NEW)
+        if risk_filter != 'ALL':
+            if risk_filter == 'CRITICAL':
+                conditions.append(
+                    "(COALESCE(CAST(a.ai_score AS REAL), CAST(p.suspicion_score AS REAL)) >= 80)")
+            elif risk_filter == 'HIGH':
+                conditions.append(
+                    "(COALESCE(CAST(a.ai_score AS REAL), CAST(p.suspicion_score AS REAL)) >= 60 AND COALESCE(CAST(a.ai_score AS REAL), CAST(p.suspicion_score AS REAL)) < 80)")
+            elif risk_filter == 'LOW':
+                conditions.append(
+                    "(COALESCE(CAST(a.ai_score AS REAL), CAST(p.suspicion_score AS REAL)) < 60)")
+
+        # Apply WHERE clause if conditions exist
+        if conditions:
+            sql += " WHERE " + " AND ".join(conditions)
 
         sql += " ORDER BY p.id DESC LIMIT ? OFFSET ?"
         params.append(limit)
@@ -399,14 +416,39 @@ def chat_with_hydra():
         user_message = request.json.get('message', '') if request.json else ''
         if not user_message:
             return jsonify({"reply": "Please provide a message."}), 400
+
         conn = get_db_connection()
+
+        # 1. Get General Stats
         stats = conn.execute(
             "SELECT COUNT(*) as c, COALESCE(SUM(contract_cost), 0) as s FROM projects").fetchone()
-        worst = conn.execute(
+
+        # 2. Get Top 3 Worst Projects (For specific examples)
+        worst_projects = conn.execute(
             "SELECT project_description, contractor, suspicion_score FROM projects WHERE suspicion_score > 0 ORDER BY suspicion_score DESC LIMIT 3").fetchall()
+
+        # 3. THE FIX: Get the LIST of ALL Flagged Contractors (Limit 20 to save space)
+        # We query just the NAMES of everyone with a score >= 80 (Critical)
+        bad_contractors_query = conn.execute(
+            "SELECT DISTINCT contractor FROM projects WHERE suspicion_score >= 80 LIMIT 20").fetchall()
+
+        # Convert list of dicts to a simple comma-separated string
+        bad_contractors_list = ", ".join(
+            [r['contractor'] for r in bad_contractors_query])
+
         conn.close()
 
-        sys_msg = f"HYDRA Investigator. Status: {stats['c']} projects, ₱{stats['s']:,.2f}. High Risk: {json.dumps([dict(r) for r in worst])}."
+        # 4. Feed EVERYTHING to the AI Context
+        sys_msg = f"""
+        HYDRA DATA FEED:
+        - Total Projects: {stats['c']}
+        - Total Budget: ₱{stats['s']:,.2f}
+        
+        - TOP 3 WORST CASES (DETAILS): {json.dumps([dict(r) for r in worst_projects])}
+        
+        - LIST OF ALL FLAGGED CONTRACTORS (CRITICAL RISK): 
+        [{bad_contractors_list}]
+        """
 
         # Use AI Service for Chat
         reply = ai_service.get_chat_response(sys_msg, user_message)
