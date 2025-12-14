@@ -2,12 +2,15 @@ import google.generativeai as genai
 import json
 import re
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ============================================================
 # AI CONFIGURATION
 # ============================================================
 # ⚠️ PASTE YOUR KEY HERE ⚠️
-GENAI_API_KEY = "BLANKO"
+GENAI_API_KEY = os.getenv("GENAI_API_KEY")
 VALID_AI_MODELS = []
 AI_AVAILABLE = False
 
